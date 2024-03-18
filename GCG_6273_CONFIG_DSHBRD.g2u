@@ -1,0 +1,3158 @@
+Program.Sub.ScreenSU.Start
+Gui.frmMain..Create(BaseForm)
+Gui.frmMain..Caption("Confiurator Options Dashboard")
+Gui.frmMain..Size(1434,855)
+Gui.frmMain..MinX(0)
+Gui.frmMain..MinY(0)
+Gui.frmMain..Position(0,0)
+Gui.frmMain..AlwaysOnTop(False)
+Gui.frmMain..FontName("Tahoma")
+Gui.frmMain..FontSize(8.25)
+Gui.frmMain..ControlBox(True)
+Gui.frmMain..MaxButton(True)
+Gui.frmMain..MinButton(True)
+Gui.frmMain..MousePointer(0)
+Gui.frmMain..Moveable(True)
+Gui.frmMain..Sizeable(True)
+Gui.frmMain..ShowInTaskBar(True)
+Gui.frmMain..TitleBar(True)
+Gui.frmMain..Event(UnLoad,frmMain_UnLoad)
+Gui.frmMain.GsGcBase.Create(GsGridControl)
+Gui.frmMain.GsGcBase.Enabled(True)
+Gui.frmMain.GsGcBase.Visible(True)
+Gui.frmMain.GsGcBase.Zorder(0)
+Gui.frmMain.GsGcBase.Size(699,183)
+Gui.frmMain.GsGcBase.Position(0,5)
+Gui.frmMain.GsGcBase.Anchor(13)
+Gui.frmMain.GsGcBase.Event(RowCellClick,GsGcBase_RowCellClick)
+Gui.frmMain.tabOpt.Create(Tab)
+Gui.frmMain.tabOpt.Enabled(True)
+Gui.frmMain.tabOpt.Visible(True)
+Gui.frmMain.tabOpt.Zorder(0)
+Gui.frmMain.tabOpt.Size(1434,635)
+Gui.frmMain.tabOpt.Position(0,189)
+Gui.frmMain.tabOpt.FontName("Tahoma")
+Gui.frmMain.tabOpt.FontSize(10)
+Gui.frmMain.tabOpt.Anchor(15)
+Gui.frmMain.tabOpt.FontStyle(True,False,False,False,False)
+Gui.frmMain.tabOpt.Tabs(2)
+Gui.frmMain.tabOpt.SetTab(0)
+Gui.frmMain.tabOpt.Caption("Config Options")
+Gui.frmMain.tabOpt.SetTab(1)
+Gui.frmMain.tabOpt.Caption("Mfg Config Options")
+Gui.frmMain.GsGcM_C_O.Create(GsGridControl)
+Gui.frmMain.GsGcM_C_O.Enabled(True)
+Gui.frmMain.GsGcM_C_O.Visible(True)
+Gui.frmMain.GsGcM_C_O.Zorder(0)
+Gui.frmMain.GsGcM_C_O.Size(1434,590)
+Gui.frmMain.GsGcM_C_O.Position(0,0)
+Gui.frmMain.GsGcM_C_O.Parent("tabOpt",1)
+Gui.frmMain.GsGcM_C_O.Anchor(15)
+Gui.frmMain.GsGcM_C_O.Event(CellValueChanged,GsGcM_C_O_CellValueChanged)
+Gui.frmMain.GsGcM_C_O.Event(RowCellClick,GsGcM_C_O_RowCellClick)
+Gui.frmMain.GsGcC_O.Create(GsGridControl)
+Gui.frmMain.GsGcC_O.Enabled(True)
+Gui.frmMain.GsGcC_O.Visible(True)
+Gui.frmMain.GsGcC_O.Zorder(0)
+Gui.frmMain.GsGcC_O.Size(1434,590)
+Gui.frmMain.GsGcC_O.Position(0,0)
+Gui.frmMain.GsGcC_O.Parent("tabOpt",0)
+Gui.frmMain.GsGcC_O.Anchor(15)
+Gui.frmMain.GsGcC_O.Event(CellValueChanged,GsGcC_O_CellValueChanged)
+Gui.frmMain.GsGcC_O.Event(RowCellClick,GsGcC_O_RowCellClick)
+Gui.frmMain.lblMsg.Create(Label,"Please select a Base ID above",False,314,25,0,569,446,True,0,"Tahoma",16,,0,0)
+Gui.frmMain.lblMsg.BorderStyle(0)
+Gui.frmMain.lblMsg.FontStyle(True,True,False,False,False)
+Gui.frmMain.picGSSLogo.Create(PictureBox)
+Gui.frmMain.picGSSLogo.Enabled(True)
+Gui.frmMain.picGSSLogo.Visible(True)
+Gui.frmMain.picGSSLogo.Zorder(0)
+Gui.frmMain.picGSSLogo.Size(268,64)
+Gui.frmMain.picGSSLogo.Position(1140,5)
+Gui.frmMain.picGSSLogo.ToolTip("Double-Click for additional functions")
+Gui.frmMain.picGSSLogo.Anchor(9)
+Gui.frmMain.picGSSLogo.Event(DblClick,picGSSLogo_DblClick)
+Gui.frmMain.cmdCommit.Create(Button)
+Gui.frmMain.cmdCommit.Enabled(True)
+Gui.frmMain.cmdCommit.Visible(False)
+Gui.frmMain.cmdCommit.Zorder(0)
+Gui.frmMain.cmdCommit.Size(128,23)
+Gui.frmMain.cmdCommit.Position(1280,161)
+Gui.frmMain.cmdCommit.Caption("Commit Changes")
+Gui.frmMain.cmdCommit.FontName("Tahoma")
+Gui.frmMain.cmdCommit.FontSize(10)
+Gui.frmMain.cmdCommit.FontStyle(True,False,False,False,False)
+Gui.frmMain.cmdCommit.ForeColor(255)
+Gui.frmMain.cmdCommit.Event(Click,cmdCommit_Click)
+Gui.frmMain.cmdCommit.Anchor(9)
+Gui.frmMain.txtBaseBanner.Create(TextBox,"",True,205,20,0,494,193,True,1,"Tahoma",10,,0)
+Gui.frmMain.txtBaseBanner.FontStyle(True,False,False,False,False)
+Gui.frmMain.txtBaseBanner.ForeColor(16711680)
+Gui.frmNotes..Create(BaseForm)
+Gui.frmNotes..Caption("Notes")
+Gui.frmNotes..Size(423,178)
+Gui.frmNotes..MinX(0)
+Gui.frmNotes..MinY(0)
+Gui.frmNotes..Position(0,0)
+Gui.frmNotes..AlwaysOnTop(False)
+Gui.frmNotes..FontName("Tahoma")
+Gui.frmNotes..FontSize(8.25)
+Gui.frmNotes..ControlBox(True)
+Gui.frmNotes..MaxButton(True)
+Gui.frmNotes..MinButton(True)
+Gui.frmNotes..MousePointer(0)
+Gui.frmNotes..Moveable(True)
+Gui.frmNotes..Sizeable(True)
+Gui.frmNotes..ShowInTaskBar(True)
+Gui.frmNotes..TitleBar(True)
+Gui.frmNotes..Event(UnLoad,frmNotes_UnLoad)
+Gui.frmNotes.txtNotes.Create(TextboxM)
+Gui.frmNotes.txtNotes.Enabled(True)
+Gui.frmNotes.txtNotes.Visible(True)
+Gui.frmNotes.txtNotes.Zorder(0)
+Gui.frmNotes.txtNotes.Size(411,67)
+Gui.frmNotes.txtNotes.Position(6,47)
+Gui.frmNotes.txtNotes.FontName("Tahoma")
+Gui.frmNotes.txtNotes.FontSize(8.25)
+Gui.frmNotes.lblBase.Create(Label,"Base ID",True,49,16,0,6,5,True,0,"Tahoma",10,,0,0)
+Gui.frmNotes.lblBase.BorderStyle(0)
+Gui.frmNotes.lblBase.FontStyle(True,False,False,False,False)
+Gui.frmNotes.lblID.Create(Label,"Identifier",True,60,16,0,209,5,True,0,"Tahoma",10,,0,0)
+Gui.frmNotes.lblID.BorderStyle(0)
+Gui.frmNotes.lblID.FontStyle(True,False,False,False,False)
+Gui.frmNotes.txtBase.Create(TextBox,"",True,142,22,0,61,2,False,0,"Tahoma",10,,1)
+Gui.frmNotes.txtBase.Locked(True)
+Gui.frmNotes.txtBase.FontStyle(True,False,False,False,False)
+Gui.frmNotes.txtID.Create(TextBox,"",True,142,22,0,275,2,False,0,"Tahoma",10,,1)
+Gui.frmNotes.txtID.FontStyle(True,False,False,False,False)
+Gui.frmNotes.txtID.Locked(True)
+Gui.frmNotes.lblNotes.Create(Label,"Notes",True,37,16,0,6,29,True,0,"Tahoma",10,,0,0)
+Gui.frmNotes.lblNotes.BorderStyle(0)
+Gui.frmNotes.lblNotes.FontStyle(True,False,False,False,False)
+Gui.frmNotes.cmdOK.Create(Button)
+Gui.frmNotes.cmdOK.Enabled(True)
+Gui.frmNotes.cmdOK.Visible(True)
+Gui.frmNotes.cmdOK.Zorder(0)
+Gui.frmNotes.cmdOK.Size(75,23)
+Gui.frmNotes.cmdOK.Position(342,120)
+Gui.frmNotes.cmdOK.Caption("OK")
+Gui.frmNotes.cmdOK.FontName("Tahoma")
+Gui.frmNotes.cmdOK.FontSize(10)
+Gui.frmNotes.cmdOK.FontStyle(True,False,False,False,False)
+Gui.frmNotes.cmdOK.Event(Click,cmdOK_Click)
+Gui.fmCopy..Create(BaseForm)
+Gui.fmCopy..Caption("Copy to Feature")
+Gui.fmCopy..Size(594,720)
+Gui.fmCopy..MinX(0)
+Gui.fmCopy..MinY(0)
+Gui.fmCopy..Position(0,0)
+Gui.fmCopy..AlwaysOnTop(False)
+Gui.fmCopy..FontName("Tahoma")
+Gui.fmCopy..FontSize(8.25)
+Gui.fmCopy..ControlBox(True)
+Gui.fmCopy..MaxButton(True)
+Gui.fmCopy..MinButton(True)
+Gui.fmCopy..MousePointer(0)
+Gui.fmCopy..Moveable(True)
+Gui.fmCopy..Sizeable(True)
+Gui.fmCopy..ShowInTaskBar(True)
+Gui.fmCopy..TitleBar(True)
+Gui.fmCopy..Event(UnLoad,fmCopy_UnLoad)
+Gui.fmCopy.GsGcCpyFeat.Create(GsGridControl)
+Gui.fmCopy.GsGcCpyFeat.Enabled(True)
+Gui.fmCopy.GsGcCpyFeat.Visible(True)
+Gui.fmCopy.GsGcCpyFeat.Zorder(0)
+Gui.fmCopy.GsGcCpyFeat.Size(587,641)
+Gui.fmCopy.GsGcCpyFeat.Position(6,47)
+Gui.fmCopy.GsGcCpyFeat.Event(RowCellClick,GsGcCpyFeat_RowCellClick)
+Gui.fmCopy.cmdCopy.Create(Button)
+Gui.fmCopy.cmdCopy.Enabled(True)
+Gui.fmCopy.cmdCopy.Visible(True)
+Gui.fmCopy.cmdCopy.Zorder(0)
+Gui.fmCopy.cmdCopy.Size(111,23)
+Gui.fmCopy.cmdCopy.Position(473,13)
+Gui.fmCopy.cmdCopy.Caption("Copy to Selected")
+Gui.fmCopy.cmdCopy.FontName("Tahoma")
+Gui.fmCopy.cmdCopy.FontSize(8.25)
+Gui.fmCopy.cmdCopy.FontStyle(True,False,False,False,False)
+Gui.fmCopy.cmdCopy.Event(Click,cmdCopy_Click)
+Gui.frmInsert..Create(BaseForm)
+Gui.frmInsert..Caption("Insert New Line")
+Gui.frmInsert..Size(506,262)
+Gui.frmInsert..MinX(0)
+Gui.frmInsert..MinY(0)
+Gui.frmInsert..Position(0,0)
+Gui.frmInsert..AlwaysOnTop(True)
+Gui.frmInsert..FontName("Tahoma")
+Gui.frmInsert..FontSize(10)
+Gui.frmInsert..ControlBox(True)
+Gui.frmInsert..MaxButton(True)
+Gui.frmInsert..MinButton(True)
+Gui.frmInsert..MousePointer(0)
+Gui.frmInsert..Moveable(True)
+Gui.frmInsert..Sizeable(True)
+Gui.frmInsert..ShowInTaskBar(True)
+Gui.frmInsert..TitleBar(True)
+Gui.frmInsert..Event(UnLoad,frmInsert_UnLoad)
+Gui.frmInsert..BackColor(16777215)
+Gui.frmInsert.lblIDType.Create(Label,"Ident Type",True,97,16,0,132,15,True,0,"Tahoma",10,,0,1)
+Gui.frmInsert.lblIDType.BorderStyle(0)
+Gui.frmInsert.lblIDType.FontStyle(True,False,False,False,False)
+Gui.frmInsert.lblIDent.Create(Label,"Identifier",True,97,16,0,234,15,True,0,"Tahoma",10,,0,1)
+Gui.frmInsert.lblIDent.BorderStyle(0)
+Gui.frmInsert.lblIDent.FontStyle(True,False,False,False,False)
+Gui.frmInsert.lblIDent.Dock(0)
+Gui.frmInsert.lblNewID.Create(Label,"ID",True,98,16,0,30,15,True,0,"Tahoma",10,,0,1)
+Gui.frmInsert.lblNewID.BorderStyle(0)
+Gui.frmInsert.lblNewID.FontStyle(True,False,False,False,False)
+Gui.frmInsert.lblNewID.Dock(0)
+Gui.frmInsert.lblRel.Create(Label,"Relationship",True,100,16,0,377,15,True,0,"Tahoma",10,,0,1)
+Gui.frmInsert.lblRel.BorderStyle(0)
+Gui.frmInsert.lblRel.FontStyle(True,False,False,False,False)
+Gui.frmInsert.lblDisp.Create(Label,"Display Label",True,84,16,0,30,58,True,0,"Tahoma",10,,0,0)
+Gui.frmInsert.lblDisp.BorderStyle(0)
+Gui.frmInsert.lblDisp.FontStyle(True,False,False,False,False)
+Gui.frmInsert.lblQty.Create(Label,"Quantity",True,70,16,0,234,58,True,0,"Tahoma",10,,0,1)
+Gui.frmInsert.lblQty.BorderStyle(0)
+Gui.frmInsert.lblQty.FontStyle(True,False,False,False,False)
+Gui.frmInsert.lblMaxQty.Create(Label,"Max Qty",True,68,16,0,306,58,True,0,"Tahoma",10,,0,1)
+Gui.frmInsert.lblMaxQty.BorderStyle(0)
+Gui.frmInsert.lblMaxQty.FontStyle(True,False,False,False,False)
+Gui.frmInsert.cboIDType.Create(ComboBox)
+Gui.frmInsert.cboIDType.Enabled(True)
+Gui.frmInsert.cboIDType.Visible(True)
+Gui.frmInsert.cboIDType.Zorder(0)
+Gui.frmInsert.cboIDType.Size(100,22)
+Gui.frmInsert.cboIDType.Position(132,32)
+Gui.frmInsert.cboIDType.FontName("Tahoma")
+Gui.frmInsert.cboIDType.FontSize(10)
+Gui.frmInsert.cboIDType.ControlGroup(1)
+Gui.frmInsert.cboIDType.DefaultValue("")
+Gui.frmInsert.txtIDent.Create(TextBox,"",True,100,22,0,234,32,True,0,"Tahoma",10,,1)
+Gui.frmInsert.txtIDent.ControlGroup(1)
+Gui.frmInsert.txtIDent.DefaultValue("")
+Gui.frmInsert.txtIDent.MaxLength(20)
+Gui.frmInsert.cmdIDBrw.Create(Button)
+Gui.frmInsert.cmdIDBrw.Enabled(True)
+Gui.frmInsert.cmdIDBrw.Visible(True)
+Gui.frmInsert.cmdIDBrw.Zorder(0)
+Gui.frmInsert.cmdIDBrw.Size(39,23)
+Gui.frmInsert.cmdIDBrw.Position(336,31)
+Gui.frmInsert.cmdIDBrw.Caption("^")
+Gui.frmInsert.cmdIDBrw.FontName("Tahoma")
+Gui.frmInsert.cmdIDBrw.FontSize(10)
+Gui.frmInsert.cmdIDBrw.FontStyle(True,False,False,False,False)
+Gui.frmInsert.cmdIDBrw.Event(Click,cmdIDBrw_Click)
+Gui.frmInsert.txtNewID.Create(TextBox,"",True,100,22,0,30,32,True,0,"Tahoma",10,,1)
+Gui.frmInsert.txtNewID.ControlGroup(1)
+Gui.frmInsert.txtNewID.DefaultValue("")
+Gui.frmInsert.txtNewID.Locked(True)
+Gui.frmInsert.txtNewID.ForeColor(8421504)
+Gui.frmInsert.txtNewID.MaxLength(20)
+Gui.frmInsert.cboRel.Create(ComboBox)
+Gui.frmInsert.cboRel.Enabled(True)
+Gui.frmInsert.cboRel.Visible(True)
+Gui.frmInsert.cboRel.Zorder(0)
+Gui.frmInsert.cboRel.Size(101,22)
+Gui.frmInsert.cboRel.Position(377,32)
+Gui.frmInsert.cboRel.FontName("Tahoma")
+Gui.frmInsert.cboRel.FontSize(10)
+Gui.frmInsert.cboRel.ControlGroup(1)
+Gui.frmInsert.cboRel.DefaultValue("")
+Gui.frmInsert.txtDisp.Create(TextBox,"",True,202,22,0,30,75,True,0,"Tahoma",10,,1)
+Gui.frmInsert.txtDisp.ControlGroup(1)
+Gui.frmInsert.txtDisp.DefaultValue("")
+Gui.frmInsert.txtDisp.MaxLength(20)
+Gui.frmInsert.txtQty.Create(TextBox,"",True,70,22,0,234,75,True,0,"Tahoma",10,,1)
+Gui.frmInsert.txtQty.ControlGroup(1)
+Gui.frmInsert.txtQty.DefaultValue(".0000")
+Gui.frmInsert.txtMaxQty.Create(TextBox,"",True,70,22,0,306,75,True,0,"Tahoma",10,,1)
+Gui.frmInsert.txtMaxQty.ControlGroup(1)
+Gui.frmInsert.txtMaxQty.DefaultValue(".0000")
+Gui.frmInsert.txtWgt.Create(TextBox,"",True,100,22,0,378,75,True,0,"Tahoma",10,,1)
+Gui.frmInsert.txtWgt.ControlGroup(1)
+Gui.frmInsert.txtWgt.DefaultValue(".0000")
+Gui.frmInsert.lblWgt.Create(Label,"Weight",True,70,16,0,378,58,True,0,"Tahoma",10,,0,1)
+Gui.frmInsert.lblWgt.BorderStyle(0)
+Gui.frmInsert.lblWgt.FontStyle(True,False,False,False,False)
+Gui.frmInsert.chkDflt.Create(CheckBox)
+Gui.frmInsert.chkDflt.Enabled(True)
+Gui.frmInsert.chkDflt.Visible(True)
+Gui.frmInsert.chkDflt.Zorder(0)
+Gui.frmInsert.chkDflt.Size(75,20)
+Gui.frmInsert.chkDflt.Position(201,175)
+Gui.frmInsert.chkDflt.Caption("Default")
+Gui.frmInsert.chkDflt.FontName("Tahoma")
+Gui.frmInsert.chkDflt.FontSize(10)
+Gui.frmInsert.chkDflt.FontStyle(True,False,False,False,False)
+Gui.frmInsert.chkDflt.ControlGroup(1)
+Gui.frmInsert.chkDflt.DefaultValue(0)
+Gui.frmInsert.chkActive.Create(CheckBox)
+Gui.frmInsert.chkActive.Enabled(True)
+Gui.frmInsert.chkActive.Visible(True)
+Gui.frmInsert.chkActive.Zorder(0)
+Gui.frmInsert.chkActive.Size(75,20)
+Gui.frmInsert.chkActive.Position(201,199)
+Gui.frmInsert.chkActive.Caption("Active")
+Gui.frmInsert.chkActive.FontName("Tahoma")
+Gui.frmInsert.chkActive.FontSize(10)
+Gui.frmInsert.chkActive.FontStyle(True,False,False,False,False)
+Gui.frmInsert.chkActive.ControlGroup(1)
+Gui.frmInsert.chkActive.DefaultValue(1)
+Gui.frmInsert.lblPL.Create(Label,"Prod Line",True,40,32,0,30,116,True,0,"Tahoma",10,,0,3)
+Gui.frmInsert.lblPL.BorderStyle(0)
+Gui.frmInsert.lblPL.FontStyle(True,False,False,False,False)
+Gui.frmInsert.txtPL.Create(TextBox,"",True,29,22,0,30,151,True,0,"Tahoma",10,,1)
+Gui.frmInsert.txtPL.ControlGroup(1)
+Gui.frmInsert.txtPL.DefaultValue("")
+Gui.frmInsert.txtPL.MaxLength(2)
+Gui.frmInsert.lblPrtSrtPos.Create(Label,"Prt Strt Pos",True,30,48,0,104,100,True,0,"Tahoma",10,,0,3)
+Gui.frmInsert.lblPrtSrtPos.BorderStyle(0)
+Gui.frmInsert.lblPrtSrtPos.FontStyle(True,False,False,False,False)
+Gui.frmInsert.lblPrtSrtPos.Dock(0)
+Gui.frmInsert.txtPrtSrtPos.Create(TextBox,"",True,50,22,0,102,151,True,0,"Tahoma",10,,1)
+Gui.frmInsert.txtPrtSrtPos.ControlGroup(1)
+Gui.frmInsert.txtPrtSrtPos.DefaultValue("00")
+Gui.frmInsert.lblPNFrag.Create(Label,"Part # Fragment",True,75,32,0,156,116,True,0,"Tahoma",10,,0,3)
+Gui.frmInsert.lblPNFrag.BorderStyle(0)
+Gui.frmInsert.lblPNFrag.FontStyle(True,False,False,False,False)
+Gui.frmInsert.txtPNFrag.Create(TextBox,"",True,100,22,0,156,151,True,0,"Tahoma",10,,1)
+Gui.frmInsert.txtPNFrag.ControlGroup(1)
+Gui.frmInsert.txtPNFrag.MaxLength(20)
+Gui.frmInsert.txtDescStrtPos.Create(TextBox,"",True,29,22,0,260,151,True,0,"Tahoma",10,,1)
+Gui.frmInsert.txtDescStrtPos.ControlGroup(1)
+Gui.frmInsert.txtDescStrtPos.DefaultValue("00")
+Gui.frmInsert.lblDescStrt.Create(Label,"Desc Strt Pos",True,36,48,0,260,100,True,0,"Tahoma",10,,0,3)
+Gui.frmInsert.lblDescStrt.BorderStyle(0)
+Gui.frmInsert.lblDescStrt.FontStyle(True,False,False,False,False)
+Gui.frmInsert.cmdPLBrw.Create(Button)
+Gui.frmInsert.cmdPLBrw.Enabled(True)
+Gui.frmInsert.cmdPLBrw.Visible(True)
+Gui.frmInsert.cmdPLBrw.Zorder(0)
+Gui.frmInsert.cmdPLBrw.Size(39,23)
+Gui.frmInsert.cmdPLBrw.Position(61,151)
+Gui.frmInsert.cmdPLBrw.Caption("^")
+Gui.frmInsert.cmdPLBrw.FontName("Tahoma")
+Gui.frmInsert.cmdPLBrw.FontSize(10)
+Gui.frmInsert.cmdPLBrw.FontStyle(True,False,False,False,False)
+Gui.frmInsert.cmdPLBrw.Event(Click,cmdPLBrw_Click)
+Gui.frmInsert.lblDescFrag.Create(Label,"Desc Fragment",True,180,16,0,296,132,True,0,"Tahoma",10,,0,1)
+Gui.frmInsert.lblDescFrag.BorderStyle(0)
+Gui.frmInsert.lblDescFrag.FontStyle(True,False,False,False,False)
+Gui.frmInsert.txtDesc.Create(TextBox,"",True,184,22,0,294,151,True,0,"Tahoma",10,,1)
+Gui.frmInsert.txtDesc.ControlGroup(1)
+Gui.frmInsert.txtDesc.DefaultValue("")
+Gui.frmInsert.txtDesc.MaxLength(30)
+Gui.frmInsert.chkDetPL.Create(CheckBox)
+Gui.frmInsert.chkDetPL.Enabled(True)
+Gui.frmInsert.chkDetPL.Visible(True)
+Gui.frmInsert.chkDetPL.Zorder(0)
+Gui.frmInsert.chkDetPL.Size(168,20)
+Gui.frmInsert.chkDetPL.Position(30,175)
+Gui.frmInsert.chkDetPL.Caption("Determines PL of Part")
+Gui.frmInsert.chkDetPL.FontName("Tahoma")
+Gui.frmInsert.chkDetPL.FontSize(10)
+Gui.frmInsert.chkDetPL.FontStyle(True,False,False,False,False)
+Gui.frmInsert.chkDetPL.ControlGroup(1)
+Gui.frmInsert.chkDetPL.DefaultValue(0)
+Gui.frmInsert.chkExDisc.Create(CheckBox)
+Gui.frmInsert.chkExDisc.Enabled(True)
+Gui.frmInsert.chkExDisc.Visible(True)
+Gui.frmInsert.chkExDisc.Zorder(0)
+Gui.frmInsert.chkExDisc.Size(156,20)
+Gui.frmInsert.chkExDisc.Position(30,199)
+Gui.frmInsert.chkExDisc.Caption("Exclude Discount")
+Gui.frmInsert.chkExDisc.FontName("Tahoma")
+Gui.frmInsert.chkExDisc.FontSize(10)
+Gui.frmInsert.chkExDisc.FontStyle(True,False,False,False,False)
+Gui.frmInsert.chkExDisc.ControlGroup(1)
+Gui.frmInsert.chkExDisc.DefaultValue(0)
+Gui.frmInsert.cmdInsert.Create(Button)
+Gui.frmInsert.cmdInsert.Enabled(True)
+Gui.frmInsert.cmdInsert.Visible(True)
+Gui.frmInsert.cmdInsert.Zorder(0)
+Gui.frmInsert.cmdInsert.Size(75,23)
+Gui.frmInsert.cmdInsert.Position(403,198)
+Gui.frmInsert.cmdInsert.Caption("Insert")
+Gui.frmInsert.cmdInsert.FontName("Tahoma")
+Gui.frmInsert.cmdInsert.FontSize(10)
+Gui.frmInsert.cmdInsert.FontStyle(True,False,False,False,False)
+Gui.frmInsert.cmdInsert.Event(Click,cmdInsert_Click)
+Gui.frmInsert.cmdInsert.BackColor(12648384)
+Gui.frmInsert.cmdInsert.ForeColor(0)
+Gui.frmInsert.txtBase_ID.Create(TextBox,"",False,100,20,0,377,101,True,0,"Tahoma",8.25,,1)
+Gui.frmInsert.txtParent.Create(TextBox,"",False,100,20,0,377,101,True,0,"Tahoma",8.25,,1)
+Gui.frmInsert.chkPush.Create(CheckBox)
+Gui.frmInsert.chkPush.Enabled(True)
+Gui.frmInsert.chkPush.Visible(True)
+Gui.frmInsert.chkPush.Zorder(0)
+Gui.frmInsert.chkPush.Size(183,20)
+Gui.frmInsert.chkPush.Position(294,175)
+Gui.frmInsert.chkPush.Caption("Push to Mfg Cfg Options")
+Gui.frmInsert.chkPush.FontName("Tahoma")
+Gui.frmInsert.chkPush.FontSize(10)
+Gui.frmInsert.chkPush.FontStyle(True,False,False,False,False)
+Gui.frmInsert.chkPush.ControlGroup(1)
+Gui.frmInsert.chkPush.DefaultValue(0)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+V.Global.bC_OChanges.Declare(Boolean, False)
+V.Global.bM_C_OChanges.Declare(Boolean, False)
+V.Global.sNoteCap.Declare
+V.Global.sBaseID.Declare
+V.Global.iRow.Declare
+V.Global.sCpyVal.Declare
+V.Global.bChkAll.Declare(Boolean,False)
+V.Global.bLongPart.Declare(Boolean,False)
+V.Global.bFeature.Declare(Boolean,False)
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+Function.Intrinsic.UI.UsePixels ' Allows you to use Pixels instead of Twips throughout
+F.Intrinsic.Control.Try
+'******************************************************************************************** GLOBAL SHOP SUPPORT: ************************************************************************************************************ 
+'If the customer receives a message to contact Support, renumbering of their CONFIG_OPTIONS or CONFIG_MFG table has failed during insertion or deletion of a line.  The original data can be recovered from GCG_6273_CFG_OPT or GCG_6273_CFG_MFG, respectfully.  These tables are meant to be temporary.  Please delete the data in them upon successful recovery.
+'******************************************************************************************************************************************************************************************************************************
+
+'Create a custom gridview that allows the customer to add/edit/delete configuration options more easily. This will allow them to make changes to similar Base ID's all at the same time.
+
+'Edited by SS 10/1/21 added a distinct to a select statement in sub C_O_DATA
+V.Local.bExists.Declare
+V.Local.sPath.Declare
+V.Local.sContents.Declare
+V.Local.sLock.Declare
+V.Local.sMsg.Declare
+
+F.Global.General.ReadOption("400861",0,False,"0000",V.Global.bLongPart)
+F.Intrinsic.Control.If(V.Global.bLongPart,=,False)
+	F.Global.General.ReadOption("400861",0,False,"0004",V.Global.bLongPart)
+F.Intrinsic.Control.EndIf
+	
+F.Intrinsic.String.Build("{0}\GCG_6273_LOCK.txt",V.Caller.FilesDir,V.Local.sPath)
+
+F.Intrinsic.File.Exists(V.Local.sPath,V.Local.bExists)
+
+F.Intrinsic.Control.If(V.Local.bExists,=,False)
+	F.Intrinsic.File.String2File(V.Local.sPath,"",0)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.File.File2String(V.Local.sPath,V.Local.sContents)
+
+F.Intrinsic.Control.If(V.Local.sContents.Trim,=,"")
+	F.Intrinsic.String.Build("{0} Configurator Dashboard {1}",V.Caller.User,V.Ambient.Now,V.Local.sLock)
+	F.Intrinsic.File.String2File(V.Local.sPath,V.Local.sLock,0)
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Build("Configurator currently locked{0}{1}",V.Ambient.NewLine,V.Local.sContents,V.Local.sMsg)
+	F.Intrinsic.UI.Msgbox(V.Local.sMsg,"Please wait")
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+Gui.frmMain.tabOpt.SetTab(0)
+
+Gui.frmInsert.cboIDType.AddItem("P - Part")
+Gui.frmInsert.cboIDType.AddItem("L - Label")
+
+Gui.frmInsert.cboRel.AddItem("Required")
+Gui.frmInsert.cboRel.AddItem("Optional")
+Gui.frmInsert.cboRel.AddItem("Group Req'd Single")
+Gui.frmInsert.cboRel.AddItem("Group Req'd Multi")
+Gui.frmInsert.cboRel.AddItem("Group Optnl - Single")
+Gui.frmInsert.cboRel.AddItem("Group Optnl - Multi")
+
+F.Intrinsic.Control.CallSub(SetIcon)
+F.Intrinsic.Control.CallSub(SetContextMenu)
+F.Intrinsic.Control.CallSub(BaseData)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.Main.End
+
+Program.Sub.BaseData.Start
+F.Intrinsic.Control.Try
+
+F.ODBC.Connection!conts.OpenCompanyConnection(500)
+
+F.Intrinsic.Control.If(V.DataTable.dtBase.Exists)
+	F.Data.Datatable.Close("dtBase")
+F.Intrinsic.Control.EndIf
+
+F.Data.Datatable.CreateFromSQL("dtBase","conts","Select BASE_ID,ID_NUM,LABEL,FLAG_FEATURE_PART from CONFIG_OPTIONS where ID_NUM = '00000000' order by BASE_ID",True)
+F.ODBC.Connection!conts.Close
+
+F.Intrinsic.Control.CallSub(BaseGrid)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.BaseData.End
+
+Program.Sub.BaseGrid.Start
+F.Intrinsic.Control.Try
+
+Gui.frmMain.GsGcBase.SuspendLayout
+
+Gui.frmMain.GsGcBase.AddGridviewFromDatatable("gvBase","dtBase")
+Gui.frmMain.GsGcBase.MainView("gvBase")
+
+Gui.frmMain.GsGcBase.SetGridviewProperty("gvBase","ReadOnly",True)
+Gui.frmMain.GsGcBase.SetGridviewProperty("gvBase","Editable",False)
+Gui.frmMain.GsGcBase.SetGridviewProperty("gvBase","OptionsFindAlwaysVisible",True)
+
+Gui.frmMain.GsGcBase.SetColumnProperty("gvBase","BASE_ID","Caption","Base ID")
+Gui.frmMain.GsGcBase.SetColumnProperty("gvBase","ID_NUM","Caption","ID")
+Gui.frmMain.GsGcBase.SetColumnProperty("gvBase","LABEL","Caption","Label")
+Gui.frmMain.GsGcBase.SetColumnProperty("gvBase","FLAG_FEATURE_PART","Caption","Feature Part")
+
+Gui.frmMain.GsGcBase.SetColumnProperty("gvBase","BASE_ID","HeaderFontBold",True)
+Gui.frmMain.GsGcBase.SetColumnProperty("gvBase","ID_NUM","HeaderFontBold",True)
+Gui.frmMain.GsGcBase.SetColumnProperty("gvBase","LABEL","HeaderFontBold",True)
+Gui.frmMain.GsGcBase.SetColumnProperty("gvBase","FLAG_FEATURE_PART","HeaderFontBold",True)
+
+Gui.frmMain.GsGcBase.SetColumnProperty("gvBase","BASE_ID","Width","50")
+Gui.frmMain.GsGcBase.SetColumnProperty("gvBase","ID_NUM","Width","20")
+Gui.frmMain.GsGcBase.SetColumnProperty("gvBase","LABEL","Width","50")
+Gui.frmMain.GsGcBase.SetColumnProperty("gvBase","FLAG_FEATURE_PART","Width","25")
+
+Gui.frmMain.GsGcC_O.Visible(False)
+Gui.frmMain.GsGcM_C_O.Visible(False)
+Gui.frmMain.lblMsg.Visible(True)
+
+Gui.frmMain.GsGcBase.ResumeLayout
+
+Gui.frmMain..Show
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.BaseGrid.End
+
+Program.Sub.GsGcBase_RowCellClick.Start
+F.Intrinsic.Control.Try
+V.Local.sBaseId.Declare
+V.Local.sRet.Declare
+
+Gui.frmMain.GsGcBase.GetCellValueByColumnName("gvBase","BASE_ID",V.Args.ROWINDEX,V.Global.sBaseID)
+Gui.frmMain.GsGcBase.GetCellValueByColumnName("gvBase","FLAG_FEATURE_PART",V.Args.RowIndex,V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet,=,"Y")
+	V.Global.bFeature.Set(True)
+F.Intrinsic.Control.Else
+	V.Global.bFeature.Set(Fasle)
+F.Intrinsic.Control.EndIf
+
+Gui.frmMain.lblMsg.Visible(False)
+
+Gui.frmMain.txtBaseBanner.Text(V.Global.sBaseID)
+
+F.Intrinsic.Control.CallSub(C_O_Data)
+F.Intrinsic.Control.CallSub(M_C_O_Data)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.GsGcBase_RowCellClick.End
+
+Program.Sub.C_O_Data.Start
+F.Intrinsic.Control.Try
+V.Local.sSQL.Declare
+V.Local.bDictChk.Declare
+
+F.Intrinsic.Control.If(V.DataTable.dtC_O.Exists)
+	F.Data.Datatable.Close("dtC_O")
+F.Intrinsic.Control.EndIf
+
+
+'Added a distinct to the 3 select statments below, it generating a duplicate record into the dt_C_O -SS 10/1/21 
+F.ODBC.Connection!conts.OpenCompanyConnection(500)
+F.Intrinsic.Control.If(V.Global.bLongPart)
+	F.Intrinsic.Control.If(V.Global.BFeature)
+		F.Intrinsic.String.Build("Select Distinct FLAG_FEATURE_PART,RTRIM(A.BASE_ID) as BASE_ID,RTRIM(A.ID_NUM) as ID_NUM,A.BASE_ID+A.ID_NUM as DICT_NOTE_FILL,IDENT_TYPE,A.IDENTIFIER,A.PARENT_ID,RULE,' ' as RELATIONSHIP,LABEL,QUANTITY,MAX_QUANTITY,WEIGHT,FLAG_DEFAULT,FLAG_ACTIVE,PRODUCT_LINE,DETERMINES_PL,EXCL_DISC,PART_FRAG_POSITION,PART_FRAG,DESC_FRAG_POS,DESC_FRAG,BASE_PART,' ' as NOTES, L_PART_FRAG from CONFIG_OPTIONS A LEFT JOIN GCG_6273_L_PART_FRAG B on A.IDENTIFIER = B.IDENTIFIER and A.BASE_ID = B.BASE_ID and A.PARENT_ID = B.PARENT_ID where A.BASE_ID = '{0}' order by A.ID_NUM",V.Global.sBaseID,V.Local.sSQL)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Build("Select Distinct FLAG_FEATURE_PART,RTRIM(A.BASE_ID) as BASE_ID,RTRIM(A.ID_NUM) as ID_NUM,A.BASE_ID+A.ID_NUM as DICT_NOTE_FILL,IDENT_TYPE,A.IDENTIFIER,A.PARENT_ID,RULE,' ' as RELATIONSHIP,LABEL,QUANTITY,MAX_QUANTITY,WEIGHT,FLAG_DEFAULT,FLAG_ACTIVE,PRODUCT_LINE,DETERMINES_PL,EXCL_DISC,PART_FRAG_POSITION,PART_FRAG,DESC_FRAG_POS,DESC_FRAG,BASE_PART,' ' as NOTES, L_PART_FRAG from CONFIG_OPTIONS A LEFT JOIN GCG_6273_L_PART_FRAG B on A.IDENTIFIER = B.IDENTIFIER and A.ID_NUM = B.ID_NUM and A.BASE_ID = B.BASE_ID and A.PARENT_ID = B.PARENT_ID where A.BASE_ID = '{0}' order by A.ID_NUM",V.Global.sBaseID,V.Local.sSQL)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Build("Select Distinct FLAG_FEATURE_PART,RTRIM(BASE_ID) as BASE_ID,RTRIM(ID_NUM) as ID_NUM,BASE_ID+ID_NUM as DICT_NOTE_FILL,IDENT_TYPE,IDENTIFIER,PARENT_ID,RULE,' ' as RELATIONSHIP,LABEL,QUANTITY,MAX_QUANTITY,WEIGHT,FLAG_DEFAULT,FLAG_ACTIVE,PRODUCT_LINE,DETERMINES_PL,EXCL_DISC,PART_FRAG_POSITION,PART_FRAG,DESC_FRAG_POS,DESC_FRAG,BASE_PART,' ' as NOTES from CONFIG_OPTIONS where BASE_ID = '{0}' order by ID_NUM",V.Global.sBaseID,V.Local.sSQL)
+F.Intrinsic.Control.EndIf
+F.Data.Datatable.CreateFromSQL("dtC_O","conts",V.Local.sSQL,True)
+
+F.Data.Dictionary.CreateFromSQL("dictOptNotes","conts","Select BASEID+ID as DICT_NOTE_FILL,TEXT from CFG_OPT_NOTES")
+F.Data.Dictionary.SetDefaultReturn("dictOPtNotes","")
+F.Data.Datatable.FillFromDictionary("dtC_O","dictOptNotes","DICT_NOTE_FILL","NOTES")
+F.Data.Dictionary.Close("dictOptNotes")
+
+F.Data.Dictionary.Exists("dicItem",V.Local.bDictChk)
+
+F.Intrinsic.Control.If(V.Local.bDictChk)
+	F.Data.Dictionary.Close("dicItem")
+F.Intrinsic.Control.EndIf
+
+F.Data.Dictionary.CreateFromSQL("dicItem","conts","Select IDENTIFIER, ID_NUM from CONFIG_OPTIONS Where Flag_Feature_Part <> 'Y'")
+F.Data.Dictionary.SetDefaultReturn("dicItem"," ")
+
+F.ODBC.Connection!conts.Close
+
+F.Data.Dictionary.Exists("dictRules",V.Local.bDictChk)
+	
+F.Intrinsic.Control.If(V.Local.bDictChk)
+	F.Data.Dictionary.Close("dictRules")
+F.Intrinsic.Control.EndIf
+
+F.Data.Dictionary.Create("dictRules")
+F.Data.Dictionary.AddItem("dictRules",0,"")
+F.Data.Dictionary.AddItem("dictRules",1,"Required")
+F.Data.Dictionary.AddItem("dictRules",2,"Optional")
+F.Data.Dictionary.AddItem("dictRules",3,"Group Req'd Single")
+F.Data.Dictionary.AddItem("dictRules",4,"Group Req'd Multi")
+F.Data.Dictionary.AddItem("dictRules",5,"Group Optnl - Single")
+F.Data.Dictionary.AddItem("dictRules",6,"Group Optnl - Multi")
+
+F.Data.Datatable.FillFromDictionary("dtC_O","dictRules","RULE","RELATIONSHIP")
+
+F.Data.Datatable.AddColumn("dtC_O","CHANGED","Boolean")
+F.Data.Datatable.SetValue("dtC_O",-1,"CHANGED",False)
+
+F.Intrinsic.Control.CallSub(C_O_Grid)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.C_O_Data.End
+
+Program.Sub.C_O_Grid.Start
+F.Intrinsic.Control.Try
+V.Local.sRet.Declare
+V.Local.sFieldNames.Declare
+V.Local.iCNT.Declare
+
+Gui.frmMain.GsGcC_O.AddGridviewFromDatatable("gvC_O","dtC_O")
+Gui.frmMain.GsGcC_O.MainView("gvC_O")
+
+Gui.frmMain.GsGcC_O.Visible(False)
+Gui.frmMain.lblMsg.Caption("Please wait. Refreshing data.")
+Gui.frmMain.lblMsg.Visible(True)
+Gui.frmMain.GsGcC_O.SuspendLayout
+
+Gui.frmMain.GsGcC_O.SetGridviewProperty("gvC_O","Enableappearanceevenrow",True) 
+Gui.frmMain.GsGcC_O.SetGridviewProperty("gvC_O","ColumnPanelRowHeight",40)
+
+V.Local.sFieldNames.Set(V.DataTable.dtC_O.FieldNames)
+
+F.Intrinsic.String.Split(V.Local.sFieldNames,"*!*",V.Local.sFieldNames)
+
+F.Intrinsic.Control.For(V.Local.iCNT,V.Local.sFieldNames.LBound,V.Local.sFieldNames.UBound,1)
+	Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O",V.Local.sFieldNames(V.Local.iCNT),"HeaderFontBold",True)
+	Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O",V.Local.sFieldNames(V.Local.iCNT),"HeaderWordWrap","Wrap")
+F.Intrinsic.Control.Next(V.Local.iCNT)
+
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","BASE_ID","Visible",False)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","CHANGED","Visible",False)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","DICT_NOTE_FILL","Visible",False)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","RULE","Visible",False)
+
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","CHANGED","AllowShowHide",False)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","DICT_NOTE_FILL","AllowShowHide",False)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","RULE","AllowShowHide",False)
+
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","FLAG_FEATURE_PART","Caption","Feat")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","BASE_ID","Caption","Base ID")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","ID_NUM","Caption","ID")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","IDENT_TYPE","Caption","ID Type")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","IDENTIFIER","Caption","Identifier")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","PARENT_ID","Caption","Parent")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","RELATIONSHIP","Caption","Relshp")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","LABEL","Caption","Display Label")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","QUANTITY","Caption","Qty")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","MAX_QUANTITY","Caption","Max Qty")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","WEIGHT","Caption","Wgt")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","FLAG_DEFAULT","Caption","Dflt")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","FLAG_ACTIVE","Caption","Actv")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","PRODUCT_LINE","Caption","Pl")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","DETERMINES_PL","Caption","Det PL")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","EXCL_DISC","Caption","Excl Disc")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","PART_FRAG_POSITION","Caption","Part Strt Pos")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","PART_FRAG","Caption","PN Frgmnt")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","DESC_FRAG_POS","Caption","Desc Strt Pos")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","DESC_FRAG","Caption","Desc Frgmnt")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","BASE_PART","Caption","PN BOL Info From")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","NOTES","Caption","Notes")
+
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","FLAG_FEATURE_PART","MaxWidth","10")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","BASE_ID","Width","35")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","ID_NUM","Width","30")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","IDENT_TYPE","Width","20")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","IDENTIFIER","Width","40")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","PARENT_ID","Width","35")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","RELATIONSHIP","Width","40")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","LABEL","Width","50")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","QUANTITY","Width","20")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","MAX_QUANTITY","Width","25")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","WEIGHT","Width","20")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","FLAG_DEFAULT","Width","15")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","FLAG_ACTIVE","Width","15")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","PRODUCT_LINE","Width","15")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","DETERMINES_PL","Width","20")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","EXCL_DISC","Width","15")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","PART_FRAG_POSITION","Width","20")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","PART_FRAG","Width","40")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","DESC_FRAG_POS","Width","20")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","DESC_FRAG","Width","75")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","BASE_PART","Width","50")
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","NOTES","Width","25")
+'Editable
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","IDENT_TYPE","AllowEdit",True)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","IDENT_TYPE","ReadOnly",False)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","RELATIONSHIP","AllowEdit",True)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","RELATIONSHIP","ReadOnly",False)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","LABEL","AllowEdit",True)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","LABEL","ReadOnly",False)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","QUANTITY","AllowEdit",True)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","QUANTITY","ReadOnly",False)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","MAX_QUANTITY","AllowEdit",True)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","MAX_QUANTITY","ReadOnly",False)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","WEIGHT","AllowEdit",True)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","WEIGHT","ReadOnly",False)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","PART_FRAG","AllowEdit",True)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","PART_FRAG","ReadOnly",False)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","PART_FRAG_POSITION","AllowEdit",True)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","PART_FRAG_POSITION","ReadOnly",False)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","DESC_FRAG_POS","AllowEdit",True)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","DESC_FRAG_POS","ReadOnly",False)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","DESC_FRAG","AllowEdit",True)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","DESC_FRAG","ReadOnly",False)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","RELATIONSHIP","AllowEdit",True)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","RELATIONSHIP","ReadOnly",False)
+'Not Editable
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","BASE_ID","AllowEdit",False)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","BASE_ID","ReadOnly",True)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","ID_NUM","AllowEdit",False)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","ID_NUM","ReadOnly",True)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","IDENTIFIER","AllowEdit",False)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","IDENTIFIER","ReadOnly",True)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","FLAG_DEFAULT","AllowEdit",False)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","FLAG_DEFAULT","ReadOnly",True)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","FLAG_ACTIVE","AllowEdit",False)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","FLAG_ACTIVE","ReadOnly",True)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","PRODUCT_LINE","AllowEdit",False)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","PRODUCT_LINE","ReadOnly",True)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","DETERMINES_PL","AllowEdit",False)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","DETERMINES_PL","ReadOnly",True)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","EXCL_DISC","AllowEdit",False)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","EXCL_DISC","ReadOnly",True)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","BASE_PART","AllowEdit",False)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","BASE_PART","ReadOnly",True)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","NOTES","AllowEdit",False)
+Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","NOTES","ReadOnly",True)
+
+F.Intrinsic.Control.If(V.Global.bLongPart)
+	Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","L_PART_FRAG","AllowEdit",True)
+	Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","L_PART_FRAG","ReadOnly",False)
+	Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","L_PART_FRAG","Width","60")
+	Gui.frmMain.GsGcC_O.SetColumnProperty("gvC_O","L_PART_FRAG","Caption","Long Part Frag")
+F.Intrinsic.Control.EndIf
+
+'Setting dropdown lists
+F.Data.Dictionary.ReturnAllPairs("dictRules",V.Local.sRet)
+F.Intrinsic.String.Split(V.Local.sRet,"!*!",V.Local.sRet)
+F.Intrinsic.Variable.RemoveArrayElementByOrdinal(V.Local.sRet,0,V.Local.sRet)
+V.Local.sRet.RedimPreserve
+Gui.frmMain.GsGcC_O.ColumnEdit("gvC_O","RELATIONSHIP","DropDownList",V.Local.sRet)
+
+V.Local.sRet.Set("P*!*L")
+Gui.frmMain.GsGcC_O.ColumnEdit("gvC_O","IDENT_TYPE","DropDownList",V.Local.sRet)
+
+Gui.frmMain.GsGcC_O.ResumeLayout
+Gui.frmMain.lblMsg.Visible(False)
+Gui.frmMain.GsGcC_O.Visible(True)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.C_O_Grid.End
+
+Program.Sub.GsGcC_O_CellValueChanged.Start
+F.Intrinsic.Control.Try
+V.Local.sRet.Declare
+V.Local.iRule.Declare
+
+F.Intrinsic.Control.SelectCase(V.Args.COLUMN)
+	F.Intrinsic.Control.Case("RELATIONSHIP")
+		Gui.frmMain.GsGcC_O.GetCellValueByColumnName("gvC_O","RELATIONSHIP",V.Args.ROWINDEX,V.Local.sRet)
+		F.Intrinsic.Control.SelectCase(V.Local.sRet.Trim)
+			F.Intrinsic.Control.Case("")
+				V.Local.iRule.Set(0)
+			F.Intrinsic.Control.Case("Required")
+				V.Local.iRule.Set(1)
+			F.Intrinsic.Control.Case("Optional")
+				V.Local.iRule.Set(2)
+			F.Intrinsic.Control.Case("Group Req'd Single")
+				V.Local.iRule.Set(3)
+			F.Intrinsic.Control.Case("Group Req'd Multi")
+				V.Local.iRule.Set(4)
+			F.Intrinsic.Control.Case("Group Optnl - Single")
+				V.Local.iRule.Set(5)
+			F.Intrinsic.Control.Case("Group Optnl - Multi")
+				V.Local.iRule.Set(6)
+		F.Intrinsic.Control.EndSelect
+	F.Data.Datatable.SetValue("dtC_O",V.Args.ROWINDEX,"RULE",V.Local.iRule)
+F.Intrinsic.Control.EndSelect
+
+V.Global.bC_OChanges.Set(True)
+Gui.frmMain.cmdCommit.Visible(True)
+F.Data.Datatable.SetValue("dtC_O",V.Args.ROWINDEX,"CHANGED",True)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.GsGcC_O_CellValueChanged.End
+
+Program.Sub.GsGcC_O_RowCellClick.Start
+F.Intrinsic.Control.Try
+V.Local.sRet.Declare
+V.Local.sIDType.Declare
+V.Local.sBase.Declare
+V.Local.sID.Declare
+V.Local.sNotes.Declare
+
+F.Intrinsic.Control.If(V.Args.Clicks,<,2)
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.ODBC.Connection!conts.OpenCompanyConnection(500)
+
+F.Intrinsic.Control.SelectCase(V.Args.COLUMN)
+	F.Intrinsic.Control.Case("IDENTIFIER")
+	Gui.frmMain.GsGcC_O.GetCellValueByColumnName("gvC_O","IDENT_TYPE",V.Args.ROWHANDLE,V.Local.sIDType)
+	F.Intrinsic.Control.If(V.Local.sIDType.Trim,=,"P")
+		F.Intrinsic.UI.Browser(105,"",V.Local.sRet)
+		F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+			F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+			F.Data.Datatable.SetValue("dtC_O",V.Args.ROWHANDLE,"IDENTIFIER",V.Local.sRet(0).Trim)
+			F.ODBC.Connection!conts.Close
+			F.Intrinsic.Control.CallSub(GsGcC_O_CellValueChanged,"ROWINDEX",V.Args.ROWINDEX)
+			F.Intrinsic.Control.ExitSub
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Else
+		F.Intrinsic.UI.Browser("Select Base ID","conts","Select RTRIM(BASE_ID) as BASE_ID,ID_NUM,LABEL,FLAG_FEATURE_PART,FLAG_ACTIVE from CONFIG_OPTIONS where FLAG_VISIBLE = 'Y' order by BASE_ID","Base Id*!*ID*!*Label*!*Feature Part*!*Active","100*!*100*!*100*!*100*!*100",10000,10000,V.Local.sRet)
+		F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+			F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+			F.Data.Datatable.SetValue("dtC_O",V.Args.ROWHANDLE,"IDENTIFIER",V.Local.sRet(0).Trim)
+			F.Intrinsic.Control.CallSub(GsGcC_O_CellValueChanged,"ROWINDEX",V.Args.ROWINDEX)
+			F.ODBC.Connection!conts.Close
+			F.Intrinsic.Control.ExitSub
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Case("PRODUCT_LINE")
+		F.Intrinsic.UI.Browser(130,"",V.Local.sRet)
+		F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+			F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+			F.Data.Datatable.SetValue("dtC_O",V.Args.ROWHANDLE,"PRODUCT_LINE",V.Local.sRet(0).Trim)
+			F.ODBC.Connection!conts.Close
+			F.Intrinsic.Control.CallSub(GsGcC_O_CellValueChanged,"ROWINDEX",V.Args.ROWINDEX)
+			F.Intrinsic.Control.ExitSub
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Case("BASE_PART")
+		F.Intrinsic.UI.Browser(105,"",V.Local.sRet)
+		F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+			F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+			F.Data.Datatable.SetValue("dtC_O",V.Args.ROWHANDLE,"BASE_PART",V.Local.sRet(0).Trim)
+			F.ODBC.Connection!conts.Close
+			F.Intrinsic.Control.CallSub(GsGcC_O_CellValueChanged,"ROWINDEX",V.Args.ROWINDEX)
+			F.Intrinsic.Control.ExitSub
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Case("NOTES")
+		V.Global.sNoteCap.Set("Configuration Notes")
+		V.Global.iRow.Set(V.Args.ROWINDEX)
+		Gui.frmNotes..Caption(V.Global.sNoteCap)
+		
+		Gui.frmMain.GsGcC_O.GetCellValueByColumnName("gvC_O","BASE_ID",V.Args.RowIndex,V.Local.sBase)
+		Gui.frmMain.GsGcC_O.GetCellValueByColumnName("gvC_O","ID_NUM",V.Args.RowIndex,V.Local.sID)
+		Gui.frmMain.GsGcC_O.GetCellValueByColumnName("gvC_O","NOTES",V.Args.RowIndex,V.Local.sNotes)
+		
+		Gui.frmNotes.txtBase.Text(V.Local.sBase)
+		Gui.frmNotes.txtID.Text(V.Local.sID)
+		Gui.frmNotes.txtNotes.Text(V.Local.sNotes)
+		
+		Gui.frmNotes..Show
+F.Intrinsic.Control.EndSelect
+
+F.ODBC.Connection!conts.Close
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.GsGcC_O_RowCellClick.End
+
+Program.Sub.M_C_O_Data.Start
+F.Intrinsic.Control.Try
+V.Local.sSQL.Declare
+V.Local.bDictChk.Declare
+
+F.Intrinsic.Control.If(V.DataTable.dtM_C_O.Exists)
+	F.Data.Datatable.Close("dtM_C_O")
+F.Intrinsic.Control.EndIf
+
+F.ODBC.Connection!conts.OpenCompanyConnection(500)
+F.Intrinsic.String.Build("Select RTRIM(BASE_ID) as BASE_ID,RTRIM(ID_NUM) as ID_NUM,BASE_ID+ID_NUM as DICT_NOTE_FILL,RTRIM(CFG_SEQUENCE) as CFG_SEQUENCE,RTRIM(IDENTIFIER) as IDENTIFIER,RTRIM(FLAG_BOM_CFG_PART) as FLAG_BOM_CFG_PART,RTRIM(BOM) as BOM,BOM_QTY,RTRIM(CATEGORY) as CATEGORY,' ' as CAT_VIEW,RTRIM(SOURCE) as SOURCE,' ' as SOURCE_VIEW,RTRIM(FLAG_RTR_CFG_PART) as FLAG_RTR_CFG_PART,RTRIM(FLAG_UNIQUE_RTR) as FLAG_UNIQUE_RTR,RTRIM(ROUTER) as ROUTER,RTRIM(RTR_DESC) as RTR_DESC,RTRIM(FLAT_ROUTER) as FLAT_ROUTER,RTRIM(ROUTER_SEQUENCE) as ROUTER_SEQUENCE,RTRIM(LMO) as LMO,' ' as LMO_VIEW,RTRIM(PART_FRAG_POSITION) as PART_FRAG_POSITION,RTRIM(PART_FRAG) as PART_FRAG,RTRIM(DESC_FRAG_POS) as DESC_FRAG_POS,RTRIM(DESCRIPTION) as DESCRIPTION,RTRIM(WORKCENTER) as WORKCENTER,RTRIM(OP_CODE) as OP_CODE,RTRIM(FLAG_USE_CFG_QTY) as FLAG_USE_CFG_QTY,RTRIM(FLOAT) as FLOAT,FREQUENCY,MINIMUM,SETUP,RUNTIME,COST,' ' as NOTES from CONFIG_MFG where BASE_ID = '{0}' order by ID_NUM",V.Global.sBaseID,V.Local.sSQL)
+F.Data.Datatable.CreateFromSQL("dtM_C_O","conts",V.Local.sSQL,True)
+
+F.Data.Dictionary.CreateFromSQL("dictMXNotes","conts","Select BASEID+ID as DICT_NOTE_FILL,TEXT from MFG_CONFIG_NOTES")
+F.Data.Dictionary.SetDefaultReturn("dictMXNotes","")
+F.Data.Datatable.FillFromDictionary("dtM_C_O","dictMXNotes","DICT_NOTE_FILL","NOTES")
+F.Data.Dictionary.Close("dictMXNotes")
+
+F.ODBC.Connection!conts.Close
+
+F.Data.Dictionary.Exists("dictSrc",V.Local.bDictChk)
+	
+F.Intrinsic.Control.If(V.Local.bDictChk)
+	F.Data.Dictionary.Close("dictSrc")
+F.Intrinsic.Control.EndIf
+
+F.Data.Dictionary.Create("dictSrc")
+	F.Data.Dictionary.AddItem("dictSrc","C","Consign to Stock")
+	F.Data.Dictionary.AddItem("dictSrc","F","Manuf to Job")
+	F.Data.Dictionary.AddItem("dictSrc","G","Consign to Job")
+	F.Data.Dictionary.AddItem("dictSrc","J","Purch to Job")
+	F.Data.Dictionary.AddItem("dictSrc","M","Manuf to Stock")
+	F.Data.Dictionary.AddItem("dictSrc","P","Purch to Stock")
+	F.Data.Dictionary.SetDefaultReturn("dictSrc","")
+
+F.Data.Datatable.FillFromDictionary("dtM_C_O","dictSrc","SOURCE","SOURCE_VIEW")
+
+F.Data.Dictionary.Exists("dictCat",V.Local.bDictChk)
+	
+F.Intrinsic.Control.If(V.Local.bDictChk)
+	F.Data.Dictionary.Close("dictCat")
+F.Intrinsic.Control.EndIf
+
+F.Data.Dictionary.Create("dictCat")
+	F.Data.Dictionary.AddItem("dictCat","1","Setup")
+	F.Data.Dictionary.AddItem("dictCat","P","Phantom")
+	F.Data.Dictionary.AddItem("dictCat","R","Reference")
+	F.Data.Dictionary.AddItem("dictCat","X","Exclude")
+	F.Data.Dictionary.SetDefaultReturn("dictCat","Normal")
+
+F.Data.Datatable.FillFromDictionary("dtM_C_O","dictCat","CATEGORY","CAT_VIEW")
+
+F.Data.Dictionary.Exists("dictLMO",V.Local.bDictChk)
+	
+F.Intrinsic.Control.If(V.Local.bDictChk)
+	F.Data.Dictionary.Close("dictLMO")
+F.Intrinsic.Control.EndIf
+
+F.Data.Dictionary.Create("dictLMO")
+	F.Data.Dictionary.AddItem("dictLMO","L","Labor")
+	F.Data.Dictionary.AddItem("dictLMO","M","Material")
+	F.Data.Dictionary.AddItem("dictLMO","O","Outside")
+	F.Data.Dictionary.AddItem("dictLMO","C","Comment")
+	F.Data.Dictionary.AddItem("dictLMO","R","Router")
+	F.Data.Dictionary.SetDefaultReturn("dictLMO","")
+
+F.Data.Datatable.FillFromDictionary("dtM_C_O","dictLMO","LMO","LMO_VIEW")
+
+F.Data.Datatable.AddColumn("dtM_C_O","CHANGED","Boolean")
+F.Data.Datatable.SetValue("dtM_C_O",-1,"CHANGED",False)
+
+F.Intrinsic.Control.CallSub(M_C_O_Grid)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.M_C_O_Data.End
+
+Program.Sub.M_C_O_Grid.Start
+F.Intrinsic.Control.Try
+V.Local.iCNT.Declare
+V.Local.sFieldNames.Declare
+V.Local.sRet.Declare
+
+Gui.frmMain.GsGcM_C_O.AddGridviewFromDatatable("gvM_C_O","dtM_C_O")
+Gui.frmMain.GsGcM_C_O.MainView("gvM_C_O")
+
+Gui.frmMain.GsGcM_C_O.SuspendLayout
+
+Gui.frmMain.GsGcM_C_O.Visible(False)
+Gui.frmMain.lblMsg.Caption("Please wait. Refreshing data.")
+Gui.frmMain.lblMsg.Visible(True)
+
+Gui.frmMain.GsGcM_C_O.SetGridviewProperty("gvM_C_O","Enableappearanceevenrow",True) 
+Gui.frmMain.GsGcM_C_O.SetGridviewProperty("gvM_C_O","ColumnPanelRowHeight",40)
+
+V.Local.sFieldNames.Set(V.DataTable.dtM_C_O.FieldNames)
+
+F.Intrinsic.String.Split(V.Local.sFieldNames,"*!*",V.Local.sFieldNames)
+
+F.Intrinsic.Control.For(V.Local.iCNT,V.Local.sFieldNames.LBound,V.Local.sFieldNames.UBound,1)
+	Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O",V.Local.sFieldNames(V.Local.iCNT),"HeaderFontBold",True)
+	Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O",V.Local.sFieldNames(V.Local.iCNT),"HeaderWordWrap","Wrap")
+F.Intrinsic.Control.Next(V.Local.iCNT)
+
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","BASE_ID","Visible",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","CHANGED","Visible",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","DICT_NOTE_FILL","Visible",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","CATEGORY","Visible",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","SOURCE","Visible",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","LMO","Visible",False)
+
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","CHANGED","AllowShowHide",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","DICT_NOTE_FILL","AllowShowHide",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","CATEGORY","AllowShowHide",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","SOURCE","AllowShowHide",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","LMO","AllowShowHide",False)
+
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","BASE_ID","Caption","Base ID")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","ID_NUM","Caption","ID")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","CFG_SEQUENCE","Caption","Line")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","IDENTIFIER","Caption","Identifier")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FLAG_BOM_CFG_PART","Caption","Use Cfg Part For BOM")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","BOM","Caption","BOM")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","BOM_QTY","Caption","BOM Qty")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","CAT_VIEW","Caption","Cat")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","SOURCE_VIEW","Caption","Source")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FLAG_RTR_CFG_PART","Caption","Use Cfg Part For Rtr")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FLAG_UNIQUE_RTR","Caption","Make Unique Rtr")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","ROUTER","Caption","Router")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","RTR_DESC","Caption","Rtr Desc")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FLAT_ROUTER","Caption","Flat Rtr")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","LMO_VIEW","Caption","Seq Type")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","ROUTER_SEQUENCE","Caption","Seq")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","PART_FRAG_POSITION","Caption","Part Strt Pos")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","PART_FRAG","Caption","Part Frag")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","DESC_FRAG_POS","Caption","Desc Strt Pos")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","DESCRIPTION","Caption","Description")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","WORKCENTER","Caption","WC")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","OP_CODE","Caption","OC")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FLAG_USE_CFG_QTY","Caption","Use Cfg Qty")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FLOAT","Caption","Float")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FREQUENCY","Caption","Freq")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","MINIMUM","Caption","Min")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","SETUP","Caption","Setup")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","RUNTIME","Caption","Runtime")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","COST","Caption","Cost")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","NOTES","Caption","Notes")
+
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","BASE_ID","Width","35")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","ID_NUM","Width","30")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","CFG_SEQUENCE","Width","15")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","IDENTIFIER","Width","50")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FLAG_BOM_CFG_PART","Width","15")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","BOM","Width","40")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","BOM_QTY","Width","25")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","CAT_VIEW","Width","35")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","SOURCE_VIEW","Width","35")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FLAG_RTR_CFG_PART","Width","15")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FLAG_UNIQUE_RTR","Width","20")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","ROUTER","Width","35")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","RTR_DESC","Width","50")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FLAT_ROUTER","Width","35")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","LMO_VIEW","Width","10")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","ROUTER_SEQUENCE","Width","15")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","PART_FRAG_POSITION","Width","15")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","PART_FRAG","Width","35")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","DESC_FRAG_POS","Width","15")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","DESCRIPTION","Width","50")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","WORKCENTER","Width","25")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","OP_CODE","Width","15")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FLAG_USE_CFG_QTY","Width","15")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FLOAT","Width","15")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FREQUENCY","Width","15")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","MINIMUM","Width","15")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","SETUP","Width","16")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","RUNTIME","Width","14")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","COST","Width","15")
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","NOTES","Width","25")
+'Editable
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","CFG_SEQUENCE","ReadOnly",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","CFG_SEQUENCE","AllowEdit",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FLAG_BOM_CFG_PART","ReadOnly",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FLAG_BOM_CFG_PART","AllowEdit",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","BOM","ReadOnly",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","BOM","AllowEdit",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","BOM_QTY","ReadOnly",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","BOM_QTY","AllowEdit",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","CAT_VIEW","ReadOnly",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","CAT_VIEW","AllowEdit",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","SOURCE_VIEW","ReadOnly",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","SOURCE_VIEW","AllowEdit",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FLAG_RTR_CFG_PART","ReadOnly",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FLAG_RTR_CFG_PART","AllowEdit",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FLAG_UNIQUE_RTR","ReadOnly",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FLAG_UNIQUE_RTR","AllowEdit",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","ROUTER","ReadOnly",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","ROUTER","AllowEdit",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","RTR_DESC","ReadOnly",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","RTR_DESC","AllowEdit",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","LMO_VIEW","ReadOnly",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","LMO_VIEW","AllowEdit",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","ROUTER_SEQUENCE","ReadOnly",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","ROUTER_SEQUENCE","AllowEdit",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","PART_FRAG_POSITION","ReadOnly",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","PART_FRAG_POSITION","AllowEdit",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","DESC_FRAG_POS","ReadOnly",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","DESC_FRAG_POS","AllowEdit",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","DESCRIPTION","ReadOnly",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","DESCRIPTION","AllowEdit",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FLAG_USE_CFG_QTY","ReadOnly",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FLAG_USE_CFG_QTY","AllowEdit",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FLOAT","ReadOnly",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FLOAT","AllowEdit",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FREQUENCY","ReadOnly",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FREQUENCY","AllowEdit",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","MINIMUM","ReadOnly",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","MINIMUM","AllowEdit",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","SETUP","ReadOnly",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","SETUP","AllowEdit",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","RUNTIME","ReadOnly",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","RUNTIME","AllowEdit",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","COST","ReadOnly",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","COST","AllowEdit",True)
+'Not Editable
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","BASE_ID","ReadOnly",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","BASE_ID","AllowEdit",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","ID_NUM","ReadOnly",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","ID_NUM","AllowEdit",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","IDENTIFIER","ReadOnly",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","IDENTIFIER","AllowEdit",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FLAT_ROUTER","ReadOnly",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","FLAT_ROUTER","AllowEdit",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","WORKCENTER","ReadOnly",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","WORKCENTER","AllowEdit",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","OP_CODE","ReadOnly",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","OP_CODE","AllowEdit",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","PART_FRAG","ReadOnly",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","PART_FRAG","AllowEdit",False)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","NOTES","ReadOnly",True)
+Gui.frmMain.GsGcM_C_O.SetColumnProperty("gvM_C_O","NOTES","AllowEdit",False)
+'Setting dropdown lists
+F.Data.Dictionary.ReturnAllPairs("dictSrc",V.Local.sRet)
+F.Intrinsic.String.Split(V.Local.sRet,"!*!",V.Local.sRet)
+F.Intrinsic.Variable.RemoveArrayElementByOrdinal(V.Local.sRet,0,V.Local.sRet)
+V.Local.sRet.RedimPreserve
+Gui.frmMain.GsGcM_C_O.ColumnEdit("gvM_C_O","SOURCE_VIEW","DropDownList",V.Local.sRet)
+
+F.Data.Dictionary.ReturnAllPairs("dictCat",V.Local.sRet)
+F.Intrinsic.String.Split(V.Local.sRet,"!*!",V.Local.sRet)
+F.Intrinsic.Variable.RemoveArrayElementByOrdinal(V.Local.sRet,0,V.Local.sRet)
+V.Local.sRet.RedimPreserve
+F.Intrinsic.String.Build("Normal*!*{0}",V.Local.sRet,V.Local.sRet)
+Gui.frmMain.GsGcM_C_O.ColumnEdit("gvM_C_O","CAT_VIEW","DropDownList",V.Local.sRet)
+
+F.Data.Dictionary.ReturnAllPairs("dictLMO",V.Local.sRet)
+F.Intrinsic.String.Split(V.Local.sRet,"!*!",V.Local.sRet)
+F.Intrinsic.Variable.RemoveArrayElementByOrdinal(V.Local.sRet,0,V.Local.sRet)
+V.Local.sRet.RedimPreserve
+Gui.frmMain.GsGcM_C_O.ColumnEdit("gvM_C_O","LMO_VIEW","DropDownList",V.Local.sRet)
+
+Gui.frmMain.GsGcM_C_O.ResumeLayout
+Gui.frmMain.lblMsg.Visible(False)
+Gui.frmMain.GsGcM_C_O.Visible(True)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.M_C_O_Grid.End
+
+Program.Sub.GsGcM_C_O_CellValueChanged.Start
+F.Intrinsic.Control.Try
+V.Local.sRet.Declare
+V.Local.sCAT.Declare
+V.Local.sSRC.Declare
+V.Local.sLMO.Declare
+
+F.Intrinsic.Control.SelectCase(V.Args.COLUMN)
+	F.Intrinsic.Control.Case("CAT_VIEW")
+		Gui.frmMain.GsGcM_C_O.GetCellValueByColumnName("gvM_C_O","CAT_VIEW",V.Args.ROWINDEX,V.Local.sRet)
+		F.Intrinsic.Control.SelectCase(V.Local.sRet.Trim)
+			F.Intrinsic.Control.Case("Normal")
+				V.Local.sCAT.Set("")
+			F.Intrinsic.Control.Case("Setup")
+				V.Local.sCAT.Set("1")
+			F.Intrinsic.Control.Case("Phantom")
+				V.Local.sCAT.Set("P")
+			F.Intrinsic.Control.Case("Reference")
+				V.Local.sCAT.Set("R")
+			F.Intrinsic.Control.Case("Exclude")
+				V.Local.sCAT.Set("X")
+		F.Intrinsic.Control.EndSelect
+		F.Data.Datatable.SetValue("dtM_C_O",V.Args.ROWINDEX,"CATEGORY",V.Local.sCAT)
+	F.Intrinsic.Control.Case("SOURCE_VIEW")
+		Gui.frmMain.GsGcM_C_O.GetCellValueByColumnName("gvM_C_O","SOURCE_VIEW",V.Args.ROWINDEX,V.Local.sRet)
+		F.Intrinsic.Control.SelectCase(V.Local.sRet.Trim)
+			F.Intrinsic.Control.Case("Normal")
+				V.Local.sSRC.Set("")
+			F.Intrinsic.Control.Case("Consign to Stock")
+				V.Local.sSRC.Set("C")
+			F.Intrinsic.Control.Case("Manuf to Job")
+				V.Local.sSRC.Set("F")
+			F.Intrinsic.Control.Case("Consign to Job")
+				V.Local.sSRC.Set("G")
+			F.Intrinsic.Control.Case("Purch to Job")
+				V.Local.sSRC.Set("J")
+			F.Intrinsic.Control.Case("Manuf to Stock")
+				V.Local.sSRC.Set("M")
+			F.Intrinsic.Control.Case("Purch to Stock")
+				V.Local.sSRC.Set("P")
+			F.Intrinsic.Control.EndSelect
+			F.Data.Datatable.SetValue("dtM_C_O",V.Args.ROWINDEX,"SOURCE",V.Local.sSRC)
+	F.Intrinsic.Control.Case("LMO_VIEW")
+		Gui.frmMain.GsGcM_C_O.GetCellValueByColumnName("gvM_C_O","LMO_VIEW",V.Args.ROWINDEX,V.Local.sRet)
+		F.Intrinsic.Control.SelectCase(V.Local.sRet.Trim)
+			F.Intrinsic.Control.Case("Labor")
+				V.Local.sLMO.Set("L")
+			F.Intrinsic.Control.Case("Material")
+				V.Local.sLMO.Set("M")
+			F.Intrinsic.Control.Case("Outside")
+				V.Local.sLMO.Set("O")
+			F.Intrinsic.Control.Case("Comment")
+				V.Local.sLMO.Set("C")
+			F.Intrinsic.Control.Case("Router")
+				V.Local.sLMO.Set("R")
+			F.Intrinsic.Control.EndSelect
+			F.Data.Datatable.SetValue("dtM_C_O",V.Args.ROWINDEX,"LMO",V.Local.sLMO)
+	F.Intrinsic.Control.CaseElse
+'	F.Intrinsic.Control.Case("FLAT_ROUTER")
+'		Gui.frmMain.GsGcM_C_O.GetCellValueByColumnName("gvM_C_O","FLAT_ROUTER",V.Args.ROWINDEX,V.Local.sRet)
+'		F.Data.Datatable.SetValue("dtM_C_O",V.Args.ROWINDEX,"LMO",V.Local.sRet)
+'	F.Intrinsic.Control.Case("PART_FRAG")
+'		Gui.frmMain.GsGcM_C_O.GetCellValueByColumnName("gvM_C_O","PART_FRAG",V.Args.ROWINDEX,V.Local.sRet)
+'		F.Data.Datatable.SetValue("dtM_C_O",V.Args.ROWINDEX,"LMO",V.Local.sRet)
+'	F.Intrinsic.Control.Case("WORKCENTER")
+'		Gui.frmMain.GsGcM_C_O.GetCellValueByColumnName("gvM_C_O","WORKCENTER",V.Args.ROWINDEX,V.Local.sRet)
+'		F.Data.Datatable.SetValue("dtM_C_O",V.Args.ROWINDEX,"LMO",V.Local.sRet)
+'	F.Intrinsic.Control.Case("WORKCENTER")
+'		Gui.frmMain.GsGcM_C_O.GetCellValueByColumnName("gvM_C_O","WORKCENTER",V.Args.ROWINDEX,V.Local.sRet)
+'		F.Data.Datatable.SetValue("dtM_C_O",V.Args.ROWINDEX,"LMO",V.Local.sRet)
+F.Intrinsic.Control.EndSelect
+
+V.Global.bM_C_OChanges.Set(True)
+Gui.frmMain.cmdCommit.Visible(True)
+F.Data.Datatable.SetValue("dtM_C_O",V.Args.ROWINDEX,"CHANGED",True)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.GsGcM_C_O_CellValueChanged.End
+
+Program.Sub.GsGcM_C_O_RowCellClick.Start
+F.Intrinsic.Control.Try
+V.Local.sRet.Declare
+V.Local.sSeqType.Declare
+V.Local.sBase.Declare
+V.Local.sID.Declare
+V.Local.sNotes.Declare
+
+F.Intrinsic.Control.If(V.Args.Clicks,<,2)
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.ODBC.Connection!conts.OpenCompanyConnection(500)
+
+F.Intrinsic.Control.SelectCase(V.Args.COLUMN)
+	F.Intrinsic.Control.Case("IDENTIFIER")
+'Removed as this is not modifiable on core screen.
+'	Gui.frmMain.GsGcM_C_O.GetCellValueByColumnName("gvM_C_O","IDENT_TYPE",V.Args.ROWHANDLE,V.Local.sIDType)
+'	F.Intrinsic.Control.If(V.Local.sIDType.Trim,=,"P")
+'		F.Intrinsic.UI.Browser(105,"",V.Local.sRet)
+'		F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+'			F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+'			F.Data.Datatable.SetValue("dtC_O",V.Args.ROWHANDLE,"IDENTIFIER",V.Local.sRet(0).Trim)
+'			F.ODBC.Connection!conts.Close
+'			F.Intrinsic.Control.CallSub(GsGcC_O_CellValueChanged,"ROWINDEX",V.Args.ROWINDEX)
+'			F.Intrinsic.Control.ExitSub
+'		F.Intrinsic.Control.EndIf
+'	F.Intrinsic.Control.Else
+'		F.Intrinsic.UI.Browser("Select Base ID","conts","Select RTRIM(BASE_ID) as BASE_ID,ID_NUM,LABEL,FLAG_FEATURE_PART,FLAG_ACTIVE from CONFIG_OPTIONS where FLAG_VISIBLE = 'Y' order by BASE_ID","Base Id*!*ID*!*Label*!*Feature Part*!*Active","100*!*100*!*100*!*100*!*100",10000,10000,V.Local.sRet)
+'		F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+'			F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+'			F.Data.Datatable.SetValue("dtC_O",V.Args.ROWHANDLE,"IDENTIFIER",V.Local.sRet(0).Trim)
+'			F.Intrinsic.Control.CallSub(GsGcC_O_CellValueChanged,"ROWINDEX",V.Args.ROWINDEX)
+'			F.ODBC.Connection!conts.Close
+'			F.Intrinsic.Control.ExitSub
+'		F.Intrinsic.Control.EndIf
+'	F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Case("FLAT_ROUTER")
+		F.Intrinsic.UI.Browser(2705,"",V.Local.sRet)
+		F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+			F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+			F.Data.Datatable.SetValue("dtM_C_O",V.Args.ROWINDEX,"FLAT_ROUTER",V.Local.sRet(0).Trim)			
+			F.ODBC.Connection!conts.Close
+			F.Data.Datatable.SetValue("dtM_C_O",V.Args.ROWINDEX,"CHANGED",True)
+			V.Global.bM_C_OChanges.Set(True)
+			Gui.frmMain.cmdCommit.Visible(True)
+			F.Intrinsic.Control.ExitSub
+			'F.Intrinsic.Control.CallSub(GsGcM_C_O_CellValueChanged,"ROWINDEX",V.Args.ROWINDEX)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Case("PART_FRAG")
+		Gui.frmMain.GsGcM_C_O.GetCellValueByColumnName("gvM_C_O","LMO",V.Args.ROWINDEX,V.Local.sSeqType)
+		F.Intrinsic.Control.If(V.Local.sSeqType.Trim,=,"M")
+			F.Intrinsic.UI.Browser(105,"",V.Local.sRet)
+			F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+				F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+				F.Data.Datatable.SetValue("dtM_C_O",V.Args.ROWINDEX,"PART_FRAG",V.Local.sRet(0).Trim)
+				F.ODBC.Connection!conts.Close
+				F.Data.Datatable.SetValue("dtM_C_O",V.Args.ROWINDEX,"CHANGED",True)
+				V.Global.bM_C_OChanges.Set(True)
+				Gui.frmMain.cmdCommit.Visible(True)
+				F.Intrinsic.Control.ExitSub
+				'F.Intrinsic.Control.CallSub(GsGcM_C_O_CellValueChanged,"ROWINDEX",V.Args.ROWINDEX)
+			F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.ElseIf(V.Local.sSeqType.Trim,=,"O")
+			F.Intrinsic.UI.Browser("Select Op Code","conts","SELECT MACHINE,OPERATION,DESCRIPTION,LMO FROM OP_CODES WHERE LMO ='O' AND (MACHINE <> '' OR OPERATION <> '' OR DESCRIPTION <> '') ORDER BY MACHINE,OPERATION","Operation Identifier*!*Op Code*!*Description*!*LMO","100*!*100*!*100*!*100",10000,10000,V.Local.sRet)
+			F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+				F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+				F.Data.Datatable.SetValue("dtM_C_O",V.Args.ROWINDEX,"PART_FRAG",V.Local.sRet(0).Trim)
+				F.ODBC.Connection!conts.Close
+				F.Data.Datatable.SetValue("dtM_C_O",V.Args.ROWINDEX,"CHANGED",True)
+				'F.Intrinsic.Control.CallSub(GsGcM_C_O_CellValueChanged,"ROWINDEX",V.Args.ROWINDEX)
+				V.Global.bM_C_OChanges.Set(True)
+				Gui.frmMain.cmdCommit.Visible(True)
+				F.Intrinsic.Control.ExitSub
+			F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Case("WORKCENTER")
+		Gui.frmMain.GsGcM_C_O.GetCellValueByColumnName("gvM_C_O","LMO",V.Args.ROWINDEX,V.Local.sSeqType)
+		F.Intrinsic.Control.If(V.Local.sSeqType.Trim,=,"L")
+			F.Intrinsic.UI.Browser(400,"",V.Local.sRet)
+			F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+				F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+				F.Data.Datatable.SetValue("dtM_C_O",V.Args.ROWINDEX,"WORKCENTER",V.Local.sRet(0).Trim)
+				F.ODBC.Connection!conts.Close
+				F.Data.Datatable.SetValue("dtM_C_O",V.Args.ROWINDEX,"CHANGED",True)
+				V.Global.bM_C_OChanges.Set(True)
+				Gui.frmMain.cmdCommit.Visible(True)
+				F.Intrinsic.Control.ExitSub
+				'F.Intrinsic.Control.CallSub(GsGcM_C_O_CellValueChanged,"ROWINDEX",V.Args.ROWINDEX)
+			F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.EndIf		
+	F.Intrinsic.Control.Case("OP_CODE")
+		Gui.frmMain.GsGcM_C_O.GetCellValueByColumnName("gvM_C_O","LMO",V.Args.ROWINDEX,V.Local.sSeqType)
+		F.Intrinsic.Control.If(V.Local.sSeqType.Trim,=,"O")
+			F.Intrinsic.UI.Browser("Select Op Code","conts","SELECT MACHINE,OPERATION,DESCRIPTION,LMO FROM OP_CODES WHERE LMO ='O' AND (MACHINE <> '' OR OPERATION <> '' OR DESCRIPTION <> '') ORDER BY MACHINE,OPERATION","Operation Identifier*!*Op Code*!*Description*!*LMO","100*!*100*!*100*!*100",10000,10000,V.Local.sRet)
+			F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+				F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+				F.Data.Datatable.SetValue("dtM_C_O",V.Args.ROWINDEX,"OP_CODE",V.Local.sRet(0).Trim)
+				F.ODBC.Connection!conts.Close
+				F.Data.Datatable.SetValue("dtM_C_O",V.Args.ROWINDEX,"CHANGED",True)
+				V.Global.bM_C_OChanges.Set(True)
+				Gui.frmMain.cmdCommit.Visible(True)
+				F.Intrinsic.Control.ExitSub
+				'F.Intrinsic.Control.CallSub(GsGcM_C_O_CellValueChanged,"ROWINDEX",V.Args.ROWINDEX)
+			F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Case("NOTES")
+		V.Global.sNoteCap.Set("Mfg Config Notes")
+		V.Global.iRow.Set(V.Args.ROWINDEX)
+		Gui.frmNotes..Caption(V.Global.sNoteCap)
+		
+		Gui.frmMain.GsGcM_C_O.GetCellValueByColumnName("gvM_C_O","BASE_ID",V.Args.RowIndex,V.Local.sBase)
+		Gui.frmMain.GsGcM_C_O.GetCellValueByColumnName("gvM_C_O","ID_NUM",V.Args.RowIndex,V.Local.sID)
+		Gui.frmMain.GsGcM_C_O.GetCellValueByColumnName("gvM_C_O","NOTES",V.Args.RowIndex,V.Local.sNotes)
+		
+		Gui.frmNotes.txtBase.Text(V.Local.sBase)
+		Gui.frmNotes.txtID.Text(V.Local.sID)
+		Gui.frmNotes.txtNotes.Text(V.Local.sNotes)
+		
+		Gui.frmNotes..Show
+		F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndSelect
+
+F.ODBC.Connection!conts.Close
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.GsGcM_C_O_RowCellClick.End
+
+Program.Sub.CpyFeatGrid.Start
+F.Intrinsic.Control.Try
+V.Local.sSQL.Declare
+
+Gui.fmCopy.GsGcCpyFeat.AddGridviewFromDatatable("gvCpyFeat","dtCpyFeat")
+Gui.fmCopy.GsGcCpyFeat.MainView("gvCpyFeat")
+
+Gui.fmCopy.GsGcCpyFeat.SetGridviewProperty("gvCpyFeat","AllowFilter",True)
+Gui.fmCopy.GsGcCpyFeat.SetGridviewProperty("gvCpyFeat","Editable",False)
+Gui.fmCopy.GsGcCpyFeat.SetGridviewProperty("gvCpyFeat","MultiSelect",False)
+Gui.fmCopy.GsGcCpyFeat.SetGridviewProperty("gvCpyFeat","ReadOnly",True)
+Gui.fmCopy.GsGcCpyFeat.SetGridviewProperty("gvCpyFeat","Enableappearanceevenrow",True)
+Gui.fmCopy.GsGcCpyFeat.SetGridviewProperty("gvCpyFeat","OptionsFindAlwaysVisible",True)
+
+Gui.fmCopy.GsGcCpyFeat.SetColumnProperty("gvCpyFeat","BASE_ID","Caption","Base ID")
+Gui.fmCopy.GsGcCpyFeat.SetColumnProperty("gvCpyFeat","SELECT","Caption","Select")
+
+Gui.fmCopy.GsGcCpyFeat.SetColumnProperty("gvCpyFeat","BASE_ID","HeaderFontBold",True)
+Gui.fmCopy.GsGcCpyFeat.SetColumnProperty("gvCpyFeat","Select","HeaderFontBold",True)
+
+Gui.fmCopy.GsGcCpyFeat.SetColumnProperty("gvCpyFeat","BASE_ID","HeaderHAlignment","Center")
+Gui.fmCopy.GsGcCpyFeat.SetColumnProperty("gvCpyFeat","SELECT","HeaderHAlignment","Center")
+
+F.Intrinsic.String.Build("Copy {0} specifications to selected configurations",V.Args.sIdent,V.Local.sSQL)
+
+Gui.fmCopy..Caption(V.Local.sSQL)
+
+Gui.fmCopy..Show
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.CpyFeatGrid.End
+
+Program.Sub.GsGcCpyFeat_RowCellClick.Start
+F.Intrinsic.Control.Try
+
+F.Intrinsic.Control.SelectCase(V.Args.COLUMN)
+	F.Intrinsic.Control.Case("SELECT")
+		F.Intrinsic.Control.If(V.Args.CELLVALUE,=,False)
+			F.Data.DataTable.SetValue("dtCpyFeat",V.Args.ROWINDEX,"SELECT",True)
+		F.Intrinsic.Control.Else
+			F.Data.DataTable.SetValue("dtCpyFeat",V.Args.ROWINDEX,"SELECT",False)
+		F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndSelect
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.GsGcCpyFeat_RowCellClick.End
+
+Program.Sub.InsertLine.Start
+F.Intrinsic.Control.Try
+V.Local.sCaption.Declare
+V.Local.sStrtLine.Declare
+V.Local.sParent.Declare
+
+V.Local.sStrtLine.Set(V.Args.sIDNum)
+
+F.Intrinsic.Control.If(V.Args.sParent,=,"00000000")
+	V.Local.sParent.Set(V.Args.sIDNum)
+F.Intrinsic.Control.Else
+	V.Local.sParent.Set(V.Args.sParent)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Math.Add(V.Args.sIDNum,1,V.Local.sStrtLine)
+F.Intrinsic.String.LPad(V.Local.sStrtLine,"0",8,V.Local.sStrtLine)
+
+Gui.frmInsert..ClearGroup(1)
+
+Gui.frmInsert.txtParent.Text(V.Local.sParent)
+F.Intrinsic.String.Build("Insert line.  Base ID: {0}  Parent: {1}",V.Args.sBaseID,V.Local.sParent,V.Local.sCaption)
+Gui.frmInsert.txtNewID.Text(V.Local.sStrtLine)
+Gui.frmInsert.txtBase_ID.Text(V.Args.sBaseID)
+Gui.frmInsert.txtNewID.Locked(True)
+
+Gui.frmInsert..Caption(V.Local.sCaption)
+Gui.frmInsert.chkPush.Value(1)
+Gui.frmInsert..Show
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.InsertLine.End
+
+Program.Sub.DeleteLine.Start
+F.Intrinsic.Control.Try
+V.Local.iRet.Declare
+V.Local.sMsg.Declare
+V.Local.sBaseID.Declare
+V.Local.sId.Declare
+V.Local.sIdent.Declare
+V.Local.sParent.Declare
+V.Local.sSQL.Declare
+V.Local.iCnt.Declare
+V.Local.sDecID.Declare
+V.Local.sDecParent.Declare
+V.Local.sFilter.Declare
+V.Local.iRowCnt.Declare
+V.Local.sDecNote.Declare
+V.Local.sDecRule.Declare
+V.Local.sDecRuleRel.Declare
+V.Local.sDecPrice.Declare
+
+V.Local.sBaseID.Set(V.Args.sBaseID.Trim)
+V.Local.sId.Set(V.Args.sIDNum.Trim)
+V.Local.sIdent.Set(V.Args.sIdent.Trim)
+V.Local.sParent.Set(V.Args.sParent.Trim)
+
+F.Intrinsic.Control.If(V.DataTable.dtProtCfgTemp.Exists)
+	F.Data.Datatable.Close("dtProtCfgTemp")
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.DataTable.dtProtCfg.Exists)
+	F.Data.Datatable.Close("dtProtCfg")
+F.Intrinsic.Control.EndIf
+
+F.ODBC.Connection!conts.OpenCompanyConnection(500)
+
+F.Intrinsic.Control.If(V.Local.sParent.Trim,=,"00000000")
+	F.Intrinsic.String.Build("Are you sure you wish to delete line {0} ({1}) and all of its children from Base ID {2}?",V.Local.sId,V.Local.sIdent,V.Local.sBaseID,V.Local.sMsg)
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Build("Are you sure you wish to delete line {0} ({1}) from Base ID {2}?",V.Local.sId,V.Local.sIdent,V.Local.sBaseID,V.Local.sMsg)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.UI.Msgbox(V.Local.sMsg,"Warning!",4,V.Local.iRet)
+
+F.Intrinsic.Control.If(V.Local.iRet,<>,6)
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Local.sParent.Trim,=,"00000000")
+	F.Intrinsic.String.Build("Select * from CONFIG_OPTIONS where BASE_ID = '{0}' and ID_NUM > '{1}' order by ID_NUM asc;",V.Local.sBaseID,V.Local.sId,V.Local.sSQL)
+	F.Data.Datatable.CreateFromSQL("dtProtCfgTemp","conts",V.Local.sSQL,True)
+	
+	F.Data.Datatable.SaveToDB("dtProtCfgTemp","conts","GCG_6273_CFG_OPT","BASE_ID*!*ID_NUM",128,"")
+	
+	F.Intrinsic.String.Build("Delete CONFIG_OPTIONS where BASE_ID = '{0}' and ID_NUM >= '{1}';",V.Local.sBaseID,V.Local.sId,V.Local.sSQL)
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	
+	F.Intrinsic.String.Build("PARENT_ID <> '{0}'",V.Local.sId,V.Local.sFilter)
+	
+	F.Data.DataView.Create("dtProtCfgTemp","dvTransfer",22,V.Local.sFilter,"")
+	
+	F.Intrinsic.String.Build("PARENT_ID = '{0}'",V.Local.sId,V.Local.sFilter)
+	
+	F.Data.DataView.Create("dtProtCfgTemp","dvRenumber",22,V.Local.sFilter,"")
+	
+	V.Local.iRowCnt.Set(V.DataView.dtProtCfgTemp!dvRenumber.RowCount)
+	F.Intrinsic.Math.Add(V.Local.iRowCnt,1,V.Local.iRowCnt)
+	
+	F.Data.DataView.Close("dtProtCfgTemp","dvRenumber")
+	
+	F.Data.DataView.ToDataTable("dtProtCfgTemp","dvTransfer","dtProtCfg")
+	
+	F.Data.DataView.Close("dtProtCfgTemp","dvTransfer")
+	
+	F.Data.Datatable.Close("dtProtCfgTemp")
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtProtCfg.RowCount--,1)
+		V.Local.sDecID.Set(V.DataTable.dtProtCfg(V.Local.iCnt).ID_NUM!FieldValTrim)
+		F.Intrinsic.Math.Sub(V.Local.sDecID,V.Local.iRowCnt,V.Local.sDecID)
+		F.Intrinsic.String.LPad(V.Local.sDecID,"0",8,V.Local.sDecID)
+		F.Data.Datatable.SetValue("dtProtCfg",V.Local.iCnt,"ID_NUM",V.Local.sDecID)
+		
+		V.Local.sDecParent.Set(V.DataTable.dtProtCfg(V.Local.iCnt).PARENT_ID!FieldValTrim)
+		F.Intrinsic.Control.If(V.DataTable.dtProtCfg(V.Local.iCnt).PARENT_ID!FieldValTrim,>,V.Local.sId)
+			F.Intrinsic.Math.Sub(V.Local.sDecParent,V.Local.iRowCnt,V.Local.sDecParent)
+			F.Intrinsic.String.LPad(V.Local.sDecParent,"0",8,V.Local.sDecParent)
+			F.Data.Datatable.SetValue("dtProtCfg",V.Local.iCnt,"PARENT_ID",V.Local.sDecParent)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Data.Datatable.SaveToDB("dtProtCfg","conts","CONFIG_OPTIONS","BASE_ID*!*ID_NUM",128,"")
+	
+	F.Intrinsic.String.Build("Select * from CFG_OPT_NOTES where BASEID = '{0}' and ID >= '{1}'",V.Local.sBaseID,V.Local.sId,V.Local.sSQL)
+	F.Data.Datatable.CreateFromSQL("dtNotes","conts",V.Local.sSQL)
+	
+	F.Intrinsic.String.Build("Delete CFG_OPT_NOTES where BASEID = '{0}' and ID >= '{1}'",V.Local.sBaseID,V.Local.sId,V.Local.sSQL)
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtNotes.RowCount--,1)
+		V.Local.sDecNote.Set(V.DataTable.dtNotes(V.Local.iCnt).ID!FieldValTrim)
+		F.Intrinsic.Math.Sub(V.Local.sDecNote,V.Local.iRowCnt,V.Local.sDecNote)
+		F.Intrinsic.String.LPad(V.Local.sDecNote,"0",8,V.Local.sDecNote)
+		F.Data.DataTable.SetValue("dtNotes",V.Local.iCnt,"ID",V.Local.sDecNote)
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Data.Datatable.SaveToDB("dtNotes","conts","CFG_OPT_NOTES","BASEID*!*ID",128,"")
+	
+	F.Data.Datatable.Close("dtNotes")
+	
+	F.Intrinsic.String.Build("Select * from CONFIG_RULES where BASE_ID = '{0}'",V.Local.sBaseID,V.Local.sSQL)
+	F.Data.Datatable.CreateFromSQL("dtRules","conts",V.Local.sSQL)
+	
+	F.Intrinsic.String.Build("Delete CONFIG_RULES where BASE_ID = '{0}'",V.Local.sBaseID,V.Local.sSQL)
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtRules.RowCount--,1)
+		V.Local.sDecRule.Set(V.DataTable.dtRules(V.Local.iCnt).ID_NUM!FieldValTrim)
+		F.Intrinsic.Control.If(V.Local.sDecRule,>=,V.Local.sId)
+			F.Intrinsic.Math.Sub(V.Local.sDecRule,V.Local.iRowCnt,V.Local.sDecRule)
+			F.Intrinsic.String.LPad(V.Local.sDecRule,"0",8,V.Local.sDecRule)
+			F.Data.DataTable.SetValue("dtRules",V.Local.iCnt,"ID_NUM",V.Local.sDecRule)
+		F.Intrinsic.Control.EndIf		
+		
+		V.Local.sDecRuleRel.Set(V.DataTable.dtRules(V.Local.iCnt).RELATED_ID!FieldValTrim)
+		F.Intrinsic.Control.If(V.Local.sDecRuleRel,>=,V.Local.sId)
+			F.Intrinsic.Math.Sub(V.Local.sDecRuleRel,V.Local.iRowCnt,V.Local.sDecRuleRel)
+			F.Intrinsic.String.LPad(V.Local.sDecRuleRel,"0",8,V.Local.sDecRuleRel)
+			F.Data.DataTable.SetValue("dtRules",V.Local.iCnt,"RELATED_ID",V.Local.sDecRuleRel)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Data.Datatable.SaveToDB("dtRules","conts","CONFIG_RULES","BASE_ID*!*ID_NUM",128,"")
+	
+	F.Data.Datatable.Close("dtRules")
+	
+	'Update pricing tables
+	F.Intrinsic.String.Build("Select * from CFG_PRICE_LN where BASEID = '{0}'",V.Local.sBaseID,V.Local.sSQL)
+	F.Data.Datatable.CreateFromSQL("dtPrice","conts",V.Local.sSQL)
+	
+	F.Intrinsic.String.Build("Delete CFG_PRICE_LN where BASEID = '{0}'",V.Local.sBaseID,V.Local.sSQL)
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtPrice.RowCount--,1)
+		V.Local.sDecPrice.Set(V.DataTable.dtPrice(V.Local.iCnt).F_ID!FieldValTrim)
+		F.Intrinsic.Control.If(V.Local.sDecPrice,>=,V.Local.sId)
+			F.Intrinsic.Math.Sub(V.Local.sDecPrice,1,V.Local.sDecPrice)
+			F.Data.DataTable.SetValue("dtPrice",V.Local.iCnt,"F_ID",V.Local.sDecPrice)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Data.Datatable.SaveToDB("dtPrice","conts","CFG_PRICE_LN","BASEID",128,"")
+	
+	F.Data.Datatable.Close("dtPrice")
+
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Build("Select * from CONFIG_OPTIONS where BASE_ID = '{0}' and ID_NUM > '{1}' order by ID_NUM asc;",V.Local.sBaseID,V.Local.sId,V.Local.sSQL)
+	F.Data.Datatable.CreateFromSQL("dtProtCfg","conts",V.Local.sSQL,True)
+	
+	F.Data.Datatable.SaveToDB("dtProtCfg","conts","GCG_6273_CFG_OPT","BASE_ID*!*ID_NUM",128,"")
+	
+	F.Intrinsic.String.Build("Delete CONFIG_OPTIONS where BASE_ID = '{0}' and ID_NUM >= '{1}';",V.Local.sBaseID,V.Local.sId,V.Local.sSQL)
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtProtCfg.RowCount--,1)
+		V.Local.sDecID.Set(V.DataTable.dtProtCfg(V.Local.iCnt).ID_NUM!FieldValTrim)
+		F.Intrinsic.Math.Sub(V.Local.sDecID,1,V.Local.sDecID)
+		F.Intrinsic.String.LPad(V.Local.sDecID,"0",8,V.Local.sDecID)
+		F.Data.Datatable.SetValue("dtProtCfg",V.Local.iCnt,"ID_NUM",V.Local.sDecID)
+		
+		V.Local.sDecParent.Set(V.DataTable.dtProtCfg(V.Local.iCnt).PARENT_ID!FieldValTrim)
+		F.Intrinsic.Control.If(V.DataTable.dtProtCfg(V.Local.iCnt).PARENT_ID!FieldValTrim,>,V.Local.sId)
+			F.Intrinsic.Math.Sub(V.Local.sDecParent,1,V.Local.sDecParent)
+			F.Intrinsic.String.LPad(V.Local.sDecParent,"0",8,V.Local.sDecParent)
+			F.Data.Datatable.SetValue("dtProtCfg",V.Local.iCnt,"PARENT_ID",V.Local.sDecParent)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Data.Datatable.SaveToDB("dtProtCfg","conts","CONFIG_OPTIONS","BASE_ID*!*ID_NUM",128,"")
+	
+	F.Intrinsic.String.Build("Select * from CFG_OPT_NOTES where BASEID = '{0}' and ID >= '{1}'",V.Local.sBaseID,V.Local.sId,V.Local.sSQL)
+	F.Data.Datatable.CreateFromSQL("dtNotes","conts",V.Local.sSQL)
+	
+	F.Intrinsic.String.Build("Delete CFG_OPT_NOTES where BASEID = '{0}' and ID >= '{1}'",V.Local.sBaseID,V.Local.sId,V.Local.sSQL)
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtNotes.RowCount--,1)
+		V.Local.sDecNote.Set(V.DataTable.dtNotes(V.Local.iCnt).ID!FieldValTrim)
+		F.Intrinsic.Math.Sub(V.Local.sDecNote,1,V.Local.sDecNote)
+		F.Intrinsic.String.LPad(V.Local.sDecNote,"0",8,V.Local.sDecNote)
+		F.Data.DataTable.SetValue("dtNotes",V.Local.iCnt,"ID",V.Local.sDecNote)
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Data.Datatable.SaveToDB("dtNotes","conts","CFG_OPT_NOTES","BASEID*!*ID",128,"")
+	
+	F.Data.Datatable.Close("dtNotes")
+	
+	F.Intrinsic.String.Build("Select * from CONFIG_RULES where BASE_ID = '{0}'",V.Local.sBaseID,V.Local.sSQL)
+	F.Data.Datatable.CreateFromSQL("dtRules","conts",V.Local.sSQL)
+	
+	F.Intrinsic.String.Build("Delete CONFIG_RULES where BASE_ID = '{0}'",V.Local.sBaseID,V.Local.sSQL)
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtRules.RowCount--,1)
+		V.Local.sDecRule.Set(V.DataTable.dtRules(V.Local.iCnt).ID_NUM!FieldValTrim)
+		F.Intrinsic.Control.If(V.Local.sDecRule,>=,V.Local.sId)
+			F.Intrinsic.Math.Sub(V.Local.sDecRule,1,V.Local.sDecRule)
+			F.Intrinsic.String.LPad(V.Local.sDecRule,"0",8,V.Local.sDecRule)
+			F.Data.DataTable.SetValue("dtRules",V.Local.iCnt,"ID_NUM",V.Local.sDecRule)
+		F.Intrinsic.Control.EndIf
+				
+		V.Local.sDecRuleRel.Set(V.DataTable.dtRules(V.Local.iCnt).RELATED_ID!FieldValTrim)
+		F.Intrinsic.Control.If(V.Local.sDecRuleRel,>=,V.Local.sId)
+			F.Intrinsic.Math.Sub(V.Local.sDecRuleRel,1,V.Local.sDecRuleRel)
+			F.Intrinsic.String.LPad(V.Local.sDecRuleRel,"0",8,V.Local.sDecRuleRel)
+			F.Data.DataTable.SetValue("dtRules",V.Local.iCnt,"RELATED_ID",V.Local.sDecRuleRel)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Data.Datatable.SaveToDB("dtRules","conts","CONFIG_RULES","BASE_ID*!*ID_NUM",128,"")
+	
+	F.Data.Datatable.Close("dtRules")
+	
+	'Update pricing tables
+	F.Intrinsic.String.Build("Select * from CFG_PRICE_LN where BASEID = '{0}'",V.Local.sBaseID,V.Local.sSQL)
+	F.Data.Datatable.CreateFromSQL("dtPrice","conts",V.Local.sSQL)
+	
+	F.Intrinsic.String.Build("Delete CFG_PRICE_LN where BASEID = '{0}'",V.Local.sBaseID,V.Local.sSQL)
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtPrice.RowCount--,1)
+		V.Local.sDecPrice.Set(V.DataTable.dtPrice(V.Local.iCnt).F_ID!FieldValTrim)
+		F.Intrinsic.Control.If(V.Local.sDecPrice,>=,V.Local.sId)
+			F.Intrinsic.Math.Sub(V.Local.sDecPrice,1,V.Local.sDecPrice)
+			F.Data.DataTable.SetValue("dtPrice",V.Local.iCnt,"F_ID",V.Local.sDecPrice)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Data.Datatable.SaveToDB("dtPrice","conts","CFG_PRICE_LN","BASEID",128,"")
+	
+	F.Data.Datatable.Close("dtPrice")
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.String.Build("Select BASE_ID,ID_NUM from CONFIG_OPTIONS where BASE_ID = '{0}' and ID_NUM = '{1}'",V.Local.sBaseID,V.Local.sId,V.Local.sSQL)
+F.ODBC.Connection!conts.ExecuteAndReturn(V.Local.sSQL,V.Local.sSQL)
+
+F.Intrinsic.Control.If(V.Local.sSQL.Trim,=,"")
+	F.Intrinsic.UI.Msgbox("Please stop and contact Global Shop Support.","Error renumbering IDs!")
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndIf
+
+F.ODBC.Connection!conts.Execute("Delete GCG_6273_CFG_OPT")
+
+F.ODBC.Connection!conts.Close
+
+F.Data.Datatable.Close("dtProtCfg")
+
+F.Intrinsic.Control.CallSub(MfgDelete,"sBaseID",V.Local.sBaseID,"sParent",V.Local.sParent,"sIDNum",V.Local.sID,"sIdent",V.Local.sIdent,"iRowCnt",V.Local.iRowCnt)
+
+F.Intrinsic.Control.CallSub(C_O_Data)
+F.Intrinsic.Control.CallSub(M_C_O_Data)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.DeleteLine.End
+
+Program.Sub.MfgInsert.Start
+F.Intrinsic.Control.Try
+'CONFIG_MFG insert can only come from CONFIG_OPTIONS line insert.
+V.Local.sBaseID.Declare
+V.Local.sNewId.Declare
+V.Local.sSQL.Declare
+V.Local.bPush.Declare
+V.Local.iCnt.Declare
+V.Local.iCnt2.Declare
+V.Local.sRtrSeq.Declare
+V.Local.sIDType.Declare
+V.Local.sIdent.Declare
+V.Local.sCfgSeq.Declare
+V.Local.iRet.Declare
+V.Local.sIncID.Declare
+V.Local.iRow.Declare
+V.Local.sIncMFGNote.Declare
+
+V.Local.sBaseID.Set(V.Screen.frmInsert!txtBase_ID.Text.Trim)
+V.Local.sNewId.Set(V.Args.sNewId.Trim)
+V.Local.bPush.Set(V.Screen.frmInsert!chkPush.CheckedAsBoolean)
+V.Local.sIdent.Set(V.Screen.frmInsert!txtIDent.Text.Trim)
+
+Gui.frmMain.GsGcBase.Enabled(False)
+
+F.Intrinsic.Control.SelectCase(V.Screen.frmInsert!cboIDType.Text.Trim)
+	F.Intrinsic.Control.Case("P - Part")
+		V.Local.sIDType.Set("P")
+	F.Intrinsic.Control.Case("L - Label")
+		V.Local.sIDType.Set("L")
+F.Intrinsic.Control.EndSelect
+
+F.Intrinsic.Control.If(V.DataTable.dtProtMfg.Exists)
+	F.Data.Datatable.Close("dtProtMfg")
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.DataTable.dtRtrSeq.Exists)
+	F.Data.Datatable.Close("dtRtrSeq")
+F.Intrinsic.Control.EndIf
+
+F.ODBC.Connection!conts.OpenCompanyConnection(500)
+
+'Collect Labels from CONFIG_OPTIONS to determine router sequences in CONFIG_MFG
+F.Intrinsic.String.Build("Select ID_NUM,IDENTIFIER from CONFIG_OPTIONS where BASE_ID = '{0}' and PARENT_ID = '00000000' order by ID_NUM asc;",V.Local.sBaseID,V.Local.sSQL)
+F.Data.Datatable.CreateFromSQL("dtRtrSeq","conts",V.Local.sSQL)
+F.Data.Datatable.DeleteRow("dtRtrSeq",0)
+
+F.Data.Datatable.AcceptChanges("dtRtrSeq")
+F.Data.Datatable.AddColumn("dtRtrSeq","ROUTER_SEQ","String")
+
+F.Data.Datatable.SetSeries("dtRtrSeq","ROUTER_SEQ",1,1)
+
+F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtRtrSeq.RowCount--,1)
+	V.Local.sRtrSeq.Set(V.DataTable.dtRtrSeq(V.Local.iCnt).ROUTER_SEQ!FieldValTrim)
+	F.Intrinsic.String.LPad(V.Local.sRtrSeq,"0",4,V.Local.sRtrSeq)
+	F.Intrinsic.String.RPad(V.Local.sRtrSeq,"0",6,V.Local.sRtrSeq)
+	F.Data.Datatable.SetValue("dtRtrSeq",V.Local.iCnt,"ROUTER_SEQ",V.Local.sRtrSeq)
+F.Intrinsic.Control.Next(V.Local.iCnt)
+
+V.Local.iCnt.Set(0)
+
+F.Intrinsic.Control.If(V.Local.sIDType,=,"P")
+	'Does identifier already exist in CONFIG_MFG?
+	F.Intrinsic.String.Build("Select top 1 CFG_SEQUENCE from CONFIG_MFG where BASE_ID = '{0}' and RTRIM(IDENTIFIER) = '{1}' order by CFG_SEQUENCE desc;",V.Local.sBaseID,V.Local.sIdent,V.Local.sSQL)
+	F.ODBC.Connection!conts.ExecuteAndReturn(V.Local.sSQL,V.Local.sSQL)
+	
+	F.Intrinsic.Control.If(V.Local.sSQL.Trim,=,"")
+		V.Local.sCfgSeq.Set("001")
+	F.Intrinsic.Control.Else
+		F.Intrinsic.UI.Msgbox("Identifier exists in Manufacturing Options.  Insert additional sequence?","",4,V.Local.iRet)
+		F.Intrinsic.Control.If(V.Local.iRet,=,6)
+			V.Local.sCfgSeq.Set(V.Local.sSQL.Trim)
+			F.Intrinsic.Math.Add(V.Local.sCfgSeq,1,V.Local.sCfgSeq)
+			F.Intrinsic.String.LPad(V.Local.sCfgSeq,"0",3,V.Local.sCfgSeq)
+			
+			F.Intrinsic.String.Build("Select top 1 * from CONFIG_MFG where BASE_ID = '{0}' and RTRIM(IDENTIFIER) = '{1}' order by CFG_SEQUENCE desc;",V.Local.sBaseID,V.Local.sIdent,V.Local.sSQL)
+			F.Data.Datatable.CreateFromSQL("dtLineInsert","conts",V.Local.sSQL)
+			F.Data.Datatable.SetValue("dtLineInsert",0,"CFG_SEQUENCE",V.Local.sCfgSeq)
+			
+			F.Data.Datatable.SaveToDB("dtLineInsert","conts","CONFIG_MFG","BASE_ID*!*ID_NUM*!*CFG_SEQUENCE",1)
+			F.Data.Datatable.Close("dtLineInsert")
+			
+			F.ODBC.Connection!conts.Close
+			F.Intrinsic.Control.ExitSub
+		F.Intrinsic.Control.EndIf	
+	F.Intrinsic.Control.EndIf
+	
+	'Protect original config lines by copying them to temp table GCG_6273_CFG_MFG
+	F.Intrinsic.String.Build("Select * from CONFIG_MFG where BASE_ID = '{0}' and ID_NUM >= '{1}' order by ID_NUM asc;",V.Local.sBaseID,V.Local.sNewId,V.Local.sSQL)
+	F.Data.Datatable.CreateFromSQL("dtProtMfg","conts",V.Local.sSQL,True)
+	
+	F.Data.Datatable.SaveToDB("dtProtMfg","conts","GCG_6273_CFG_MFG","BASE_ID*!*ID_NUM*!*CFG_SEQUENCE",128,"")
+	
+	F.Intrinsic.String.Build("Select * from MFG_CONFIG_NOTES where BASEID = '{0}' and ID >= '{1}'",V.Local.sBaseID,V.Local.sNewId,V.Local.sSQL)
+	F.Data.Datatable.CreateFromSQL("dtMFGNotes","conts",V.Local.sSQL)
+	
+	F.Intrinsic.String.Build("Delete MFG_CONFIG_NOTES where BASEID = '{0}' and ID >= '{1}'",V.Local.sBaseID,V.Local.sNewId,V.Local.sSQL)
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtMFGNotes.RowCount--,1)
+		V.Local.sIncMFGNote.Set(V.DataTable.dtMFGNotes(V.Local.iCnt).ID!FieldValTrim)
+		F.Intrinsic.Math.Add(V.Local.sIncMFGNote,1,V.Local.sIncMFGNote)
+		F.Intrinsic.String.LPad(V.Local.sIncMFGNote,"0",8,V.Local.sIncMFGNote)
+		F.Data.DataTable.SetValue("dtMFGNotes",V.Local.iCnt,"ID",V.Local.sIncMFGNote)
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Data.Datatable.SaveToDB("dtMFGNotes","conts","MFG_CONFIG_NOTES","BASEID*!*ID",128,"")
+	
+	F.Data.Datatable.Close("dtMFGNotes")
+	
+	F.Intrinsic.String.Build("Delete CONFIG_MFG where BASE_ID = '{0}' and ID_NUM >= '{1}';",V.Local.sBaseID,V.Local.sNewId,V.Local.sSQL)
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	
+	'Determine ROUTER_SEQUENCE from Parent ID position in CONFIG_OPTIONS table
+	F.Intrinsic.String.Build("select IDENTIFIER from CONFIG_OPTIONS where BASE_ID = '{0}' and ID_NUM = (Select PARENT_ID from CONFIG_OPTIONS where BASE_ID = '{0}' and ID_NUM = '{1}');",V.Local.sBaseID,V.Local.sNewId,V.Local.sSQL)
+	F.ODBC.Connection!conts.ExecuteAndReturn(V.Local.sSQL,V.Local.sSQL)
+	
+	F.Intrinsic.String.Build("IDENTIFIER = '{0}'",V.Local.sSQL.Trim,V.Local.sSQL)
+	
+	F.Data.DataView.Create("dtRtrSeq","dvRtrSeq",22,V.Local.sSQL,"")
+	
+	V.Local.sRtrSeq.Set(V.DataView.dtRtrSeq!dvRtrSeq(0).ROUTER_SEQ!FieldValTrim)
+	
+	F.Data.DataView.Close("dtRtrSeq","dvRtrSeq")
+		
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtProtMfg.RowCount--,1)
+		V.Local.sIncID.Set(V.DataTable.dtProtMfg(V.Local.iCnt).ID_NUM!FieldValTrim)
+		F.Intrinsic.Math.Add(V.Local.sIncID,1,V.Local.sIncID)
+		F.Intrinsic.String.LPad(V.Local.sIncID,"0",8,V.Local.sIncID)
+		F.Data.Datatable.SetValue("dtProtMfg",V.Local.iCnt,"ID_NUM",V.Local.sIncID)
+
+		F.Intrinsic.Control.For(V.Local.iCnt2,0,V.DataTable.dtRtrSeq.RowCount--,1)
+			V.Local.iRow.Set(V.Local.iCnt2)
+			
+			F.Intrinsic.Control.If(V.Local.iRow,<,V.DataTable.dtRtrSeq.RowCount--)
+				F.Intrinsic.Math.Add(V.Local.iRow,1,V.Local.iRow)
+			F.Intrinsic.Control.EndIf
+					
+			F.Intrinsic.Control.If(V.DataTable.dtProtMfg(V.Local.iCnt).ID_NUM!FieldValTrim,>,V.DataTable.dtRtrSeq(V.Local.iCnt2).ID_NUM!FieldValTrim,"AND",V.DataTable.dtProtMfg(V.Local.iCnt).ID_NUM!FieldValTrim,<,V.DataTable.dtRtrSeq(V.Local.iRow).ID_NUM!FieldValTrim)
+				F.Data.Datatable.SetValue("dtProtMfg",V.Local.iCnt,"ROUTER_SEQUENCE",V.DataTable.dtRtrSeq(V.Local.iCnt2).ROUTER_SEQ!FieldValTrim)
+			F.Intrinsic.Control.EndIf
+			
+		F.Intrinsic.Control.Next(V.Local.iCnt2)
+		V.Local.iCnt2.Set(0)
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Data.Datatable.SaveToDB("dtProtMfg","conts","CONFIG_MFG","BASE_ID*!*ID_NUM*!*CFG_SEQUENCE",128,"")
+	
+	'We are pushing the CONFIG_OPTION part to CONFIG_MFG
+	F.Intrinsic.Control.If(V.Local.bPush,=,True)
+		F.Intrinsic.String.Build("Insert into CONFIG_MFG (BASE_ID,ID_NUM,CFG_SEQUENCE,IDENTIFIER,BOM_QTY,LMO,ROUTER_SEQUENCE,PART_FRAG,PART_FRAG_POSITION,DESCRIPTION,DESC_FRAG_POS) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}')",V.Local.sBaseID,V.Local.sNewId,V.Local.sCfgSeq,V.Screen.frmInsert!txtIDent.Text.PSQLFriendly,V.Screen.frmInsert!txtQty.Text.PSQLFriendly,"M",V.Local.sRtrSeq,V.Screen.frmInsert!txtIDent.Text.PSQLFriendly,V.Screen.frmInsert!txtPrtSrtPos.Text.PSQLFriendly,V.Screen.frmInsert!txtDesc.Text.PSQLFriendly,V.Screen.frmInsert!txtDescStrtPos.Text.PSQLFriendly,V.Local.sSQL)
+		
+		F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	F.Intrinsic.Control.EndIf
+	
+	F.Data.Datatable.Close("dtRtrSeq")
+	F.Data.Datatable.Close("dtProtMfg")
+
+F.Intrinsic.Control.ElseIf(V.Local.sIDType,=,"L")
+	'Protect original config lines by copying them to temp table GCG_6273_CFG_MFG
+	F.Intrinsic.String.Build("Select * from CONFIG_MFG where BASE_ID = '{0}' and ID_NUM >= '{1}' order by ID_NUM asc;",V.Local.sBaseID,V.Local.sNewId,V.Local.sSQL)
+	F.Data.Datatable.CreateFromSQL("dtProtMfg","conts",V.Local.sSQL,True)
+ 
+	F.Data.Datatable.SaveToDB("dtProtMfg","conts","GCG_6273_CFG_MFG","BASE_ID*!*ID_NUM",128,"")
+	
+	F.Intrinsic.String.Build("Delete CONFIG_MFG where BASE_ID = '{0}' and ID_NUM >= '{1}';",V.Local.sBaseID,V.Local.sNewId,V.Local.sSQL)
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+
+	'Determine ROUTER_SEQUENCE from Parent ID position in CONFIG_OPTIONS table
+	F.Intrinsic.String.Build("select IDENTIFIER from CONFIG_OPTIONS where BASE_ID = '{0}' and ID_NUM =  '{1}';",V.Local.sBaseID,V.Local.sNewId,V.Local.sSQL)
+	F.ODBC.Connection!conts.ExecuteAndReturn(V.Local.sSQL,V.Local.sSQL)
+	
+	F.Intrinsic.String.Build("IDENTIFIER = '{0}'",V.Local.sSQL.Trim,V.Local.sSQL)
+	
+	F.Data.DataView.Create("dtRtrSeq","dvRtrSeq",22,V.Local.sSQL,"")
+	
+	V.Local.sRtrSeq.Set(V.DataView.dtRtrSeq!dvRtrSeq(0).ROUTER_SEQ!FieldValTrim)
+	
+	F.Data.DataView.Close("dtRtrSeq","dvRtrSeq")
+		
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtProtMfg.RowCount--,1)
+		V.Local.sIncID.Set(V.DataTable.dtProtMfg(V.Local.iCnt).ID_NUM!FieldValTrim)
+		F.Intrinsic.Math.Add(V.Local.sIncID,1,V.Local.sIncID)
+		F.Intrinsic.String.LPad(V.Local.sIncID,"0",8,V.Local.sIncID)
+		F.Data.Datatable.SetValue("dtProtMfg",V.Local.iCnt,"ID_NUM",V.Local.sIncID)
+
+		F.Intrinsic.Control.For(V.Local.iCnt2,0,V.DataTable.dtRtrSeq.RowCount--,1)
+			V.Local.iRow.Set(V.Local.iCnt2)
+			
+			F.Intrinsic.Control.If(V.Local.iRow,<,V.DataTable.dtRtrSeq.RowCount--)
+				F.Intrinsic.Math.Add(V.Local.iRow,1,V.Local.iRow)
+			F.Intrinsic.Control.EndIf
+					
+			F.Intrinsic.Control.If(V.DataTable.dtProtMfg(V.Local.iCnt).ID_NUM!FieldValTrim,>,V.DataTable.dtRtrSeq(V.Local.iCnt2).ID_NUM!FieldValTrim,"AND",V.DataTable.dtProtMfg(V.Local.iCnt).ID_NUM!FieldValTrim,<,V.DataTable.dtRtrSeq(V.Local.iRow).ID_NUM!FieldValTrim)
+				F.Data.Datatable.SetValue("dtProtMfg",V.Local.iCnt,"ROUTER_SEQUENCE",V.DataTable.dtRtrSeq(V.Local.iCnt2).ROUTER_SEQ!FieldValTrim)
+			F.Intrinsic.Control.EndIf
+			
+		F.Intrinsic.Control.Next(V.Local.iCnt2)
+		V.Local.iCnt2.Set(0)
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Data.Datatable.SaveToDB("dtProtMfg","conts","CONFIG_MFG","BASE_ID*!*ID_NUM*!*CFG_SEQUENCE",128,"")
+	
+	F.Data.Datatable.Close("dtRtrSeq")
+	F.Data.Datatable.Close("dtProtMfg")
+	
+	F.Intrinsic.String.Build("Select * from MFG_CONFIG_NOTES where BASEID = '{0}' and ID >= '{1}'",V.Local.sBaseID,V.Local.sNewId,V.Local.sSQL)
+	F.Data.Datatable.CreateFromSQL("dtMFGNotes","conts",V.Local.sSQL)
+	
+	F.Intrinsic.String.Build("Delete MFG_CONFIG_NOTES where BASEID = '{0}' and ID >= '{1}'",V.Local.sBaseID,V.Local.sNewId,V.Local.sSQL)
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtMFGNotes.RowCount--,1)
+		V.Local.sIncMFGNote.Set(V.DataTable.dtMFGNotes(V.Local.iCnt).ID!FieldValTrim)
+		F.Intrinsic.Math.Add(V.Local.sIncMFGNote,1,V.Local.sIncMFGNote)
+		F.Intrinsic.String.LPad(V.Local.sIncMFGNote,"0",8,V.Local.sIncMFGNote)
+		F.Data.DataTable.SetValue("dtMFGNotes",V.Local.iCnt,"ID",V.Local.sIncMFGNote)
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Data.Datatable.SaveToDB("dtMFGNotes","conts","CFG_OPT_NOTES","BASEID*!*ID",128,"")
+	
+	F.Data.Datatable.Close("dtMFGNotes")
+
+F.Intrinsic.Control.Else
+	F.Intrinsic.UI.Msgbox("Please select an Ident Type","Error")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+Gui.frmMain.GsGcBase.Enabled(True)
+
+F.ODBC.Connection!conts.Close
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.MfgInsert.End
+
+Program.Sub.MfgDelete.Start
+F.Intrinsic.Control.Try
+V.Local.sBaseID.Declare
+V.Local.sId.Declare
+V.Local.sSQL.Declare
+V.Local.sRtrSeq.Declare
+V.Local.iCnt.Declare
+V.Local.iCnt2.Declare
+V.Local.sDecID.Declare
+V.Local.sIdent.Declare
+V.Local.sParent.Declare
+V.Local.iRow.Declare
+V.Local.sFilter.Declare
+V.Local.iRowCnt.Declare
+V.Local.iDelCnt.Declare
+V.Local.sDecMFGNote.Declare
+
+V.Local.sBaseID.Set(V.Args.sBaseID.Trim)
+V.Local.sId.Set(V.Args.sIDNum.Trim)
+V.Local.sIdent.Set(V.Args.sIdent.Trim)
+V.Local.sParent.Set(V.Args.sParent.Trim)
+
+F.Intrinsic.Control.If(V.DataTable.dtProtMfg.Exists)
+	F.Data.Datatable.Close("dtProtMfg")
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.DataTable.dtRtrSeq.Exists)
+	F.Data.Datatable.Close("dtRtrSeq")
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.DataTable.dtMFGNotes.Exists)
+	F.Data.Datatable.Close("dtMFGNotes")
+F.Intrinsic.Control.EndIf
+
+F.ODBC.Connection!conts.OpenCompanyConnection(500)
+
+'Collect Labels from CONFIG_OPTIONS to determine router sequences in CONFIG_MFG
+F.Intrinsic.String.Build("Select ID_NUM,IDENTIFIER from CONFIG_OPTIONS where BASE_ID = '{0}' and PARENT_ID = '00000000' order by ID_NUM asc;",V.Local.sBaseID,V.Local.sSQL)
+F.Data.Datatable.CreateFromSQL("dtRtrSeq","conts",V.Local.sSQL)
+F.Data.Datatable.DeleteRow("dtRtrSeq",0)
+
+F.Data.Datatable.AcceptChanges("dtRtrSeq")
+F.Data.Datatable.AddColumn("dtRtrSeq","ROUTER_SEQ","String")
+
+F.Data.Datatable.SetSeries("dtRtrSeq","ROUTER_SEQ",1,1)
+
+F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtRtrSeq.RowCount--,1)
+	V.Local.sRtrSeq.Set(V.DataTable.dtRtrSeq(V.Local.iCnt).ROUTER_SEQ!FieldValTrim)
+	F.Intrinsic.String.LPad(V.Local.sRtrSeq,"0",4,V.Local.sRtrSeq)
+	F.Intrinsic.String.RPad(V.Local.sRtrSeq,"0",6,V.Local.sRtrSeq)
+	F.Data.Datatable.SetValue("dtRtrSeq",V.Local.iCnt,"ROUTER_SEQ",V.Local.sRtrSeq)
+F.Intrinsic.Control.Next(V.Local.iCnt)
+
+V.Local.iCnt.Set(0)
+
+F.Intrinsic.Control.If(V.Local.sParent.Trim,=,"00000000")
+	F.Intrinsic.String.Build("Select * from CONFIG_MFG where BASE_ID = '{0}' and ID_NUM >= '{1}' order by ID_NUM asc;",V.Local.sBaseID,V.Local.sId,V.Local.sSQL)
+	F.Data.Datatable.CreateFromSQL("dtProtMfg","conts",V.Local.sSQL,True)
+	
+	F.Data.Datatable.SaveToDB("dtProtMfg","conts","GCG_6273_CFG_MFG","BASE_ID*!*ID_NUM",128,"")
+	
+	F.Intrinsic.String.Build("Delete CONFIG_MFG where BASE_ID = '{0}' and ID_NUM >= '{1}';",V.Local.sBaseID,V.Local.sId,V.Local.sSQL)
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+		
+	V.Local.iDelCnt.Set(V.Args.iRowCnt)
+	
+	F.Intrinsic.Math.Sub(V.Args.iRowCnt,2,V.Local.iRowCnt)
+	
+	V.Local.iCnt.Set(0)
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.Local.iRowCnt,1)
+		F.Data.Datatable.DeleteRow("dtProtMfg",V.Local.iCnt)
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Data.Datatable.AcceptChanges("dtProtMfg")
+	
+	V.Local.iCnt.Set(0)
+
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtProtMfg.RowCount--,1)
+		V.Local.sDecID.Set(V.DataTable.dtProtMfg(V.Local.iCnt).ID_NUM!FieldValTrim)
+		F.Intrinsic.Math.Sub(V.Local.sDecID,V.Local.iDelCnt,V.Local.sDecID)
+		F.Intrinsic.String.LPad(V.Local.sDecID,"0",8,V.Local.sDecID)
+		F.Data.Datatable.SetValue("dtProtMfg",V.Local.iCnt,"ID_NUM",V.Local.sDecID)
+		
+		F.Intrinsic.Control.For(V.Local.iCnt2,0,V.DataTable.dtRtrSeq.RowCount--,1)
+			V.Local.iRow.Set(V.Local.iCnt2)
+			
+			F.Intrinsic.Control.If(V.Local.iRow,<,V.DataTable.dtRtrSeq.RowCount--)
+				F.Intrinsic.Math.Add(V.Local.iRow,1,V.Local.iRow)
+			F.Intrinsic.Control.EndIf
+			
+			F.Intrinsic.Control.If(V.DataTable.dtProtMfg(V.Local.iCnt).ID_NUM!FieldValTrim,>,V.DataTable.dtRtrSeq(V.Local.iCnt2).ID_NUM!FieldValTrim,"AND",V.DataTable.dtProtMfg(V.Local.iCnt).ID_NUM!FieldValTrim,<,V.DataTable.dtRtrSeq(V.Local.iRow).ID_NUM!FieldValTrim)
+				F.Data.Datatable.SetValue("dtProtMfg",V.Local.iCnt,"ROUTER_SEQUENCE",V.DataTable.dtRtrSeq(V.Local.iCnt2).ROUTER_SEQ!FieldValTrim)
+			F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.Next(V.Local.iCnt2)
+		V.Local.iCnt2.Set(0)
+		
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Data.Datatable.SaveToDB("dtProtMfg","conts","CONFIG_MFG","BASE_ID*!*ID_NUM",128,"")
+	
+	V.Local.iCnt.Set(0)
+
+	F.Intrinsic.String.Build("Select * from MFG_CONFIG_NOTES where BASEID = '{0}' and ID >= '{1}'",V.Local.sBaseID,V.Local.sId,V.Local.sSQL)
+	F.Data.Datatable.CreateFromSQL("dtMFGNotes","conts",V.Local.sSQL)
+	
+	F.Intrinsic.String.Build("Delete MFG_CONFIG_NOTES where BASEID = '{0}' and ID >= '{1}'",V.Local.sBaseID,V.Local.sId,V.Local.sSQL)
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtMFGNotes.RowCount--,1)
+		V.Local.sDecMFGNote.Set(V.DataTable.dtMFGNotes(V.Local.iCnt).ID!FieldValTrim)
+		F.Intrinsic.Math.Sub(V.Local.sDecMFGNote,V.Local.iDelCnt,V.Local.sDecMFGNote)
+		F.Intrinsic.String.LPad(V.Local.sDecMFGNote,"0",8,V.Local.sDecMFGNote)
+		F.Data.DataTable.SetValue("dtMFGNotes",V.Local.iCnt,"ID",V.Local.sDecMFGNote)
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Data.Datatable.SaveToDB("dtMFGNotes","conts","CFG_OPT_NOTES","BASEID*!*ID",128,"")
+	
+F.Intrinsic.Control.Else
+	'Protect original config lines by copying them to temp table GCG_6273_CFG_MFG
+	F.Intrinsic.String.Build("Select * from CONFIG_MFG where BASE_ID = '{0}' and ID_NUM > '{1}' order by ID_NUM asc;",V.Local.sBaseID,V.Local.sId,V.Local.sSQL)
+	F.Data.Datatable.CreateFromSQL("dtProtMfg","conts",V.Local.sSQL,True)
+	
+	F.Data.Datatable.SaveToDB("dtProtMfg","conts","GCG_6273_CFG_MFG","BASE_ID*!*ID_NUM",128,"")
+	
+	F.Intrinsic.String.Build("Delete CONFIG_MFG where BASE_ID = '{0}' and ID_NUM >= '{1}';",V.Local.sBaseID,V.Local.sId,V.Local.sSQL)
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	
+	'Determine ROUTER_SEQUENCE from Parent ID position in CONFIG_OPTIONS table
+	F.Intrinsic.String.Build("select IDENTIFIER from CONFIG_OPTIONS where BASE_ID = '{0}' and ID_NUM = (Select PARENT_ID from CONFIG_OPTIONS where BASE_ID = '{0}' and ID_NUM = '{1}');",V.Local.sBaseID,V.Local.sId,V.Local.sSQL)
+	F.ODBC.Connection!conts.ExecuteAndReturn(V.Local.sSQL,V.Local.sSQL)
+	
+	F.Intrinsic.String.Build("IDENTIFIER = '{0}'",V.Local.sSQL.Trim,V.Local.sSQL)
+	
+	F.Data.DataView.Create("dtRtrSeq","dvRtrSeq",22,V.Local.sSQL,"")
+	
+	V.Local.sRtrSeq.Set(V.DataView.dtRtrSeq!dvRtrSeq(0).ROUTER_SEQ!FieldValTrim)
+	
+	F.Data.DataView.Close("dtRtrSeq","dvRtrSeq")
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtProtMfg.RowCount--,1)
+		V.Local.sDecID.Set(V.DataTable.dtProtMfg(V.Local.iCnt).ID_NUM!FieldValTrim)
+		F.Intrinsic.Math.Sub(V.Local.sDecID,1,V.Local.sDecID)
+		F.Intrinsic.String.LPad(V.Local.sDecID,"0",8,V.Local.sDecID)
+		F.Data.Datatable.SetValue("dtProtMfg",V.Local.iCnt,"ID_NUM",V.Local.sDecID)
+	
+		F.Intrinsic.Control.For(V.Local.iCnt2,0,V.DataTable.dtRtrSeq.RowCount--,1)
+			V.Local.iRow.Set(V.Local.iCnt2)
+			
+			F.Intrinsic.Control.If(V.Local.iRow,<,V.DataTable.dtRtrSeq.RowCount--)
+				F.Intrinsic.Math.Add(V.Local.iRow,1,V.Local.iRow)
+			F.Intrinsic.Control.EndIf
+					
+			F.Intrinsic.Control.If(V.DataTable.dtProtMfg(V.Local.iCnt).ID_NUM!FieldValTrim,>,V.DataTable.dtRtrSeq(V.Local.iCnt2).ID_NUM!FieldValTrim,"AND",V.DataTable.dtProtMfg(V.Local.iCnt).ID_NUM!FieldValTrim,<,V.DataTable.dtRtrSeq(V.Local.iRow).ID_NUM!FieldValTrim)
+				F.Data.Datatable.SetValue("dtProtMfg",V.Local.iCnt,"ROUTER_SEQUENCE",V.DataTable.dtRtrSeq(V.Local.iCnt2).ROUTER_SEQ!FieldValTrim)
+			F.Intrinsic.Control.EndIf
+			
+		F.Intrinsic.Control.Next(V.Local.iCnt2)
+		V.Local.iCnt2.Set(0)
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Data.Datatable.SaveToDB("dtProtMfg","conts","CONFIG_MFG","BASE_ID*!*ID_NUM*!*CFG_SEQUENCE",128,"")
+	
+	V.Local.iCnt.Set(0)
+
+	F.Intrinsic.String.Build("Select * from MFG_CONFIG_NOTES where BASEID = '{0}' and ID >= '{1}'",V.Local.sBaseID,V.Local.sId,V.Local.sSQL)
+	F.Data.Datatable.CreateFromSQL("dtMFGNotes","conts",V.Local.sSQL)
+	
+	F.Intrinsic.String.Build("Delete MFG_CONFIG_NOTES where BASEID = '{0}' and ID >= '{1}'",V.Local.sBaseID,V.Local.sId,V.Local.sSQL)
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtMFGNotes.RowCount--,1)
+		V.Local.sDecMFGNote.Set(V.DataTable.dtMFGNotes(V.Local.iCnt).ID!FieldValTrim)
+		F.Intrinsic.Math.Sub(V.Local.sDecMFGNote,1,V.Local.sDecMFGNote)
+		F.Intrinsic.String.LPad(V.Local.sDecMFGNote,"0",8,V.Local.sDecMFGNote)
+		F.Data.DataTable.SetValue("dtMFGNotes",V.Local.iCnt,"ID",V.Local.sDecMFGNote)
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Data.Datatable.SaveToDB("dtMFGNotes","conts","CFG_OPT_NOTES","BASEID*!*ID",128,"")
+	
+F.Intrinsic.Control.EndIf
+
+F.Data.Datatable.Close("dtMFGNotes")
+F.Data.Datatable.Close("dtRtrSeq")
+F.Data.Datatable.Close("dtProtMfg")
+
+F.ODBC.Connection!conts.Execute("Delete CONFIG_MFG")
+
+F.ODBC.Connection!conts.Close
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.MfgDelete.End
+
+Program.Sub.SetContextMenu.Start
+F.Intrinsic.Control.Try
+
+Gui.frmMain..ContextMenuCreate("ctxC_O")
+Gui.frmMain.GsGcC_O.ContextMenuAttach("ctxC_O")
+Gui.frmMain..ContextMenuAddItem("ctxC_O","Insert new line below",0,"Insert new line below")
+Gui.frmMain..ContextMenuAddItem("ctxC_O","Delete line",0,"Delete line")
+'Gui.frmMain..ContextMenuAddItem("ctxC_O","Copy to other featured parts",0,"Copy to other featured parts")
+'Gui.frmMain..ContextMenuSetItemEventHandler("ctxC_O","Copy to other featured parts","MenuClickCopy")
+Gui.frmMain..ContextMenuSetItemEventHandler("ctxC_O","Insert new line below","MenuClickCopy")
+Gui.frmMain..ContextMenuSetItemEventHandler("ctxC_O","Delete line","MenuClickCopy")
+
+Gui.fmCopy..ContextMenuCreate("ctxCpyFeat")
+Gui.fmCopy.GsGcCpyFeat.ContextMenuAttach("ctxCpyFeat")
+Gui.fmCopy..ContextMenuAddItem("ctxCpyFeat","Select/Deselect All",0,"Select/Deselect All")
+Gui.fmCopy..ContextMenuSetItemEventHandler("ctxCpyFeat","Select/Deselect All","MenuClickCopy")
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.SetContextMenu.End
+
+Program.Sub.MenuClickCopy.Start
+F.Intrinsic.Control.Try
+V.Local.sRow.Declare
+V.Local.sParentID.Declare
+V.Local.sBaseID.Declare
+V.Local.sIDNum.Declare
+V.Local.sIdent.Declare
+V.Local.sFilter.Declare
+V.Local.sSQL.Declare
+
+F.Intrinsic.Control.SelectCase(V.Args.MENUNAME)
+	F.Intrinsic.Control.Case("CTXC_O")
+		F.Intrinsic.Control.If(V.DataTable.dtCpyFeat.Exists)
+			F.Data.Datatable.Close("dtCpyFeat")
+		F.Intrinsic.Control.EndIf
+		
+		Gui.frmMain.GsGcC_O.GetSelectedRows("gvC_O",V.Local.sRow)
+		Gui.frmMain.GsGcC_O.GetRowValues("gvC_O",V.Local.sRow,V.Global.sCpyVal)
+		Gui.frmMain.GsGcC_O.GetCellValueByColumnName("gvC_O","BASE_ID",V.Local.sRow,V.Local.sBaseID)
+		Gui.frmMain.GsGcC_O.GetCellValueByColumnName("gvC_O","PARENT_ID",V.Local.sRow,V.Local.sParentID)
+		Gui.frmMain.GsGcC_O.GetCellValueByColumnName("gvC_O","ID_NUM",V.Local.sRow,V.Local.sIDNum)
+		Gui.frmMain.GsGcC_O.GetCellValueByColumnName("gvC_O","IDENTIFIER",V.Local.sRow,V.Local.sIdent)
+		
+'		F.Intrinsic.Control.If(V.Local.sParentID.Trim,=,"00000000")
+'			F.Intrinsic.Control.ExitSub
+'		F.Intrinsic.Control.EndIf
+			
+		F.Intrinsic.Control.SelectCase(V.Args.ITEMNAME)
+			F.Intrinsic.Control.Case("COPY TO OTHER FEATURED PARTS")
+				F.Intrinsic.String.Build("ID_NUM = '{0}'",V.Local.sParentID,V.Local.sFilter)
+		
+				F.Data.DataView.Create("dtC_O","dvC_OFilt",22,V.Local.sFilter,"")
+				
+				F.ODBC.Connection!conts.OpenCompanyConnection(500)
+				F.Intrinsic.String.Build("Select BASE_ID from CONFIG_OPTIONS where IDENTIFIER = '{0}' and ID_NUM <> '00000000'",V.DataView.dtC_O!dvC_OFilt(0).IDENTIFIER!FieldValTrim,V.Local.sSQL)
+				
+				F.Data.Datatable.CreateFromSQL("dtCpyFeat","conts",V.Local.sSQL,True)
+				F.Data.Datatable.AddColumn("dtCpyFeat","SELECT","Boolean",False)
+				
+				F.ODBC.Connection!conts.Close
+				
+				V.Local.sIdent.Set(V.DataView.dtC_O!dvC_OFilt(0).IDENTIFIER!FieldValTrim)
+				
+				F.Data.DataView.Close("dtC_O","dvC_OFilt")
+				F.Intrinsic.Control.CallSub(CpyFeatGrid,"sIdent",V.Local.sIdent)
+				
+			F.Intrinsic.Control.Case("INSERT NEW LINE BELOW")
+				Gui.frmInsert..ClearGroup(1)
+				F.Intrinsic.Control.CallSub(InsertLine,"sBaseID",V.Local.sBaseID,"sParent",V.Local.sParentID,"sIDNum",V.Local.sIDNum)
+				F.Intrinsic.Control.ExitSub
+			F.Intrinsic.Control.Case("DELETE LINE")
+				F.Intrinsic.Control.CallSub(DeleteLine,"sBaseID",V.Local.sBaseID,"sParent",V.Local.sParentID,"sIDNum",V.Local.sIDNum,"sIdent",V.Local.sIdent)
+				F.Intrinsic.Control.ExitSub
+		F.Intrinsic.Control.EndSelect
+		
+	F.Intrinsic.Control.Case("CTXCPYFEAT")
+		Gui.fmCopy.GsGcCpyFeat.GetGridviewProperty("gvCpyFeat","ActiveFilterString",V.Local.sFilter)
+		F.Intrinsic.Control.CallSub(GridViewFilterToDataViewFilter,"Filter",V.Local.sFilter)
+		F.Data.DataView.Create("dtCpyFeat","dvCpySelFilt",22,V.Args.Filter,"")
+		
+		F.Intrinsic.Control.If(V.Global.bChkAll,=,False)
+			F.Data.DataView.SetValue("dtCpyFeat","dvCpySelFilt",-1,"SELECT", True)
+			V.Global.bChkAll.Set(True)
+		F.Intrinsic.Control.Else
+			F.Data.DataView.SetValue("dtCpyFeat","dvCpySelFilt",-1,"SELECT", False)
+			V.Global.bChkAll.Set(False)
+		F.Intrinsic.Control.EndIf
+		
+		F.Data.DataView.Close("dtCpyFeat","dvCpySelFilt")
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.CaseElse
+		F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndSelect
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.MenuClickCopy.End
+
+Program.Sub.cmdCommit_Click.Start
+F.Intrinsic.Control.Try
+
+F.ODBC.Connection!conts.OpenCompanyConnection(500)
+
+Gui.frmMain.GsGcC_O.Enabled(False)
+
+F.Data.Datatable.AcceptChanges("dtC_O")
+
+F.Data.DataView.Create("dtC_O","dvC_O",22,"CHANGED = 'True'","")
+
+F.Intrinsic.Control.If(V.DataView.dtC_O!dvC_O.RowCount,<>,0)
+	F.Data.DataView.ToDataTable("dtC_O","dvC_O","dtSvC_O")
+	F.Data.Datatable.RemoveColumn("dtSvC_O","DICT_NOTE_FILL")
+	F.Data.Datatable.RemoveColumn("dtSvC_O","RELATIONSHIP")
+	F.Data.Datatable.RemoveColumn("dtSvC_O","NOTES")
+	F.Data.Datatable.RemoveColumn("dtSvC_O","CHANGED")
+
+	F.Intrinsic.Control.If(V.Global.bLongPart)
+		F.Data.Datatable.RemoveColumn("dtSvC_O","L_PART_FRAG")
+	F.Intrinsic.Control.EndIf
+	
+	F.Data.Datatable.SaveToDB("dtSvC_O","conts","CONFIG_OPTIONS","BASE_ID*!*ID_NUM",256)
+	
+	F.Data.Datatable.Close("dtSvC_O")
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Global.bLongPart)
+	F.Intrinsic.Control.If(V.Global.BFeature)
+		F.Data.DataView.ToDataTableDistinct("dtC_O","dvC_O","L_PART_FRAG","IDENTIFIER*!*ID_NUM*!*L_PART_FRAG*!*BASE_ID*!*PARENT_ID")
+		F.Data.DataTable.FillFromDictionary("L_PART_FRAG","dicItem","IDENTIFIER","ID_NUM")
+		F.Data.DataTable.SaveToDB("L_PART_FRAG","conts","GCG_6273_L_PART_FRAG","IDENTIFIER*!*ID_NUM",256,"IDENTIFIER@!@IDENTIFIER*!*ID_NUM@!@ID_NUM*!*L_PART_FRAG@!@L_PART_FRAG*!*BASE_ID@!@BASE_ID*!*PARENT_ID@!@PARENT_ID")
+	F.Intrinsic.Control.Else
+		F.Data.DataView.ToDataTableDistinct("dtC_O","dvC_O","L_PART_FRAG","IDENTIFIER*!*ID_NUM*!*L_PART_FRAG*!*BASE_ID*!*PARENT_ID")
+		F.Data.DataTable.SaveToDB("L_PART_FRAG","conts","GCG_6273_L_PART_FRAG","IDENTIFIER*!*ID_NUM",256,"IDENTIFIER@!@IDENTIFIER*!*ID_NUM@!@ID_NUM*!*L_PART_FRAG@!@L_PART_FRAG*!*BASE_ID@!@BASE_ID*!*PARENT_ID@!@PARENT_ID")
+	F.Intrinsic.Control.EndIf
+	F.Data.DataTable.Close("L_PART_FRAG")
+F.Intrinsic.Control.EndIf
+
+F.Data.DataView.Close("dtC_O","dvC_O")
+
+F.Data.Datatable.SetValue("dtC_O",-1,"CHANGED",False)
+
+Gui.frmMain.GsGcC_O.Enabled(True)
+
+Gui.frmMain.GsGcM_C_O.Enabled(False)
+
+F.Data.Datatable.AcceptChanges("dtM_C_O")
+
+F.Data.DataView.Create("dtM_C_O","dvM_C_O",22,"CHANGED = 'True'","")
+
+F.Intrinsic.Control.If(V.DataView.dtM_C_O!dvM_C_O.RowCount,<>,0)
+	F.Data.DataView.ToDataTable("dtM_C_O","dvM_C_O","dtSvM_C_O")
+	F.Data.Datatable.RemoveColumn("dtSvM_C_O","DICT_NOTE_FILL")
+	F.Data.Datatable.RemoveColumn("dtSvM_C_O","CAT_VIEW")
+	F.Data.Datatable.RemoveColumn("dtSvM_C_O","SOURCE_VIEW") 
+	F.Data.Datatable.RemoveColumn("dtSvM_C_O","LMO_VIEW") 
+	F.Data.Datatable.RemoveColumn("dtSvM_C_O","NOTES")
+	F.Data.Datatable.RemoveColumn("dtSvM_C_O","CHANGED")
+	
+	F.Data.Datatable.SaveToDB("dtSvM_C_O","conts","CONFIG_MFG","BASE_ID*!*ID_NUM",256)
+	
+	F.Data.Datatable.Close("dtSvM_C_O")
+F.Intrinsic.Control.EndIf
+
+F.Data.DataView.Close("dtM_C_O","dvM_C_O")
+
+F.Data.Datatable.SetValue("dtM_C_O",-1,"CHANGED",False)
+
+F.ODBC.Connection!conts.Close
+
+Gui.frmMain.GsGcM_C_O.Enabled(True)
+
+Gui.frmMain.cmdCommit.Visible(False)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdCommit_Click.End
+
+Program.Sub.cmdOK_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sSQL.Declare
+V.Local.sBase.Declare
+V.Local.sID.Declare
+V.Local.sNotes.Declare
+
+V.Local.sBase.Set(V.Screen.frmNotes!txtBase.Text)
+V.Local.sID.Set(V.Screen.frmNotes!txtID.Text)
+V.Local.sNotes.Set(V.Screen.frmNotes!txtNotes.Text)
+
+F.ODBC.Connection!conts.OpenCompanyConnection(500)
+
+F.Intrinsic.Control.If(V.Global.sNoteCap.Trim,=,"Configuration Notes")
+	F.Intrinsic.String.Build("Select * from CFG_OPT_NOTES where RTRIM(BASEID) = '{0}' and RTRIM(ID) = '{1}'",V.Local.sBase.Trim,V.Local.sID.Trim,V.Local.sSQL)
+	F.ODBC.Connection!conts.ExecuteAndReturn(V.Local.sSQL,V.Local.sSQL)
+	F.Intrinsic.Control.If(V.Ambient.ExecuteAndReturnEOF)
+		F.Intrinsic.String.Build("Insert into CFG_OPT_NOTES (BASEID,ID,TEXT) values ('{0}','{1}','{2}')",V.Local.sBase.Trim,V.Local.sID.Trim,V.Local.sNotes,V.Local.sSQL)
+		F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.Control.If(V.Local.sNotes.Trim,=,"")
+			F.Intrinsic.String.Build("Delete CFG_OPT_NOTES where RTRIM(BASEID) = '{0}' and RTRIM(ID) = '{1}'",V.Local.sBase.Trim,V.Local.sID.Trim,V.Local.sSQL)
+			F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+		F.Intrinsic.Control.Else
+			F.Intrinsic.String.Build("Update CFG_OPT_NOTES set TEXT = '{2}' where RTRIM(BASEID) = '{0}' and RTRIM(ID) = '{1}'",V.Local.sBase.Trim,V.Local.sID.Trim,V.Local.sNotes.PSQLFriendly,V.Local.sSQL)
+			F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+	F.Data.Datatable.SetValue("dtC_O",V.Global.iRow,"NOTES",V.Local.sNotes.Trim)
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Build("Select * from MFG_CONFIG_NOTES where RTRIM(BASEID) = '{0}' and RTRIM(ID) = '{1}'",V.Local.sBase.Trim,V.Local.sID.Trim,V.Local.sSQL)
+	F.ODBC.Connection!conts.ExecuteAndReturn(V.Local.sSQL,V.Local.sSQL)
+	F.Intrinsic.Control.If(V.Ambient.ExecuteAndReturnEOF)
+		F.Intrinsic.String.Build("Insert into MFG_CONFIG_NOTES (BASEID,ID,TEXT) values ('{0}','{1}','{2}')",V.Local.sBase.Trim,V.Local.sID.Trim,V.Local.sNotes,V.Local.sSQL)
+		F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.Control.If(V.Local.sNotes.Trim,=,"")
+			F.Intrinsic.String.Build("Delete MFG_CONFIG_NOTES where RTRIM(BASEID) = '{0}' and RTRIM(ID) = '{1}'",V.Local.sBase.Trim,V.Local.sID.Trim,V.Local.sSQL)
+			F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+		F.Intrinsic.Control.Else
+			F.Intrinsic.String.Build("Update MFG_CONFIG_NOTES set TEXT = '{2}' where RTRIM(BASEID) = '{0}' and RTRIM(ID) = '{1}'",V.Local.sBase.Trim,V.Local.sID.Trim,V.Local.sNotes.PSQLFriendly,V.Local.sSQL)
+			F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+	F.Data.Datatable.SetValue("dtM_C_O",V.Global.iRow,"NOTES",V.Local.sNotes.Trim)
+F.Intrinsic.Control.EndIf
+
+F.ODBC.Connection!conts.Close
+
+Gui.frmNotes..Visible(False)
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdOK_Click.End
+
+Program.Sub.cmdCopy_Click.Start
+F.Intrinsic.Control.Try
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdCopy_Click.End
+
+Program.Sub.cmdInsert_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sBaseID.Declare
+V.Local.sNewId.Declare
+V.Local.sIDType.Declare
+V.Local.sID.Declare
+V.Local.sIDent.Declare
+V.Local.sParent.Declare
+V.Local.sRel.Declare
+V.Local.iRule.Declare
+V.Local.sDisp.Declare
+V.Local.fQty.Declare
+V.Local.fMxQty.Declare
+V.Local.fWgt.Declare
+V.Local.sPL.Declare
+V.Local.iPrtStrt.Declare
+V.Local.iDescStrt.Declare
+V.Local.sPrtFrg.Declare
+V.Local.sDescFrg.Declare
+V.Local.bDetPl.Declare
+V.Local.bExDisc.Declare
+V.Local.bDflt.Declare
+V.Local.bActive.Declare
+V.Local.sDetPl.Declare
+V.Local.sExDisc.Declare
+V.Local.sDflt.Declare
+V.Local.sActive.Declare
+V.Local.sSQL.Declare
+V.Local.iCnt.Declare
+V.Local.sIncID.Declare
+V.Local.sIncParent.Declare
+V.Local.iRet.Declare
+V.Local.sFilter.Declare
+V.Local.sIncNote.Declare
+V.Local.sIncRule.Declare
+V.Local.sIncRuleRel.Declare
+V.Local.sIncPrice.Declare
+
+F.Intrinsic.Control.If(V.Screen.frmInsert!txtQty.Text.IsNumeric)
+	V.Local.fQty.Set(V.Screen.frmInsert!txtQty.Text)
+F.Intrinsic.Control.Else
+	Gui.frmInsert..AlwaysOnTop(False)
+	F.Intrinsic.UI.Msgbox("Please enter a numeric value for Quantity")
+	Gui.frmInsert..AlwaysOnTop(True)
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Screen.frmInsert!txtMaxQty.Text.IsNumeric)
+	V.Local.fMxQty.Set(V.Screen.frmInsert!txtMaxQty.Text)
+F.Intrinsic.Control.Else
+	Gui.frmInsert..AlwaysOnTop(False)
+	F.Intrinsic.UI.Msgbox("Please enter a numeric value for Max Quantity")
+	Gui.frmInsert..AlwaysOnTop(True)
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Screen.frmInsert!txtWgt.Text.IsNumeric)
+	V.Local.fWgt.Set(V.Screen.frmInsert!txtWgt.Text)
+F.Intrinsic.Control.Else
+	Gui.frmInsert..AlwaysOnTop(False)
+	F.Intrinsic.UI.Msgbox("Please enter a numeric value for Weight")
+	Gui.frmInsert..AlwaysOnTop(True)
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Screen.frmInsert!txtPrtSrtPos.Text.IsNumeric)
+	V.Local.iPrtStrt.Set(V.Screen.frmInsert!txtPrtSrtPos.Text)
+F.Intrinsic.Control.Else
+	Gui.frmInsert..AlwaysOnTop(False)
+	F.Intrinsic.UI.Msgbox("Please enter a numeric value for Part Start Pos")
+	Gui.frmInsert..AlwaysOnTop(True)
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Screen.frmInsert!txtDescStrtPos.Text.IsNumeric)
+	V.Local.iDescStrt.Set(V.Screen.frmInsert!txtWgt.Text)
+F.Intrinsic.Control.Else
+	Gui.frmInsert..AlwaysOnTop(False)
+	F.Intrinsic.UI.Msgbox("Please enter a numeric value for Desc Start Pos")
+	Gui.frmInsert..AlwaysOnTop(True)
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+V.Local.sBaseID.Set(V.Screen.frmInsert!txtBase_ID.Text.Trim)
+V.Local.sNewID.Set(V.Screen.frmInsert!txtNewID.Text.Trim)
+V.Local.sIDent.Set(V.Screen.frmInsert!txtIDent.Text.Trim)
+V.Local.sParent.Set(V.Screen.frmInsert!txtParent.Text.Trim)
+V.Local.sDisp.Set(V.Screen.frmInsert!txtDisp.Text.Trim)
+V.Local.sPL.Set(V.Screen.frmInsert!txtPL.Text.Trim)
+V.Local.sPrtFrg.Set(V.Screen.frmInsert!txtPNFrag.Text.Trim)
+V.Local.sDescFrg.Set(V.Screen.frmInsert!txtDesc.Text.Trim)
+V.Local.bDetPl.Set(V.Screen.frmInsert!chkDetPL.Value)
+V.Local.bExDisc.Set(V.Screen.frmInsert!chkExDisc.Value)
+V.Local.bDflt.Set(V.Screen.frmInsert!chkDflt.Value)
+V.Local.bActive.Set(V.Screen.frmInsert!chkActive.Value)
+
+F.Intrinsic.Control.If(V.Local.sPL.Trim,=,"")
+	F.Intrinsic.UI.Msgbox("Please select a Product Line","Error!")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.SelectCase(V.Screen.frmInsert!cboIDType.Text.Trim)
+	F.Intrinsic.Control.Case("P - Part")
+		V.Local.sIDType.Set("P")
+	F.Intrinsic.Control.Case("L - Label")
+		V.Local.sIDType.Set("L")
+F.Intrinsic.Control.EndSelect
+
+F.Intrinsic.Control.SelectCase(V.Screen.frmInsert!cboRel.Text.Trim)
+	F.Intrinsic.Control.Case("")
+		V.Local.iRule.Set(0)
+	F.Intrinsic.Control.Case("Required")
+		V.Local.iRule.Set(1)
+	F.Intrinsic.Control.Case("Optional")
+		V.Local.iRule.Set(2)
+	F.Intrinsic.Control.Case("Group Req'd Single")
+		V.Local.iRule.Set(3)
+	F.Intrinsic.Control.Case("Group Req'd Multi")
+		V.Local.iRule.Set(4)
+	F.Intrinsic.Control.Case("Group Optnl - Single")
+		V.Local.iRule.Set(5)
+	F.Intrinsic.Control.Case("Group Optnl - Multi")
+		V.Local.iRule.Set(6)
+F.Intrinsic.Control.EndSelect
+
+F.Intrinsic.Control.If(V.Local.bActive,=,False)
+	V.Local.sActive.Set("N")
+F.Intrinsic.Control.Else
+	V.Local.sActive.Set("Y")
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Local.bDetPl,=,False)
+	V.Local.sDetPl.Set("N")
+F.Intrinsic.Control.Else
+	V.Local.sDetPl.Set("Y")
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Local.bDflt,=,False)
+	V.Local.sDflt.Set("N")
+F.Intrinsic.Control.Else
+	V.Local.sDflt.Set("Y")
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Local.bExDisc,=,False)
+	V.Local.sExDisc.Set("N")
+F.Intrinsic.Control.Else
+	V.Local.sExDisc.Set("Y")
+F.Intrinsic.Control.EndIf
+
+F.ODBC.Connection!conts.OpenCompanyConnection(500)
+
+Gui.frmMain.GsGcBase.Enabled(False)
+
+F.Intrinsic.Control.If(V.Screen.frmInsert!txtIDent.Text.Trim,=,"")
+	Gui.frmInsert..AlwaysOnTop(False)
+	F.Intrinsic.UI.Msgbox("Please select an identifier","Error")
+	Gui.frmInsert..AlwaysOnTop(True)
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Else
+	F.Intrinsic.Control.If(V.Local.sIDType.Trim,=,"P - Part")
+		F.Intrinsic.String.Build("Select PART from V_INVENTORY_MSTR where PART = '{0}'",V.Local.sIDent.Trim,V.Local.sSQL)
+		F.ODBC.Connection!conts.ExecuteAndReturn(V.Local.sSQL,V.Local.sSQL)
+		F.Intrinsic.Control.If(V.Local.sSQL.Trim,=,"")
+			Gui.frmInsert..AlwaysOnTop(False)
+			F.Intrinsic.UI.Msgbox("Identifier not in inventory.  Please select an inventory part.")
+			Gui.frmInsert..AlwaysOnTop(True)
+			F.ODBC.Connection!conts.Close
+			F.Intrinsic.Control.ExitSub
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.ElseIf(V.Local.sIDType.Trim,=,"L - Label")
+		F.Intrinsic.String.Build("Select BASE_ID from CONFIG_OPTIONS where BASE_ID = '{0}'",V.Local.sIDent,V.Local.sSQL)
+		F.ODBC.Connection!conts.ExecuteAndReturn(V.Local.sSQL,V.Local.sSQL)
+		F.Intrinsic.Control.If(V.Local.sSQL.Trim,=,"")
+			Gui.frmInsert..AlwaysOnTop(False)
+			F.Intrinsic.UI.Msgbox("Identifier not in Configurator.  Please select an existing Configurator label.")
+			Gui.frmInsert..AlwaysOnTop(True)
+			F.ODBC.Connection!conts.Close
+			F.Intrinsic.Control.ExitSub			
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.DataTable.dtProtCfg.Exists)
+	F.Data.Datatable.Close("dtProtCfg")
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Local.sIDType,=,"P")
+	'Protect original config lines by copying them to temp table GCG_6273_CFG_OPT
+	F.Intrinsic.String.Build("Select * from CONFIG_OPTIONS where BASE_ID = '{0}' and ID_NUM >= '{1}' order by ID_NUM asc;",V.Local.sBaseID,V.Local.sNewId,V.Local.sSQL)
+	F.Data.Datatable.CreateFromSQL("dtProtCfg","conts",V.Local.sSQL,True)
+	
+	F.Data.Datatable.SaveToDB("dtProtCfg","conts","GCG_6273_CFG_OPT","BASE_ID*!*ID_NUM",128,"")
+	
+	F.Intrinsic.String.Build("Select * from CFG_OPT_NOTES where BASEID = '{0}' and ID >= '{1}'",V.Local.sBaseID,V.Local.sNewId,V.Local.sSQL)
+	F.Data.Datatable.CreateFromSQL("dtNotes","conts",V.Local.sSQL)
+	
+	F.Intrinsic.String.Build("Delete CFG_OPT_NOTES where BASEID = '{0}' and ID >= '{1}'",V.Local.sBaseID,V.Local.sNewId,V.Local.sSQL)
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtNotes.RowCount--,1)
+		V.Local.sIncNote.Set(V.DataTable.dtNotes(V.Local.iCnt).ID!FieldValTrim)
+		F.Intrinsic.Math.Add(V.Local.sIncNote,1,V.Local.sIncNote)
+		F.Intrinsic.String.LPad(V.Local.sIncNote,"0",8,V.Local.sIncNote)
+		F.Data.DataTable.SetValue("dtNotes",V.Local.iCnt,"ID",V.Local.sIncNote)
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Data.Datatable.SaveToDB("dtNotes","conts","CFG_OPT_NOTES","BASEID*!*ID",128,"")
+	
+	F.Data.Datatable.Close("dtNotes")
+	
+	F.Intrinsic.String.Build("Select * from CONFIG_RULES where BASE_ID = '{0}'",V.Local.sBaseID,V.Local.sSQL)
+	F.Data.Datatable.CreateFromSQL("dtRules","conts",V.Local.sSQL)
+	
+	F.Intrinsic.String.Build("Delete CONFIG_RULES where BASE_ID = '{0}'",V.Local.sBaseID,V.Local.sSQL)
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtRules.RowCount--,1)
+		V.Local.sIncRule.Set(V.DataTable.dtRules(V.Local.iCnt).ID_NUM!FieldValTrim)
+		F.Intrinsic.Control.If(V.Local.sIncRule,>=,V.Local.sNewId)
+			F.Intrinsic.Math.Add(V.Local.sIncRule,1,V.Local.sIncRule)
+			F.Intrinsic.String.LPad(V.Local.sIncRule,"0",8,V.Local.sIncRule)
+			F.Data.DataTable.SetValue("dtRules",V.Local.iCnt,"ID_NUM",V.Local.sIncRule)
+		F.Intrinsic.Control.EndIf
+				
+		V.Local.sIncRuleRel.Set(V.DataTable.dtRules(V.Local.iCnt).RELATED_ID!FieldValTrim)
+		F.Intrinsic.Control.If(V.Local.sIncRuleRel,>=,V.Local.sNewId)
+			F.Intrinsic.Math.Add(V.Local.sIncRuleRel,1,V.Local.sIncRuleRel)
+			F.Intrinsic.String.LPad(V.Local.sIncRuleRel,"0",8,V.Local.sIncRuleRel)
+			F.Data.DataTable.SetValue("dtRules",V.Local.iCnt,"RELATED_ID",V.Local.sIncRuleRel)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Data.Datatable.SaveToDB("dtRules","conts","CONFIG_RULES","BASE_ID*!*ID_NUM",128,"")
+	
+	F.Data.Datatable.Close("dtRules")
+	'Update pricing tables
+	F.Intrinsic.String.Build("Select * from CFG_PRICE_LN where BASEID = '{0}'",V.Local.sBaseID,V.Local.sSQL)
+	F.Data.Datatable.CreateFromSQL("dtPrice","conts",V.Local.sSQL)
+	
+	F.Intrinsic.String.Build("Delete CFG_PRICE_LN where BASEID = '{0}'",V.Local.sBaseID,V.Local.sSQL)
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtPrice.RowCount--,1)
+		V.Local.sIncPrice.Set(V.DataTable.dtPrice(V.Local.iCnt).F_ID!FieldValTrim)
+		F.Intrinsic.Control.If(V.Local.sIncPrice,>=,V.Local.sNewId)
+			F.Intrinsic.Math.Add(V.Local.sIncPrice,1,V.Local.sIncPrice)
+			F.Data.DataTable.SetValue("dtPrice",V.Local.iCnt,"F_ID",V.Local.sIncPrice)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Data.Datatable.SaveToDB("dtPrice","conts","CFG_PRICE_LN","BASEID",128,"")
+	
+	F.Data.Datatable.Close("dtPrice")
+		
+	F.Intrinsic.String.Build("Delete CONFIG_OPTIONS where BASE_ID = '{0}' and ID_NUM >= '{1}';",V.Local.sBaseID,V.Local.sNewId,V.Local.sSQL)
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtProtCfg.RowCount--,1)
+		V.Local.sIncID.Set(V.DataTable.dtProtCfg(V.Local.iCnt).ID_NUM!FieldValTrim)
+		F.Intrinsic.Math.Add(V.Local.sIncID,1,V.Local.sIncID)
+		F.Intrinsic.String.LPad(V.Local.sIncID,"0",8,V.Local.sIncID)
+		F.Data.Datatable.SetValue("dtProtCfg",V.Local.iCnt,"ID_NUM",V.Local.sIncID)
+		
+		V.Local.sIncParent.Set(V.DataTable.dtProtCfg(V.Local.iCnt).PARENT_ID!FieldValTrim)
+		F.Intrinsic.Control.If(V.DataTable.dtProtCfg(V.Local.iCnt).PARENT_ID!FieldValTrim,>=,V.Local.sNewId)
+			F.Intrinsic.Math.Add(V.Local.sIncParent,1,V.Local.sIncParent)
+			F.Intrinsic.String.LPad(V.Local.sIncParent,"0",8,V.Local.sIncParent)
+			F.Data.Datatable.SetValue("dtProtCfg",V.Local.iCnt,"PARENT_ID",V.Local.sIncParent)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Intrinsic.String.Build("Insert into CONFIG_OPTIONS (BASE_ID,ID_NUM,IDENTIFIER,IDENT_TYPE,PARENT_ID,RULE,PART_FRAG,PART_FRAG_POSITION,DESC_FRAG,DESC_FRAG_POS,LABEL,QUANTITY,MAX_QUANTITY,FLAG_DEFAULT,FLAG_ACTIVE,FLAG_FEATURE_PART,WEIGHT,PRODUCT_LINE,DETERMINES_PL,EXCL_DISC) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}','{19}')",V.Local.sBaseID.Trim,V.Local.sNewId,V.Local.sIDent.Trim,V.Local.sIDType,V.Local.sParent.Trim,V.Local.iRule,V.Local.sPrtFrg.Trim,V.Local.iPrtStrt,V.Local.sDescFrg,V.Local.iDescStrt,V.Local.sDisp.Trim,V.Local.fQty,V.Local.fMxQty,V.Local.sDflt,V.Local.sActive,"Y",V.Local.fWgt,V.Local.sPL.Trim,V.Local.sDetPl,V.Local.sExDisc,V.Local.sSQL)
+	
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	
+	F.Data.Datatable.SaveToDB("dtProtCfg","conts","CONFIG_OPTIONS","BASE_ID*!*ID_NUM",128,"")
+	
+F.Intrinsic.Control.ElseIf(V.Local.sIDType,=,"L")
+	F.Intrinsic.String.Build("Select Top 1 ID_NUM from CONFIG_OPTIONS where BASE_ID = '{0}' and PARENT_ID = '{1}' order by ID_NUM desc;",V.Local.sBaseID,V.Local.sParent,V.Local.sNewId)
+	F.ODBC.Connection!conts.ExecuteAndReturn(V.Local.sNewId,V.Local.sNewId)
+	F.Intrinsic.Math.Add(V.Local.sNewId,1,V.Local.sNewId)
+	F.Intrinsic.String.LPad(V.Local.sNewId,"0",8,V.Local.sNewId)
+	
+	F.Intrinsic.String.Build("Create new Parent at line {0}?",V.Local.sNewId,V.Local.sSQL)
+	F.Intrinsic.UI.Msgbox(V.Local.sSQL,"Warning",4,V.Local.iRet)
+	
+	F.Intrinsic.Control.If(V.Local.iRet,=,7)
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.String.Build("Select * from CFG_OPT_NOTES where BASEID = '{0}' and ID >= '{1}'",V.Local.sBaseID,V.Local.sNewId,V.Local.sSQL)
+	F.Data.Datatable.CreateFromSQL("dtNotes","conts",V.Local.sSQL)
+	
+	F.Intrinsic.String.Build("Delete CFG_OPT_NOTES where BASEID = '{0}' and ID >= '{1}'",V.Local.sBaseID,V.Local.sNewId,V.Local.sSQL)
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtNotes.RowCount--,1)
+		V.Local.sIncNote.Set(V.DataTable.dtNotes(V.Local.iCnt).ID!FieldValTrim)
+		F.Intrinsic.Math.Add(V.Local.sIncNote,1,V.Local.sIncNote)
+		F.Intrinsic.String.LPad(V.Local.sIncNote,"0",8,V.Local.sIncNote)
+		F.Data.DataTable.SetValue("dtNotes",V.Local.iCnt,"ID",V.Local.sIncNote)
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Data.Datatable.SaveToDB("dtNotes","conts","CFG_OPT_NOTES","BASEID*!*ID",128,"")
+	
+	F.Data.Datatable.Close("dtNotes")
+	
+	F.Intrinsic.String.Build("Select * from CONFIG_RULES where BASE_ID = '{0}'",V.Local.sBaseID,V.Local.sSQL)
+	F.Data.Datatable.CreateFromSQL("dtRules","conts",V.Local.sSQL)
+	
+	F.Intrinsic.String.Build("Delete CONFIG_RULES where BASE_ID = '{0}'",V.Local.sBaseID,V.Local.sSQL)
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtRules.RowCount--,1)
+		V.Local.sIncRule.Set(V.DataTable.dtRules(V.Local.iCnt).ID_NUM!FieldValTrim)
+		F.Intrinsic.Control.If(V.Local.sIncRule,>=,V.Local.sNewId)
+			F.Intrinsic.Math.Add(V.Local.sIncRule,1,V.Local.sIncRule)
+			F.Intrinsic.String.LPad(V.Local.sIncRule,"0",8,V.Local.sIncRule)
+			F.Data.DataTable.SetValue("dtRules",V.Local.iCnt,"ID_NUM",V.Local.sIncRule)
+		F.Intrinsic.Control.EndIf
+				
+		V.Local.sIncRuleRel.Set(V.DataTable.dtRules(V.Local.iCnt).RELATED_ID!FieldValTrim)
+		F.Intrinsic.Control.If(V.Local.sIncRuleRel,>=,V.Local.sNewId)
+			F.Intrinsic.Math.Add(V.Local.sIncRuleRel,1,V.Local.sIncRuleRel)
+			F.Intrinsic.String.LPad(V.Local.sIncRuleRel,"0",8,V.Local.sIncRuleRel)
+			F.Data.DataTable.SetValue("dtRules",V.Local.iCnt,"RELATED_ID",V.Local.sIncRuleRel)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Data.Datatable.SaveToDB("dtRules","conts","CONFIG_RULES","BASE_ID*!*ID_NUM",128,"")
+	
+	F.Data.Datatable.Close("dtRules")
+	
+	'Update pricing tables
+	F.Intrinsic.String.Build("Select * from CFG_PRICE_LN where BASEID = '{0}'",V.Local.sBaseID,V.Local.sSQL)
+	F.Data.Datatable.CreateFromSQL("dtPrice","conts",V.Local.sSQL)
+	
+	F.Intrinsic.String.Build("Delete CFG_PRICE_LN where BASEID = '{0}'",V.Local.sBaseID,V.Local.sSQL)
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtPrice.RowCount--,1)
+		V.Local.sIncPrice.Set(V.DataTable.dtPrice(V.Local.iCnt).F_ID!FieldValTrim)
+		F.Intrinsic.Control.If(V.Local.sIncPrice,>=,V.Local.sNewId)
+			F.Intrinsic.Math.Add(V.Local.sIncPrice,1,V.Local.sIncPrice)
+			F.Data.DataTable.SetValue("dtPrice",V.Local.iCnt,"F_ID",V.Local.sIncPrice)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Data.Datatable.SaveToDB("dtPrice","conts","CFG_PRICE_LN","BASEID",128,"")
+	
+	F.Data.Datatable.Close("dtPrice")
+	
+	'Protect original config lines by copying them to temp table GCG_6273_CFG_OPT
+	F.Intrinsic.String.Build("Select * from CONFIG_OPTIONS where BASE_ID = '{0}' and ID_NUM >= '{1}' order by ID_NUM asc;",V.Local.sBaseID,V.Local.sNewId,V.Local.sSQL)
+	F.Data.Datatable.CreateFromSQL("dtProtCfg","conts",V.Local.sSQL,True)
+	
+	F.Data.Datatable.SaveToDB("dtProtCfg","conts","GCG_6273_CFG_OPT","BASE_ID*!*ID_NUM",128,"")
+	
+	F.Intrinsic.String.Build("Delete CONFIG_OPTIONS where BASE_ID = '{0}' and ID_NUM >= '{1}';",V.Local.sBaseID,V.Local.sNewId,V.Local.sSQL)
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtProtCfg.RowCount--,1)
+	
+		V.Local.sIncID.Set(V.DataTable.dtProtCfg(V.Local.iCnt).ID_NUM!FieldValTrim)
+		F.Intrinsic.Math.Add(V.Local.sIncID,1,V.Local.sIncID)
+		F.Intrinsic.String.LPad(V.Local.sIncID,"0",8,V.Local.sIncID)
+		F.Data.Datatable.SetValue("dtProtCfg",V.Local.iCnt,"ID_NUM",V.Local.sIncID)
+		
+		V.Local.sIncParent.Set(V.DataTable.dtProtCfg(V.Local.iCnt).PARENT_ID!FieldValTrim)
+		F.Intrinsic.Control.If(V.DataTable.dtProtCfg(V.Local.iCnt).PARENT_ID!FieldValTrim,>=,V.Local.sNewId)
+			F.Intrinsic.Math.Add(V.Local.sIncParent,1,V.Local.sIncParent)
+			F.Intrinsic.String.LPad(V.Local.sIncParent,"0",8,V.Local.sIncParent)
+			F.Data.Datatable.SetValue("dtProtCfg",V.Local.iCnt,"PARENT_ID",V.Local.sIncParent)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Intrinsic.String.Build("Insert into CONFIG_OPTIONS (BASE_ID,ID_NUM,IDENTIFIER,IDENT_TYPE,PARENT_ID,RULE,PART_FRAG,PART_FRAG_POSITION,DESC_FRAG,DESC_FRAG_POS,LABEL,QUANTITY,MAX_QUANTITY,FLAG_DEFAULT,FLAG_ACTIVE,FLAG_FEATURE_PART,WEIGHT,PRODUCT_LINE,DETERMINES_PL,EXCL_DISC) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}','{19}')",V.Local.sBaseID.Trim,V.Local.sNewId,V.Local.sIDent.Trim,V.Local.sIDType,"00000000",V.Local.iRule,V.Local.sPrtFrg.Trim,V.Local.iPrtStrt,V.Local.sDescFrg,V.Local.iDescStrt,V.Local.sDisp.Trim,V.Local.fQty,V.Local.fMxQty,V.Local.sDflt,V.Local.sActive,"Y",V.Local.fWgt,V.Local.sPL.Trim,V.Local.sDetPl,V.Local.sExDisc,V.Local.sSQL)
+	
+	F.ODBC.Connection!conts.Execute(V.Local.sSQL)
+	
+	F.Data.Datatable.SaveToDB("dtProtCfg","conts","CONFIG_OPTIONS","BASE_ID*!*ID_NUM",128,"")
+	
+F.Intrinsic.Control.Else
+	F.Intrinsic.UI.Msgbox("Please select an Ident Type","Error")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.String.Build("Select BASE_ID,ID_NUM from CONFIG_OPTIONS where BASE_ID = '{0}' and ID_NUM = '{1}'",V.Local.sBaseID,V.Local.sNewId,V.Local.sSQL)
+F.ODBC.Connection!conts.ExecuteAndReturn(V.Local.sSQL,V.Local.sSQL)
+
+F.Intrinsic.Control.If(V.Local.sSQL.Trim,=,"")
+	F.Intrinsic.UI.Msgbox("Please stop and contact Global Shop Support.","Error renumbering IDs!")
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndIf
+
+F.ODBC.Connection!conts.Execute("Delete GCG_6273_CFG_OPT")
+
+F.Data.Datatable.Close("dtProtCfg")
+
+F.ODBC.Connection!conts.Close
+
+Gui.frmMain.GsGcBase.Enabled(True)
+
+F.Intrinsic.Control.CallSub(MfgInsert,"sNewId",V.Local.sNewId)
+
+Gui.frmInsert..Visible(False)
+
+F.Intrinsic.Control.CallSub(C_O_Data)
+
+F.Intrinsic.Control.CallSub(M_C_O_Data)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdInsert_Click.End
+
+Program.Sub.cmdIDBrw_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sRet.Declare
+
+F.Intrinsic.Control.If(V.Screen.frmInsert!cboIDType.Text,=,"P - Part")
+	F.Intrinsic.UI.Browser(105,"",V.Local.sRet)
+		F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+			F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+			gui.frmInsert.txtIDent.Text(V.Local.sRet(0).Trim)
+			Gui.frmInsert.txtDisp.Text(V.Local.sRet(2).Trim)
+		F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.ElseIf(V.Screen.frmInsert!cboIDType.Text,=,"L - Label")
+	F.ODBC.Connection!conts.OpenCompanyConnection(500)
+	F.Intrinsic.UI.Browser("Select Base ID","conts","Select RTRIM(BASE_ID) as BASE_ID,ID_NUM,LABEL,FLAG_FEATURE_PART,FLAG_ACTIVE from CONFIG_OPTIONS where FLAG_VISIBLE = 'Y' order by BASE_ID","Base Id*!*ID*!*Label*!*Feature Part*!*Active","100*!*100*!*100*!*100*!*100",10000,10000,V.Local.sRet)
+		F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+			F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+			gui.frmInsert.txtIDent.Text(V.Local.sRet(0).Trim)
+			Gui.frmInsert.txtDisp.Text(V.Local.sRet(2).Trim)
+		F.Intrinsic.Control.EndIf
+		F.ODBC.Connection!conts.Close
+		F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Else
+	F.Intrinsic.UI.Msgbox("Please select an Ident Type.")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdIDBrw_Click.End
+
+Program.Sub.cmdPLBrw_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sRet.Declare
+
+F.Intrinsic.UI.Browser(130,"",V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.frmInsert.txtPL.Text(V.Local.sRet(0).Trim)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdPLBrw_Click.End
+
+Program.Sub.SetIcon.Start
+F.Intrinsic.Control.Try
+V.Local.sForm.Declare
+V.Local.bExists.Declare
+V.Local.sIcon.Declare
+V.Local.iCounter.Declare
+V.Local.sGssLogo.Declare
+V.Local.sRet.Declare
+
+F.Intrinsic.String.Build("{0}\ART\gss2.ico",V.Caller.GlobalDir,v.Local.sIcon)
+F.Intrinsic.File.Exists(V.Local.sIcon, V.Local.bExists)
+F.Intrinsic.Control.If(V.Local.bExists.Not)
+    F.Intrinsic.String.Build("{0}\GAB\GAS\gss2.ico",V.Caller.PluginsDir,v.Local.sIcon)
+    F.Intrinsic.File.Exists(V.Local.sIcon, V.Local.bExists)
+    F.Intrinsic.Control.If(V.Local.bExists.Not)
+        F.Intrinsic.Control.ExitSub
+    F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.String.Build("{0}\ART\GAB_GSS_Logo_Green_Dash.png",V.Caller.GlobalDir,V.Local.sGssLogo)
+F.Intrinsic.File.Exists(V.Local.sGssLogo, V.Local.bExists)
+F.Intrinsic.Control.If(V.Local.bExists.Not)
+    F.Intrinsic.String.Build("{0}\GAB\GAS\gss2.ico",V.Caller.PluginsDir,v.Local.sGssLogo)
+    F.Intrinsic.File.Exists(V.Local.sGssLogo, V.Local.bExists)
+    F.Intrinsic.Control.If(V.Local.bExists.Not)
+        F.Intrinsic.Control.ExitSub
+    F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+Gui.frmMain.picGSSLogo.Picture(V.Local.sGssLogo)
+
+F.Intrinsic.UI.GetFormList(V.Local.sForm)
+F.Intrinsic.String.Split(V.Local.sForm, "*!*", V.Local.sForm)
+
+F.Intrinsic.Control.For(V.Local.iCounter, 0, V.Local.sForm.UBound, 1)
+    Gui.[V.Local.sForm(V.Local.iCounter)]..Icon(V.Local.sIcon)
+F.Intrinsic.Control.Next(V.Local.iCounter)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.SetIcon.End
+
+Program.Sub.picGSSLogo_DblClick.Start
+F.Intrinsic.Control.Try
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.picGSSLogo_DblClick.End
+
+Program.Sub.GridViewFilterToDataViewFilter.Start
+F.Intrinsic.Control.Try
+'Thanks Trey!
+'this sub is for converting the active filter string of a gridview into a dataview friendly version
+'FILTER	-	The Active Filter String
+'will return FILTER
+
+'valid operators: =, >, <, >=, <=, <>, in, is null, not, like
+
+V.Local.sFilter.Declare(String)
+V.Local.sRet.Declare(String)
+V.Local.iCounter.Declare(Long)
+V.Local.sFields.Declare(String)
+V.Local.sTemp.Declare(String)
+V.Local.sTemp2.Declare(String)
+V.Local.sFindString.Declare(String)
+V.Local.sReplaceString.Declare(String)
+V.Local.sValues.Declare(String)
+V.Local.sValueReturn.Declare(String)
+V.Local.sFieldReturn.Declare(String)
+V.Local.sValueRegEx.Declare(String, "\'[^']*\'")
+V.Local.sFieldRegEx.Declare(String, "\[[A-Za-z0-9_-]+\]")
+V.Local.sNumberRegEx.Declare(String, "-?[0-9]+(\.[0-9]+)?")
+V.Local.sRegEx.Declare(String)
+V.Local.sMatch.Declare(String)
+V.Local.ilength.Declare(Long)
+V.Local.sValueReturn2.Declare(String)
+
+V.Local.sFilter.Set(V.Args.Filter)
+
+'fix all IsNullOrEmpty
+F.Intrinsic.String.Build("IsNullOrEmpty\({0}\)", V.Local.sFieldRegEx, V.Local.sRegEx)
+F.Intrinsic.String.RegExMatch(V.Local.sFilter, V.Local.sRegEx, True, V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet.Trim, !=, "")
+	F.Intrinsic.String.Split(V.Local.sRet, "@!@", V.Local.sRet)
+	F.Intrinsic.Control.For(V.Local.iCounter, 0, V.Local.sRet.UBound, 1)
+		
+		'get match
+		F.Intrinsic.String.Split(V.Local.sRet(V.Local.iCounter), "*!*", V.Local.sTemp)
+		V.Local.sMatch.Set(V.Local.sTemp(1))
+		
+		'get the field, only one
+		F.Intrinsic.String.RegExMatch(V.Local.sMatch, V.Local.sFieldRegEx, True, V.Local.sTemp)
+		F.Intrinsic.String.Split(V.Local.sTemp, "*!*", V.Local.sTemp)
+		V.Local.sFieldReturn.Set(V.Local.sTemp(1))
+		
+		'Replace
+		F.Intrinsic.String.Build("({0} is Null or {0} = '')", V.Local.sFieldReturn, V.Local.sReplaceString)
+		F.Intrinsic.String.Replace(V.Local.sFilter, V.Local.sMatch, V.Local.sReplaceString, V.Local.sFilter)
+	F.Intrinsic.Control.Next(V.Local.iCounter)
+F.Intrinsic.Control.EndIf
+
+'fix all StartsWith
+F.Intrinsic.String.Build("StartsWith\({0},\s*{1}\)", V.Local.sFieldRegEx, V.Local.sValueRegEx, V.Local.sRegEx)
+F.Intrinsic.String.RegExMatch(V.Local.sFilter, V.Local.sRegEx, True, V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet.Trim, !=, "")
+	F.Intrinsic.String.Split(V.Local.sRet, "@!@", V.Local.sRet)
+	F.Intrinsic.Control.For(V.Local.iCounter, 0, V.Local.sRet.UBound, 1)
+		
+		'get match
+		F.Intrinsic.String.Split(V.Local.sRet(V.Local.iCounter), "*!*", V.Local.sTemp)
+		V.Local.sMatch.Set(V.Local.sTemp(1))
+		
+		'get the field, only one
+		F.Intrinsic.String.RegExMatch(V.Local.sMatch, V.Local.sFieldRegEx, True, V.Local.sTemp)
+		F.Intrinsic.String.Split(V.Local.sTemp, "*!*", V.Local.sTemp)
+		V.Local.sFieldReturn.Set(V.Local.sTemp(1))
+		
+		'get the value, only one
+		F.Intrinsic.String.RegExMatch(V.Local.sMatch, V.Local.sValueRegEx, True, V.Local.sTemp)
+		F.Intrinsic.String.Split(V.Local.sTemp, "*!*", V.Local.sTemp)
+		V.Local.sValueReturn.Set(V.Local.sTemp(1))
+		F.Intrinsic.String.TrimChar(V.Local.sValueReturn, "'", V.Local.sValueReturn)
+		
+		'Replace
+		F.Intrinsic.String.Build("{0} like '{1}%'", V.Local.sFieldReturn, V.Local.sValueReturn, V.Local.sReplaceString)
+		F.Intrinsic.String.Replace(V.Local.sFilter, V.Local.sMatch, V.Local.sReplaceString, V.Local.sFilter)
+	F.Intrinsic.Control.Next(V.Local.iCounter)
+F.Intrinsic.Control.EndIf
+
+'fix all EndsWith
+F.Intrinsic.String.Build("EndsWith\({0},\s*{1}\)", V.Local.sFieldRegEx, V.Local.sValueRegEx, V.Local.sRegEx)
+F.Intrinsic.String.RegExMatch(V.Local.sFilter, V.Local.sRegEx, True, V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet.Trim, !=, "")
+	F.Intrinsic.String.Split(V.Local.sRet, "@!@", V.Local.sRet)
+	F.Intrinsic.Control.For(V.Local.iCounter, 0, V.Local.sRet.UBound, 1)
+		
+		'get match
+		F.Intrinsic.String.Split(V.Local.sRet(V.Local.iCounter), "*!*", V.Local.sTemp)
+		V.Local.sMatch.Set(V.Local.sTemp(1))
+		
+		'get the field, only one
+		F.Intrinsic.String.RegExMatch(V.Local.sMatch, V.Local.sFieldRegEx, True, V.Local.sTemp)
+		F.Intrinsic.String.Split(V.Local.sTemp, "*!*", V.Local.sTemp)
+		V.Local.sFieldReturn.Set(V.Local.sTemp(1))
+		
+		'get the value, only one
+		F.Intrinsic.String.RegExMatch(V.Local.sMatch, V.Local.sValueRegEx, True, V.Local.sTemp)
+		F.Intrinsic.String.Split(V.Local.sTemp, "*!*", V.Local.sTemp)
+		V.Local.sValueReturn.Set(V.Local.sTemp(1))
+		F.Intrinsic.String.TrimChar(V.Local.sValueReturn, "'", V.Local.sValueReturn)
+		
+		'Replace
+		F.Intrinsic.String.Build("{0} like '%{1}'", V.Local.sFieldReturn, V.Local.sValueReturn, V.Local.sReplaceString)
+		F.Intrinsic.String.Replace(V.Local.sFilter, V.Local.sMatch, V.Local.sReplaceString, V.Local.sFilter)
+	F.Intrinsic.Control.Next(V.Local.iCounter)
+F.Intrinsic.Control.EndIf
+
+'fix all Contains
+F.Intrinsic.String.Build("Contains\({0},\s*{1}\)", V.Local.sFieldRegEx, V.Local.sValueRegEx, V.Local.sRegEx)
+F.Intrinsic.String.RegExMatch(V.Local.sFilter, V.Local.sRegEx, True, V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet.Trim, !=, "")
+	F.Intrinsic.String.Split(V.Local.sRet, "@!@", V.Local.sRet)
+	F.Intrinsic.Control.For(V.Local.iCounter, 0, V.Local.sRet.UBound, 1)
+		
+		'get match
+		F.Intrinsic.String.Split(V.Local.sRet(V.Local.iCounter), "*!*", V.Local.sTemp)
+		V.Local.sMatch.Set(V.Local.sTemp(1))
+		
+		'get the field, only one
+		F.Intrinsic.String.RegExMatch(V.Local.sMatch, V.Local.sFieldRegEx, True, V.Local.sTemp)
+		F.Intrinsic.String.Split(V.Local.sTemp, "*!*", V.Local.sTemp)
+		V.Local.sFieldReturn.Set(V.Local.sTemp(1))
+		
+		'get the value, only one
+		F.Intrinsic.String.RegExMatch(V.Local.sMatch, V.Local.sValueRegEx, True, V.Local.sTemp)
+		F.Intrinsic.String.Split(V.Local.sTemp, "*!*", V.Local.sTemp)
+		V.Local.sValueReturn.Set(V.Local.sTemp(1))
+		F.Intrinsic.String.TrimChar(V.Local.sValueReturn, "'", V.Local.sValueReturn)
+		
+		'Replace
+		F.Intrinsic.String.Build("{0} like '%{1}%'", V.Local.sFieldReturn, V.Local.sValueReturn, V.Local.sReplaceString)
+		F.Intrinsic.String.Replace(V.Local.sFilter, V.Local.sMatch, V.Local.sReplaceString, V.Local.sFilter)
+	F.Intrinsic.Control.Next(V.Local.iCounter)
+F.Intrinsic.Control.EndIf
+
+'fix between
+F.Intrinsic.String.Build("{0} Between\({1}m?, {1}m?\)", V.Local.sFieldRegEx, V.Local.sNumberRegEx, V.Local.sRegEx)
+F.Intrinsic.String.RegExMatch(V.Local.sFilter, V.Local.sRegEx, True, V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet.Trim, !=, "")
+	F.Intrinsic.String.Split(V.Local.sRet, "@!@", V.Local.sRet)
+	F.Intrinsic.Control.For(V.Local.iCounter, 0, V.Local.sRet.UBound, 1)
+		
+		'get match
+		F.Intrinsic.String.Split(V.Local.sRet(V.Local.iCounter), "*!*", V.Local.sTemp)
+		V.Local.sMatch.Set(V.Local.sTemp(1))
+		
+		'get the field, only one
+		F.Intrinsic.String.RegExMatch(V.Local.sMatch, V.Local.sFieldRegEx, True, V.Local.sTemp)
+		F.Intrinsic.String.Split(V.Local.sTemp, "*!*", V.Local.sTemp)
+		V.Local.sFieldReturn.Set(V.Local.sTemp(1))
+		
+		'get the values, two
+		F.Intrinsic.String.RegExMatch(V.Local.sMatch, V.Local.sNumberRegEx, True, V.Local.sTemp)
+		F.Intrinsic.String.Split(V.Local.sTemp, "@!@", V.Local.sTemp)
+		F.Intrinsic.String.Split(V.Local.sTemp(0), "*!*", V.Local.sTemp2)
+		V.Local.sValueReturn.Set(V.Local.sTemp2(1))
+		F.Intrinsic.String.Split(V.Local.sTemp(1), "*!*", V.Local.sTemp2)
+		V.Local.sValueReturn2.Set(V.Local.sTemp2(1))
+		
+		'Replace
+		F.Intrinsic.String.Build("({0} >= {1} and {0} <= {2})", V.Local.sFieldReturn, V.Local.sValueReturn, V.Local.sValueReturn2, V.Local.sReplaceString)
+		F.Intrinsic.String.Replace(V.Local.sFilter, V.Local.sMatch, V.Local.sReplaceString, V.Local.sFilter)
+	F.Intrinsic.Control.Next(V.Local.iCounter)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Variable.AddRV("FILTER", V.Local.sFilter)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.GridViewFilterToDataViewFilter.End
+
+Program.Sub.frmMain_UnLoad.Start
+F.Intrinsic.Control.Try
+V.Local.iRet.Declare
+V.Local.sPath.Declare
+
+F.Intrinsic.Control.If(V.Global.bC_OChanges,=,True)
+	F.Intrinsic.UI.Msgbox("Usaved changes will be lost. Continue?","Warning",4,V.Local.iRet)
+	F.Intrinsic.Control.If(V.Local.iRet,=,7)
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.String.Build("{0}\GCG_6273_LOCK.txt",V.Caller.FilesDir,V.Local.sPath)
+F.Intrinsic.File.String2File(V.Local.sPath,"",0)
+
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.frmMain_UnLoad.End
+
+Program.Sub.frmNotes_UnLoad.Start
+F.Intrinsic.Control.Try
+
+Gui.frmNotes..Visible(False)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.frmNotes_UnLoad.End
+
+Program.Sub.fmCopy_UnLoad.Start
+F.Intrinsic.Control.Try
+
+Gui.fmCopy..Visible(False)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.fmCopy_UnLoad.End
+
+Program.Sub.frmInsert_UnLoad.Start
+F.Intrinsic.Control.Try
+
+Gui.frmInsert..Visible(False)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.frmInsert_UnLoad.End
+
+Program.Sub.Error.Start
+V.Local.sError.Declare
+V.Local.iRet.Declare
+V.Local.sSep.Declare
+
+F.Intrinsic.String.Build("-------------------------------------------------------------------------------------",,V.Local.sSep)
+F.Intrinsic.String.Build("({5}-{6}){0}{7}{0}Project: {4}{0}{7}{0}Sub: {1}{0}Error: {2}, {3}", V.Ambient.NewLine, V.Args.SubRoutine, V.Args.eNumber, V.Args.eDescription,V.Caller.ScriptFile,V.Ambient.Date, V.Ambient.Time,V.Local.sSep,V.Local.sError)
+F.Intrinsic.UI.Msgbox(V.Local.sError,"Error",V.Local.iRet)
+Program.Sub.Error.End
+
+Program.Sub.Comments.Start
+${$5$}$3.0.0.0$}$1
+${$6$}$rking$}$20210413132151112$}$QNdZLVy4bWuiWa9jh1ZTiCjCxrZcr9BSTcPOoJBpMZ7yGw7DoLN7hvPKgnjH8KebxlyiwLDJUw8=
+Program.Sub.Comments.End
