@@ -1,0 +1,198 @@
+﻿Program.Sub.Preflight.Start
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.Try
+V.Local.sOrder.Declare(String,"")
+V.Local.sLine.Declare(String,"")
+V.Local.sRet.Declare(String,"")
+
+F.Intrinsic.Control.SelectCase(V.Caller.Hook)
+	'Order Line Screen Config Button Hook
+	F.Intrinsic.Control.Case("12370")
+		F.Intrinsic.String.Format(V.Passed.000060,"0000000",V.Local.sOrder)
+		F.Intrinsic.String.Format(V.Passed.000051,"000",V.Local.sLine)
+		F.Intrinsic.String.RPad(V.Local.sLine,"0",4,V.Local.sLine)
+		F.Intrinsic.String.Build("{0}-{1}",V.Local.sOrder,V.Local.sLine,V.Local.sOrder)
+		v.Passed.global.Set(V.Local.sOrder)
+	
+	F.Intrinsic.Control.Case("49530")
+
+		F.Intrinsic.Control.If(V.Passed.000129.Trim,=,"")
+			F.Intrinsic.UI.Msgbox("Enter A Product Line for the Part","Attention")
+			V.Passed.777777.Set(1)
+		F.Intrinsic.Control.EndIf
+		
+	'Configurator screen exit hook
+	F.Intrinsic.Control.Case("49535")
+		F.Intrinsic.String.Split(V.Passed.Global,"-",V.Local.sOrder)
+		V.Local.sLine.Set(V.Local.sOrder(1))
+		F.Intrinsic.Control.CallSub(BuildLongPart,"Order",V.Local.sOrder,"Line",V.Local.sLine)
+		
+F.Intrinsic.Control.EndSelect
+
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.Main.End
+
+Program.Sub.Error.Start
+V.Local.sError.Declare
+V.Local.iRet.Declare
+V.Local.sSep.Declare
+
+F.Intrinsic.String.Build("-------------------------------------------------------------------------------------",,V.Local.sSep)
+F.Intrinsic.String.Build("({5}-{6}){0}{7}{0}Project: {4}{0}{7}{0}Sub: {1}{0}Error: {2}, {3}", V.Ambient.NewLine, V.Args.SubRoutine, V.Args.eNumber, V.Args.eDescription,V.Caller.ScriptFile,V.Ambient.Date, V.Ambient.Time,V.Local.sSep,V.Local.sError)
+F.Intrinsic.UI.Msgbox(V.Local.sError,"Error",V.Local.iRet)
+Program.Sub.Error.End
+
+Program.Sub.BuildLongPart.Start
+F.Intrinsic.Control.Try
+V.Local.sSql.Declare(String,"")
+V.Local.sLongPart.Declare(String,"")
+V.Local.sFilter.Declare(String,"")
+V.Local.sGlobal.Declare(String,"")
+V.Local.i.Declare(Long,0)
+V.Local.sRet.Declare(String,"")
+V.Local.sPart.Declare(String,"")
+V.Local.sPL.Declare(String,"")
+V.Local.bLongPart.Declare(Boolean,False)
+v.Local.bPartStartingPos.Declare(Boolean,False)
+V.Local.bRev.Declare(Boolean,False)
+V.Local.iPartSize.Declare(Long,0)
+V.Local.sWarrantyType.Declare
+V.Local.sMsg.Declare
+V.Local.iRet.Declare
+
+F.Global.General.ReadOption("400861",0,False,"0000",V.Local.bLongPart)
+F.Intrinsic.Control.If(V.Local.bLongPart,=,False)
+	F.Global.General.ReadOption("400861",0,False,"0004",V.Local.bLongPart)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Local.bLongPart,=,False)
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.ODBC.Connection!Con.OpenCompanyConnection
+
+F.Intrinsic.String.Build("Select Distinct Order_No, Order_Line, Sequence, A.Base_ID, A.Id_Num, Part_Frag_Pos, L_Part_Frag, Part_Frag, Determines_PL, Prod_Line From Order_Config A Left Join GCG_6273_L_Part_Frag B on A.IDENTIFIER = B.IDENTIFIER and A.BASE_ID = B.BASE_ID and A.PARENT_ID = B.PARENT_ID Where Order_No = '{0}' and Order_Line = '{1}'",V.Args.Order,V.Args.Line,V.Local.sSql)
+
+F.Data.DataTable.CreateFromSQL("OrdConfig","con",V.Local.sSql,True)
+
+F.Intrinsic.Control.If(V.DataTable.OrdConfig.RowCount--,<>,-1)
+	'Check to see if core calculates the fragment positions
+	F.Global.General.ReadOption("401809",0,False,"0001",V.Local.bPartStartingPos)
+	f.Intrinsic.Control.If(v.Local.bPartStartingPos)
+	'The option is checked, so this assumes that the part will be built based on piecing together the options
+		'Get rid of all lines without a long part frag filled out, then piece them together 
+		F.Data.DataView.Create("OrdConfig","VOrdConfig",22,"L_Part_Frag <> '' or Part_Frag <> ''","")
+'		f.Data.DataView.ToDataTableDistinct("OrdConfig","VOrdConfig","dtLPartFrag","L_Part_Frag")
+'		f.Data.DataView.create("dtLPartFrag","dvLPartFrag",22)
+'		f.Data.DataView.ToString("dtLPartFrag","dvLPartFrag","L_Part_Frag","","",v.Local.sLongPart)
+'		F.Intrinsic.String.Replace(v.Local.sLongPart," ","",v.Local.sLongPart)
+		F.Intrinsic.Control.For(V.Local.i,0,V.DataView.OrdConfig!VOrdConfig.RowCount--,1)
+			F.Intrinsic.Control.If(V.DataView.OrdConfig!VOrdConfig(V.Local.i).L_Part_Frag!FieldValTrim,<>,"")
+				F.Intrinsic.String.Build("{0}{1}",V.Local.sLongPart.Trim,V.DataView.OrdConfig!VOrdConfig(V.Local.i).L_Part_Frag!FieldValTrim,V.Local.sLongPart)
+			F.Intrinsic.Control.Else
+				F.Intrinsic.String.Build("{0}{1}",V.Local.sLongPart.Trim,V.DataView.OrdConfig!VOrdConfig(V.Local.i).Part_Frag!FieldValTrim,V.Local.sLongPart)
+			F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.Next(V.Local.i)
+		f.Data.dataview.Close("OrdConfig","VOrdConfig")
+		f.Data.DataTable.Close("OrdConfig")
+'		f.Data.DataView.Close("dtLPartFrag","dvLPartFrag")
+'		f.Data.DataTable.Close("dtLPartFrag")
+	f.Intrinsic.Control.Else
+	'The option is not checked, so this assumes that the configurator options all have part fragment starting positions set.
+		F.Data.DataView.Create("OrdConfig","VOrdConfig",22,"","")
+		F.Data.DataView.ToDataTableDistinct("OrdConfig","VOrdConfig","Frag_Pos","Part_Frag_Pos",True)
+		F.Data.DataView.Close("OrdConfig","VOrdConfig")
+		F.Data.DataView.Create("Frag_Pos","VFrag_Pos",22,"Part_Frag_Pos > 0","")
+		F.Intrinsic.Control.For(V.Local.i,0,V.DataView.Frag_Pos!VFrag_Pos.RowCount--,1)
+			F.Intrinsic.String.Build("Part_Frag_Pos = {0}",V.DataView.Frag_Pos!VFrag_Pos(V.Local.i).Part_Frag_Pos!FieldValTrim,V.Local.sFilter)
+			F.Data.DataView.Create("OrdConfig","VOrdConfig",22,V.Local.sFilter,"")
+			F.Intrinsic.Control.If(V.DataView.OrdConfig!VOrdConfig(V.DataView.OrdConfig!VOrdConfig.RowCount--).L_Part_Frag!FieldValTrim,<>,"")
+				F.Intrinsic.String.Build("{0}{1}",V.Local.sLongPart.Trim,V.DataView.OrdConfig!VOrdConfig(V.DataView.OrdConfig!VOrdConfig.RowCount--).L_Part_Frag!FieldValTrim,V.Local.sLongPart)
+			F.Intrinsic.Control.Else
+				F.Intrinsic.String.Build("{0}{1}",V.Local.sLongPart.Trim,V.DataView.OrdConfig!VOrdConfig(V.DataView.OrdConfig!VOrdConfig.RowCount--).Part_Frag!FieldValTrim,V.Local.sLongPart)
+			F.Intrinsic.Control.EndIf
+			F.Data.DataView.Close("OrdConfig","VOrdConfig")
+		F.Intrinsic.Control.Next(V.Local.i)
+	f.Intrinsic.Control.EndIf
+		
+F.Intrinsic.Control.EndIf
+
+'checkin if use rev is turn on
+F.Global.General.ReadOption("070008",0,"0000",V.Local.bRev)
+F.Intrinsic.Control.If(V.Local.bRev)
+	V.Local.iPartSize.Set(17)
+F.Intrinsic.Control.Else
+	V.Local.iPartSize.Set(20)
+F.Intrinsic.Control.EndIf
+
+'Always set the part on the screen to the short version of the long part
+F.Intrinsic.Control.If(V.Local.sLongPart.Length,>,V.Local.iPartSize)
+	F.Intrinsic.String.Build("Select Top 1 Gss_Part From Inv_Lxr Where Display_Part = '{0}'",V.Local.sLongPart.PSQLFriendly,V.Local.sSql)
+	F.ODBC.Connection!Con.ExecuteAndReturn(V.Local.sSql,V.Local.sPart)
+	F.Intrinsic.Control.If(V.Local.sPart.Trim,=,"")
+		F.Global.Inventory.GetGSSPart(V.Local.sLongPart,"",V.Local.sPart)
+	F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.If(V.Local.sPart.Trim,=,"")
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.EndIf
+	F.Intrinsic.String.Build("Select Top 1 Gss_Part From Inv_Lxr Where Display_Part = '{0}'",V.Local.sLongPart.PSQLFriendly,V.Local.sSql)
+	F.ODBC.Connection!Con.ExecuteAndReturn(V.Local.sSql,V.Local.sPart)
+	v.Passed.000092.Set(V.Local.sPart.Trim)
+F.Intrinsic.Control.Else
+	F.Intrinsic.Control.If(V.Local.sLongPart.Trim,=,"")
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.EndIf
+	v.Passed.000092.Set(V.Local.sLongPart.Trim)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.String.Build("Select Part From V_Inventory_Mstr Where Part = '{0}'",V.Passed.000092.PSQLFriendly,V.Local.sSql)
+F.ODBC.Connection!Con.ExecuteAndReturn(V.Local.sSql,V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet.Trim,=,"")
+	V.Passed.Global.Set("PART CREATED")
+	
+	'F.Global.Inventory.CreatePart(V.Passed.000092,"EA",V.Passed.000071,V.Passed.000082,V.Passed.000129,"M",V.Passed.000045,V.Passed.000046,V.Passed.000130)
+	'BM Supress part maintenance msg to after changes take effect. 
+''	F.Global.Inventory.CreatePart(V.Passed.000092,"EA",V.Passed.000071,V.Passed.000082,V.Passed.000129,"M",V.Passed.000045,V.Passed.000046,V.Passed.000130, "UPLOADED")
+	F.Global.Inventory.CreatePart(V.Passed.000092,"EA",V.Passed.000071,V.Passed.000082,V.Passed.000129,"M",V.Passed.000045,V.Passed.000046,V.Passed.000130,"NOMAINT")
+	
+	'Brandon Medina: Logic to set configured part defaults. Quote:13330
+	'Flag for serialization: V_INVENTORY_MSTR.FLAG_SERIALIZE = Y. Flag for warranty: V_INVENTORY_MSTR.FLAG_WARRANTY = Y 
+    F.Intrinsic.String.Build("update INVENTORY_MSTR set FLAG_SERIALIZE = 'Y', FLAG_WARRANTY = 'Y' where PART = '{0}' and LOCATION = '{1}'", V.Passed.000092.PSQLFriendly, V.Passed.000082.PSQLFriendly, V.Local.sSql)
+    F.ODBC.Connection!Con.Execute(V.Local.sSql)
+    
+    'Warranty Terms (WARRANTY_TYPE must match that in OE_WARRANTY_TRMS.KEY_TYPE [99] for lifetime warranty)
+    V.Local.sSql.Set("select KEY_TYPE from OE_WARRANTY_TRMS where DESCRIPTION = 'LIMITED LIFETIME WARRANTY' and TERM_MONTHS = '999'")
+    F.ODBC.Connection!Con.ExecuteAndReturn(V.Local.sSql, V.Local.sWarrantyType)
+    F.Intrinsic.String.Build("update INVENTORY_MST2 set WARRANTY_TYPE = '{0}' where PART = '{1}' and LOCATION = '{2}'", V.Local.sWarrantyType.Trim, V.Passed.000092.PSQLFriendly, V.Passed.000082.PSQLFriendly, V.Local.sSql)
+    F.ODBC.Connection!Con.Execute(V.Local.sSql)
+    
+    'Source code set to Man to Job INVENTORY_MST2.CODE_SOURCE = 'F' 
+    F.Intrinsic.String.Build("update INVENTORY_MST2 set CODE_SOURCE = 'F' where PART = '{0}' and LOCATION = '{1}'", V.Passed.000092.PSQLFriendly, V.Passed.000082.PSQLFriendly, V.Local.sSql)
+    F.ODBC.Connection!Con.Execute(V.Local.sSql)
+    
+    F.Intrinsic.String.Build("Do you want to maintain the new part now? Part: {0}", V.Passed.000092.Trim, V.Local.sMsg)
+    F.Intrinsic.UI.Msgbox(V.Local.sMsg, "Edit Created Part?", 4, V.Local.iRet)
+    F.Intrinsic.Control.If(V.Local.iRet, =, 6)
+    	F.Intrinsic.String.ConcatCallWrapperArgs(V.Caller.CompanyCode, "O", "", "", V.Passed.000092.Trim, V.Passed.000082.Trim, V.Local.sRet)
+    	F.Global.General.CallWrapperSync(3500, V.Local.sRet)
+    F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.ODBC.Connection!Con.Close
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.BuildLongPart.End
+
+Program.Sub.Comments.Start
+${$5$}$20.1.8249.18654$}$1
+${$6$}$rking$}$20220907075900447$}$QNdZLVy4bWuiWa9jh1ZTiKVzNnEzrvL4PSfyArenrsgV+yqJWd878H0iXQg5Cuf7cS0fvNWeSyw=
+Program.Sub.Comments.End
