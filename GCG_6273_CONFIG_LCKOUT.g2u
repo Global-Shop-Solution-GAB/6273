@@ -1,0 +1,59 @@
+Program.Sub.Preflight.Start
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.Try
+V.Local.bExists.Declare
+V.Local.sPath.Declare
+V.Local.sContents.Declare
+V.Local.sLock.Declare
+V.Local.sMsg.Declare
+
+F.Intrinsic.String.Build("{0}\GCG_6273_LOCK.txt",V.Caller.FilesDir,V.Local.sPath)
+
+F.Intrinsic.File.Exists(V.Local.sPath,V.Local.bExists)
+
+F.Intrinsic.Control.If(V.Local.bExists,=,False)
+	F.Intrinsic.File.String2File(V.Local.sPath,"",0)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.File.File2String(V.Local.sPath,V.Local.sContents)
+
+F.Intrinsic.Control.SelectCase(V.Caller.Hook)
+	'Configurator screen entry hook
+	F.Intrinsic.Control.Case("55500")
+		F.Intrinsic.Control.If(V.Local.sContents.Trim,=,"")
+			F.Intrinsic.String.Build("{0}  Core Configurator Screens  {1}",V.Caller.User,V.Ambient.Now,V.Local.sLock)
+			F.Intrinsic.File.String2File(V.Local.sPath,V.Local.sLock,0)
+		F.Intrinsic.Control.Else
+			F.Intrinsic.String.Build("Configurator currently locked{0}{1}",V.Ambient.NewLine,V.Local.sContents,V.Local.sMsg)
+			F.Intrinsic.UI.Msgbox(V.Local.sMsg,"Please wait")
+			V.Passed.777777.Set(1)
+		F.Intrinsic.Control.EndIf
+	'Configurator screen exit hook
+	F.Intrinsic.Control.Case("55506")
+		F.Intrinsic.File.String2File(V.Local.sPath,"",0)
+		
+F.Intrinsic.Control.EndSelect
+
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(Error,"SubRoutine",V.Ambient.CurrentSubroutine,"eNumber",V.Ambient.ErrorNumber,"eDescription",V.Ambient.ErrorDescription)
+F.Intrinsic.Control.EndTry
+Program.Sub.Main.End
+
+Program.Sub.Error.Start
+V.Local.sError.Declare
+V.Local.iRet.Declare
+V.Local.sSep.Declare
+
+F.Intrinsic.String.Build("-------------------------------------------------------------------------------------",,V.Local.sSep)
+F.Intrinsic.String.Build("({5}-{6}){0}{7}{0}Project: {4}{0}{7}{0}Sub: {1}{0}Error: {2}, {3}", V.Ambient.NewLine, V.Args.SubRoutine, V.Args.eNumber, V.Args.eDescription,V.Caller.ScriptFile,V.Ambient.Date, V.Ambient.Time,V.Local.sSep,V.Local.sError)
+F.Intrinsic.UI.Msgbox(V.Local.sError,"Error",V.Local.iRet)
+Program.Sub.Error.End
+
+Program.Sub.Comments.Start
+${$5$}$3.0.0.0$}$1
+${$6$}$tsmith$}$20201013110747738$}$xqPbj9atw05FglvzeFsZ9cqXP+qvG6tXV3xQrvqr7q/rEIuGngbIL8AI3Z/fY5GYQs7tAoaRagM=
+Program.Sub.Comments.End
