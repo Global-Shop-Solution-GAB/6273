@@ -1,0 +1,684 @@
+﻿Program.Sub.ScreenSU.Start
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'TSP
+'040714
+'Adds or Deletes an inventory part from the BRW_INVENTORY and BRW_INVENTORY_EXT tables
+'JAR 10/30/2015
+'Adds, Updates or Deletes an inventory part or a cross reference from the ATG_BRW_INVENTORY table
+v.Local.bLongPartV2On.Declare(boolean)
+f.Global.General.ReadOption("400861",0,false,"0000",v.Local.bLongPartV2On)
+f.Intrinsic.Control.If(v.Local.bLongPartV2On,=,false)
+	f.Intrinsic.Control.End
+
+f.Intrinsic.Control.EndIf
+
+F.ODBC.Connection!conx.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+F.Intrinsic.Control.SelectCase(V.Caller.Hook)	
+	F.Intrinsic.Control.Case(42601)		
+		'It will only execute when a single part is deleted. Reason: the hook is also used 
+		'to flag the inventory parts and delete all of them when using UPLINV
+		f.Intrinsic.Control.If(v.Passed.PART,<>,"All Parts Deleted")
+			'Delete an inventory part		
+			f.Intrinsic.Control.CallSub(deleteinventorypart)	
+		f.Intrinsic.Control.EndIf
+
+	f.Intrinsic.Control.Case(13142)	
+		'Delete a cross reference
+		f.Intrinsic.Control.CallSub(deletexref)
+
+	'only this is added to project 6273.  ADD_DEL_ATG_BRW_INV.gas will remain on the existing hooks.
+	F.Intrinsic.Control.Case(42701)
+		F.Intrinsic.Control.If(V.Passed.Global.UCase,=,"PART CREATED")
+			F.Intrinsic.Control.End
+		F.Intrinsic.Control.EndIf
+		'Create a new inventory part
+		f.Intrinsic.Control.CallSub(addinventorypart)
+
+	F.Intrinsic.Control.Case(10185)
+		'Update an existing inventory part	
+		f.Intrinsic.Control.CallSub(editinventorypart)
+
+	F.Intrinsic.Control.Case(13132)
+		'Add a new or edit an existing cross referece
+		f.Intrinsic.Control.CallSub(addeditxref)
+
+	f.Intrinsic.Control.Case(13085)
+		'Stores current line (XRef) to be edited in a file "CurrentXRef.txt" located in temp
+		f.Intrinsic.Control.CallSub(createtempfile)
+
+	F.Intrinsic.Control.Case(13150)	
+		'Delete the file if the user clears the window, so it creates a new record instead of editing an existing one
+		f.Intrinsic.Control.CallSub(deletetempfile)
+
+	F.Intrinsic.Control.Case(13162)		
+		'Delete the file if the user close the window, so it creates a new record instead of editing an existing one
+		f.Intrinsic.Control.CallSub(deletetempfile)		
+F.Intrinsic.Control.EndSelect		
+
+Program.Sub.Main.End
+
+program.Sub.DeleteInventoryPart.start
+v.Local.sQuery.Declare(String)
+v.Local.sError.Declare(String)
+
+F.Intrinsic.Control.SetErrorHandler("DEL_INV_PART_ERR")
+F.Intrinsic.Control.ClearErrors
+
+f.Intrinsic.String.Replace(v.Passed.Part,"'","''",v.Passed.Part)
+
+F.Intrinsic.String.Concat("DELETE FROM ATG_BRW_INVENTORY WHERE GSSPART = '",V.Passed.Part,"' AND LOCATION = '",V.Passed.LOCATION,"'",V.Local.sQuery)
+
+Function.ODBC.Connection!conx.Execute(V.local.sQuery)
+
+F.Intrinsic.Control.Label("DEL_INV_PART_ERR")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ADD_DEL_ATG_BRW_INV.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+F.Intrinsic.Control.EndIF
+program.Sub.DeleteInventoryPart.End
+
+program.Sub.DeleteXRef.start
+v.Local.sCurrentXRefPath.Declare(String)
+v.Local.bFileExists.Declare(boolean)
+v.Local.sCurrentXRef.Declare(String)
+v.Local.sQuery.Declare(String)
+v.Local.sError.Declare(String)
+
+F.Intrinsic.Control.SetErrorHandler("DEL_XREF_ERR")
+F.Intrinsic.Control.ClearErrors
+
+f.Intrinsic.String.Concat(v.System.Temp,"\CurrentXRef.txt",v.Local.sCurrentXRefPath)
+f.Intrinsic.File.Exists(v.Local.sCurrentXRefPath, v.Local.bFileExists)	
+
+f.Intrinsic.Control.If(v.Local.bFileExists,=,true)
+	'If file exists, it will update the existing informacion in ATG_BRW_INVENTORY because file contains the line to be updated
+	f.Intrinsic.File.File2String(v.Local.sCurrentXRefPath,v.Local.sCurrentXRef)
+	f.Intrinsic.String.Split(v.Local.sCurrentXRef,v.Ambient.NewLine,v.Local.sCurrentXRef)							
+
+	'Replace ' with '' to avoid pervasive error						
+	f.Intrinsic.String.Replace(v.Local.sCurrentXRef(0),"'","''",v.Local.sCurrentXRef(0))
+	f.Intrinsic.String.Replace(v.Local.sCurrentXRef(3),"'","''",v.Local.sCurrentXRef(3))
+	f.Intrinsic.String.Replace(v.Local.sCurrentXRef(4),"'","''",v.Local.sCurrentXRef(4))
+	f.Intrinsic.String.Replace(v.Local.sCurrentXRef(5),"'","''",v.Local.sCurrentXRef(5))
+	f.Intrinsic.String.Replace(v.Local.sCurrentXRef(6),"'","''",v.Local.sCurrentXRef(6))
+
+	F.Intrinsic.String.Concat("SELECT GSSPART FROM ATG_BRW_INVENTORY WHERE GSSPART = '",V.Local.sCurrentXRef(0),"' AND LOCATION = '",V.Local.sCurrentXRef(1),V.Local.sQuery)
+	f.Intrinsic.String.Concat(v.Local.sQuery,"' AND CUST_NO = '",V.Local.sCurrentXRef(2),"' AND DISPLAY_CUST_PART = '",V.Local.sCurrentXRef(3),"' AND VENDOR = '",V.Local.sCurrentXRef(4),v.Local.sQuery)
+	f.Intrinsic.String.Concat(v.Local.sQuery,"' AND DISPLAY_MFG_PART ='",V.Local.sCurrentXRef(5),"' AND DISPLAY_USER_PART ='",v.Local.sCurrentXRef(6),"'",V.Local.sQuery)		
+
+	F.ODBC.Connection!conx.OpenRecordsetRW("rstExistPart",V.Local.sQuery)
+	F.Intrinsic.Control.If(V.ODBC.conx!rstExistPart.EOF,=,false)				
+		'If there is only one record, do not delete it. Update it with empty values for customer and vendor instead.
+		F.Intrinsic.String.Concat("SELECT COUNT(GSSPART) AS REC_COUNTER FROM  ATG_BRW_INVENTORY WHERE GSSPART = '",V.Local.sCurrentXRef(0),"' AND LOCATION = '",V.Local.sCurrentXRef(1),"'",V.Local.sQuery)		
+		F.ODBC.Connection!conx.OpenRecordsetRO("rstAtgBrwInventory",V.Local.sQuery)
+		F.Intrinsic.Control.If(V.ODBC.conx!rstAtgBrwInventory.EOF,<>,True)
+			f.Intrinsic.Control.If(V.ODBC.conx!rstAtgBrwInventory.FieldVal!REC_COUNTER,=,1)
+				f.Intrinsic.String.Concat("UPDATE ATG_BRW_INVENTORY SET CUST_NO ='',CUSTOMER='',CUSTOMER_PART='',DISPLAY_CUST_PART='',","VENDOR='',MFG_PART='',DISPLAY_MFG_PART='',MFG_NAME='',",v.Local.sQuery)
+				f.Intrinsic.String.Concat(v.Local.sQuery,"USER_PART='',DISPLAY_USER_PART='' WHERE GSSPART ='",V.Local.sCurrentXRef(0),"' AND LOCATION = '",V.Local.sCurrentXRef(1),"'",v.Local.sQuery)					
+				F.ODBC.Connection!conx.Execute(V.Local.sQuery)
+				f.Intrinsic.File.DeleteFile(v.Local.sCurrentXRefPath)
+				f.Intrinsic.Control.End
+
+			f.Intrinsic.Control.EndIf
+		f.Intrinsic.Control.EndIf
+
+		F.Intrinsic.String.Concat("DELETE FROM ATG_BRW_INVENTORY WHERE GSSPART = '",V.Local.sCurrentXRef(0),"' AND LOCATION = '",V.Local.sCurrentXRef(1),V.Local.sQuery)
+		f.Intrinsic.String.Concat(v.Local.sQuery,"' AND CUST_NO = '",V.Local.sCurrentXRef(2),"' AND DISPLAY_CUST_PART = '",V.Local.sCurrentXRef(3),"' AND VENDOR = '",V.Local.sCurrentXRef(4),v.Local.sQuery)
+		f.Intrinsic.String.Concat(v.Local.sQuery,"' AND DISPLAY_MFG_PART ='",V.Local.sCurrentXRef(5),"' AND DISPLAY_USER_PART ='",v.Local.sCurrentXRef(6),"'",V.Local.sQuery)		
+
+		Function.ODBC.Connection!conx.Execute(V.local.sQuery)			
+		'Delete the file with current line once it's been used				
+		f.Intrinsic.Control.CallSub(deletetempfile)		
+	f.Intrinsic.Control.EndIf	
+f.Intrinsic.Control.EndIf									
+
+F.Intrinsic.Control.Label("DEL_XREF_ERR")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)	
+	f.Intrinsic.Control.CallSub(deletetempfile)		
+	Function.Intrinsic.String.Concat("Project: ADD_DEL_ATG_BRW_INV.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+F.Intrinsic.Control.EndIF
+program.Sub.DeleteXref.End
+
+program.Sub.AddInventoryPart.start
+V.Local.sPart.Declare(String)
+V.Local.sGSSPart.Declare(String)
+V.Local.iOnOrder.Declare(long)
+V.Local.iNet.Declare(long)
+V.Local.sQuery.Declare(String)
+V.Local.iQtyOnHand.Declare(long)
+V.Local.sDisplayPart.Declare(String)
+V.Local.sDisplayRev.Declare(String)
+V.Local.sCustName.Declare(String)
+V.Local.sCustPart.Declare(String)
+V.Local.sVendor.Declare(String)
+V.Local.sMFGName.Declare(String)
+V.Local.sMFGPart.Declare(String)
+v.Local.scustNo.Declare(String)
+V.Local.sCustomer.Declare(String)
+V.Local.sInactive.Declare(String)
+v.Local.sError.Declare(String)
+V.Local.sValues.Declare(String)
+
+F.Intrinsic.Control.SetErrorHandler("ADD_INV_PART_ERR")
+F.Intrinsic.Control.ClearErrors
+
+f.Intrinsic.Control.CallSub(creategsspart,"Part",v.Passed.Part,"Rev",v.Passed.Rev)
+v.Local.sGSSPart.Set(v.Args.sGSSPart)
+
+F.Intrinsic.String.Replace(v.Local.sGSSPart, "'", "''", v.Local.sGSSPart)
+
+F.Intrinsic.Math.Add(V.Passed.QTY_ONORDER_PO,V.Passed.QTY_ONORDER_WO,V.Local.iOnOrder)
+F.Intrinsic.Math.Add(V.Local.iOnOrder,V.Passed.QTY_ONHAND,V.Local.iNet)		
+F.Intrinsic.Math.Sub(V.Local.iNet,V.Passed.QTY_REQUIRED,V.Local.iNet)
+
+F.Intrinsic.String.Concat("SELECT * FROM  ATG_BRW_INVENTORY WHERE GSSPART = '",V.Local.sGSSPart,"' AND LOCATION = '",V.Passed.LOCATION,"'",V.Local.sQuery)
+F.ODBC.Connection!conx.OpenRecordsetRW("rstAddPart",V.Local.sQuery)
+
+V.Local.iQtyOnHand.Set(0)
+
+F.Intrinsic.Control.If(V.ODBC.conx!rstAddPart.EOF,=,True)
+	'Add a new inventory part
+	F.Intrinsic.String.Concat("SELECT DISPLAY_PART, DISPLAY_REV  FROM  INV_LXR WHERE GSS_PART = '",V.Local.sGSSPart,"'",V.Local.sQuery)
+	F.ODBC.Connection!conx.OpenRecordsetRO("rstINVLXR",V.Local.sQuery)
+	F.Intrinsic.Control.If(V.ODBC.conx!rstINVLXR.EOF,<>,True)
+		V.Local.sDisplayPart.Set(V.ODBC.conx!rstINVLXR.FieldVal!DISPLAY_PART)		
+		V.Local.sDisplayRev.Set(V.ODBC.conx!rstINVLXR.FieldVal!DISPLAY_REV)
+	F.Intrinsic.Control.Else
+		V.Local.sDisplayPart.Set(V.Passed.Part)
+		V.Local.sDisplayRev.Set(V.Passed.Rev)
+	F.Intrinsic.Control.EndIf
+	F.ODBC.conx!rstINVLXR.Close
+
+	F.Intrinsic.String.Concat("SELECT CUSTOMER, CUSTOMER_PART, VENDOR, MFG_NAME, MFG_PART FROM INV_CROSS_REF WHERE PART = '",V.Local.sGSSPart,"' AND LOCATION = '",V.Passed.LOCATION,"'",V.Local.sQuery)
+	F.ODBC.Connection!conx.OpenRecordsetRO("rstINVCrossRef",V.Local.sQuery)
+	F.Intrinsic.Control.If(V.ODBC.conx!rstINVCrossRef.EOF,<>,True)
+		V.Local.sCustName.Set(V.ODBC.conx!rstINVCrossRef.FieldVal!CUSTOMER)
+		V.Local.sCustPart.Set(V.ODBC.conx!rstINVCrossRef.FieldVal!CUSTOMER_PART)
+		V.Local.sVendor.Set(V.ODBC.conx!rstINVCrossRef.FieldVal!VENDOR)
+		V.Local.sMFGName.Set(V.ODBC.conx!rstINVCrossRef.FieldVal!MFG_NAME)
+		V.Local.sMFGPart.Set(V.ODBC.conx!rstINVCrossRef.FieldVal!MFG_PART)
+	F.Intrinsic.Control.Else
+		v.Local.scustNo.Set("")
+		V.Local.sCustName.Set("")
+		V.Local.sCustPart.Set("")
+		V.Local.sVendor.Set("")
+		V.Local.sMFGName.Set("")
+		V.Local.sMFGPart.Set("")
+	F.Intrinsic.Control.EndIf
+	F.ODBC.conx!rstINVCrossRef.Close
+
+	F.Intrinsic.String.Concat("SELECT CUSTOMER, NAME_CUSTOMER FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '",V.Local.sCustName,"' AND REC = '1'","",V.Local.sQuery)
+	F.ODBC.Connection!conx.OpenRecordsetRO("rstCustName",V.Local.sQuery)
+	F.Intrinsic.Control.If(V.ODBC.conx!rstCustName.EOF,<>,True)
+		V.Local.sCustomer.Set(V.ODBC.conx!rstCustName.FieldVal!Name_CUSTOMER)
+		v.Local.scustNo.Set(V.ODBC.conx!rstCustName.FieldVal!CUSTOMER)
+	F.Intrinsic.Control.EndIf
+	F.ODBC.conx!rstCustName.Close
+
+
+	F.Intrinsic.String.Concat("SELECT FLAG_INACTIVE FROM INVENTORY_MSTR WHERE PART = '",V.Local.sGSSPart,"' AND LOCATION = '",V.Passed.LOCATION,"'",V.Local.sQuery)
+	F.ODBC.Connection!conx.OpenRecordsetRO("rstINVActive",V.Local.sQuery)
+	F.Intrinsic.Control.If(V.ODBC.conx!rstINVActive.EOF,<>,True)
+		V.Local.sInactive.Set(V.ODBC.conx!rstINVActive.FieldVal!FLAG_INACTIVE)
+	F.Intrinsic.Control.Else
+		V.Local.sInactive.Set("N")
+	F.Intrinsic.Control.EndIF
+	F.ODBC.conx!rstINVActive.Close
+
+	F.Intrinsic.String.Replace(v.Local.sDisplayPart, "'", "''", v.Local.sDisplayPart)
+	F.Intrinsic.String.Replace(v.Local.sDisplayRev, "'", "''", v.Local.sDisplayRev)
+	'G Mansur 05/16/2023: Added this If statement to check if it blank, because if it is, it throws an error.
+	F.Intrinsic.Control.If(v.Passed.DESCRIPTION, <>, "")
+		F.Intrinsic.String.Replace(v.Passed.DESCRIPTION, "'", "''", v.Passed.DESCRIPTION)
+	F.Intrinsic.Control.EndIf
+	'=================
+
+	F.Intrinsic.String.Concat("'",V.Local.sDisplayPart,"','",V.Local.sDisplayRev,"','",V.Local.sGSSPart,"','",V.Passed.LOCATION,"','",V.Passed.DESCRIPTION,"','",V.Passed.QTY_ONHAND,"','",v.Local.sValues)
+	f.Intrinsic.String.Concat(v.Local.sValues,V.Passed.QTY_REQUIRED,"','",V.Local.iOnOrder,"','",V.Local.iNet,"','",V.Passed.COST,"','",V.Local.scustNo,"','",v.Local.sCustomer,"','",v.Local.sValues)
+	f.Intrinsic.String.Concat(v.Local.sValues,V.Local.sCustPart,"','","','",V.Local.sVendor,"','",V.Local.sMFGPart,"','","','",V.Local.sMFGName,"','",V.Local.sInactive,"'",V.Local.sValues)
+
+	F.Intrinsic.String.Concat("Insert Into ATG_BRW_INVENTORY(DISPLAY_PART,DISPLAY_REV,GSSPART,LOCATION,DESCRIPTION,","QTY_ONHAND, QTY_REQUIRED, ON_ORDER, NET, COST, CUST_NO, CUSTOMER, CUSTOMER_PART,",V.Local.sQuery)
+	f.Intrinsic.String.Concat(v.Local.sQuery," DISPLAY_CUST_PART, VENDOR, MFG_PART, DISPLAY_MFG_PART, MFG_NAME, FLAG_INACTIVE) Values (",V.Local.sValues,")",V.Local.sQuery)
+
+	F.ODBC.Connection!conx.Execute(V.Local.sQuery)
+f.Intrinsic.Control.Else	
+	'Update an existing inventory part	
+	f.Intrinsic.String.Concat("UPDATE ATG_BRW_INVENTORY SET DESCRIPTION ='",v.Passed.DESCRIPTION.PSQLFriendly,"', QTY_ONHAND ='",v.Passed.QTY_ONHAND,"', QTY_REQUIRED ='",v.Passed.QTY_REQUIRED,"', ON_ORDER ='",v.Local.iOnOrder,"'",v.Local.sQuery)
+	f.Intrinsic.String.Concat(v.Local.sQuery,",NET ='",v.Local.iNet,"', COST ='",v.Passed.COST,"' WHERE GSSPART ='",v.Local.sGSSPart.PSQLFriendly,"' AND LOCATION = '",V.Passed.LOCATION,"'",v.Local.sQuery)		
+
+	F.ODBC.Connection!conx.Execute(V.Local.sQuery)
+F.Intrinsic.Control.EndIF
+
+F.ODBC.conx!rstAddPart.Close
+
+F.Intrinsic.Control.Label("ADD_INV_PART_ERR")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ADD_DEL_ATG_BRW_INV.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+F.Intrinsic.Control.EndIF
+program.Sub.AddInventoryPart.End
+
+program.Sub.EditInventoryPart.start
+v.Local.iOnOrder.Declare(long)
+v.Local.sQuery.Declare(String)
+v.Local.iNet.Declare(long)
+v.Local.sGSSPart.Declare(String)
+v.Local.sPart.Declare(String)
+v.Local.sError.Declare(String)
+v.Local.iOnHand.Declare(long)
+v.Local.iOrder_PO.Declare(long)
+v.Local.iOrder_WO.Declare(long)
+v.Local.iRequired.Declare(long)
+v.Local.iCost.Declare(long)
+v.Local.sDescription.Declare(String)
+v.Local.sLocation.Declare(String)
+
+F.Intrinsic.Control.SetErrorHandler("UPDATE_INV_PART_ERR")
+F.Intrinsic.Control.ClearErrors
+
+v.Local.sDescription.Set(v.Passed.000012)
+v.Local.iCost.Set(v.Passed.000018)
+v.Local.iOnHand.Set(v.Passed.000030)
+v.Local.iOrder_PO.Set(v.Passed.000031)
+v.Local.iOrder_WO.Set(v.Passed.000032)
+v.Local.iRequired.Set(v.Passed.000033)
+v.Local.sLocation.Set(v.Passed.000009)
+
+f.Intrinsic.Control.CallSub(creategsspart,"Part",v.Passed.000007,"Rev",v.Passed.000008)
+v.Local.sGSSPart.Set(v.Args.sGSSPart)
+
+F.Intrinsic.Math.Add(V.Local.iOrder_PO,V.Local.iOrder_WO,V.Local.iOnOrder)
+F.Intrinsic.Math.Add(V.Local.iOnOrder,V.Local.iOnHand,V.Local.iNet)		
+F.Intrinsic.Math.Sub(V.Local.iNet,V.Local.iRequired,V.Local.iNet)
+
+f.Intrinsic.String.Replace(v.Local.sGSSPart,"'","''",v.Local.sGSSPart)
+f.Intrinsic.String.Replace(v.Local.sDescription,"'","''",v.Local.sDescription)
+
+f.Intrinsic.String.Concat("UPDATE ATG_BRW_INVENTORY SET DESCRIPTION ='",v.Local.sDescription,"', QTY_ONHAND ='",v.Local.iOnHand,"', QTY_REQUIRED ='",v.Local.iRequired,v.Local.sQuery)
+f.Intrinsic.String.Concat(v.Local.sQuery,"', ON_ORDER ='",v.Local.iOnOrder,"'",v.Local.sQuery)
+f.Intrinsic.String.Concat(v.Local.sQuery,",NET ='",v.Local.iNet,"', COST ='",v.Local.iCost,"' WHERE GSSPART ='",v.Local.sGSSPart,"' AND LOCATION = '",V.Local.sLocation,"'",v.Local.sQuery)		
+
+F.ODBC.Connection!conx.Execute(V.Local.sQuery)
+
+F.Intrinsic.Control.Label("UPDATE_INV_PART_ERR")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ADD_DEL_ATG_BRW_INV.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+F.Intrinsic.Control.EndIF
+program.Sub.EditInventoryPart.End
+
+program.Sub.AddEditXRef.start
+V.Local.sMFGName.Declare(String)
+V.Local.sMFGPart.Declare(String)
+V.Local.sCustName.Declare(String)
+V.Local.sCustPart.Declare(String)
+V.Local.sFlagInactive.Declare(String)
+V.Local.sVendor.Declare(String)
+V.Local.sPart.Declare(String)
+V.Local.sRev.Declare(String)
+v.Local.sLocation.Declare(String)
+v.Local.sUserPart.Declare(String)
+v.Local.sGSSPart.Declare(String)
+V.Local.sDisplayPart.Declare(String)
+V.Local.sDisplayRev.Declare(String)
+v.Local.sQuery.Declare(String)
+v.Local.sError.Declare(String)
+v.Local.sValues.Declare(String)
+V.Local.sCustomer.Declare(String)
+v.Local.scustNo.Declare(String)
+v.Local.sDisplayCustPart.Declare(String)
+v.Local.sDisplayMfgPart.Declare(String)
+v.Local.sDisplayUserPart.Declare(String)
+v.Local.sCurrentXRefPath.Declare(String)
+v.Local.bFileExists.Declare(boolean)
+v.Local.sCurrentXRef.Declare(String)
+V.Local.iOnOrder.Declare(long)
+V.Local.iNet.Declare(long)
+V.Local.sDescription.Declare(String)
+V.Local.iQtyOnHand.Declare(long)
+V.Local.iQtyRequired.Declare(long)
+v.Local.iCost.Declare(long)
+V.Local.sInactive.Declare(String)
+v.Local.sParam.Declare(String)
+
+F.Intrinsic.Control.SetErrorHandler("ADD_XREF_ERR")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sMFGName.Set(V.Passed.000009)
+V.Local.sMFGPart.Set(V.Passed.000008)
+V.Local.sCustName.Set(V.Passed.000005)
+V.Local.sCustPart.Set(V.Passed.000007)
+V.Local.sFlagInactive.Set(V.Passed.000141)
+V.Local.sVendor.Set(V.Passed.000045)
+V.Local.sPart.Set(V.Passed.000001)
+V.Local.sRev.Set(V.Passed.000002)
+v.Local.sLocation.Set(v.Passed.000003)
+v.Local.sUserPart.Set(v.Passed.000069)
+
+f.Intrinsic.Control.CallSub(creategsspart,"Part",v.Local.sPart,"Rev",v.Local.sRev)
+v.Local.sGSSPart.Set(v.Args.sGSSPart)
+f.Intrinsic.String.Replace(v.Local.sGSSPart,"'","''",v.Local.sGSSPart)
+
+F.Intrinsic.String.Concat("SELECT DISPLAY_PART, DISPLAY_REV FROM INV_LXR WHERE GSS_PART = '",V.Local.sGSSPart,"'",V.Local.sQuery)
+F.ODBC.Connection!conx.OpenRecordsetRO("rstCrossRef",V.Local.sQuery)
+F.Intrinsic.Control.If(V.ODBC.conx!rstCrossRef.EOF,<>,True)
+	V.Local.sDisplayPart.Set(V.ODBC.conx!rstCrossRef.FieldVal!DISPLAY_PART)
+	V.Local.sDisplayRev.Set(V.ODBC.conx!rstCrossRef.FieldVal!DISPLAY_REV)
+F.Intrinsic.Control.Else
+	V.Local.sDisplayPart.Set(V.Local.sPart)
+	V.Local.sDisplayRev.Set(V.Local.sRev)
+F.Intrinsic.Control.EndIf
+F.ODBC.conx!rstCrossRef.Close
+
+F.Intrinsic.String.Concat("SELECT CUSTOMER, NAME_CUSTOMER FROM V_CUSTOMER_MASTER WHERE CUSTOMER = '",V.Local.sCustName,"'",V.Local.sQuery)
+F.ODBC.Connection!conx.OpenRecordsetRO("rstCustName",V.Local.sQuery)
+F.Intrinsic.Control.If(V.ODBC.conx!rstCustName.EOF,<>,True)
+	V.Local.sCustomer.Set(V.ODBC.conx!rstCustName.FieldVal!NAME_CUSTOMER)
+	f.Intrinsic.String.Replace(v.Local.sCustomer,"'","''",v.Local.sCustomer)
+	v.Local.scustNo.Set(v.ODBC.conx!rstCustName.FieldVal!CUSTOMER)
+F.Intrinsic.Control.EndIf
+F.ODBC.conx!rstCustName.Close
+
+'Query the cross reference tables for customer_part to get the customer_long_part and save it to atg_brw_inventory
+f.Intrinsic.String.Replace(v.Local.sCustPart,"'","''",v.Local.sCustPart)
+F.Intrinsic.String.Concat("SELECT LONG_PART FROM LPART_CUST_XREF WHERE PART = '",V.Local.sCustPart,"'",V.Local.sQuery)
+F.ODBC.Connection!conx.OpenRecordsetRO("rstLPartCustXRef",V.Local.sQuery)
+F.Intrinsic.Control.If(V.ODBC.conx!rstLPartCustXRef.EOF,<>,True)
+	v.Local.sDisplayCustPart.Set(V.ODBC.conx!rstLPartCustXRef.FieldVal!LONG_PART)
+f.Intrinsic.Control.Else
+	v.Local.sDisplayCustPart.Set(v.Local.sCustPart)
+f.Intrinsic.Control.EndIf
+
+'Query the cross reference tables for mfg_part to get the mfg_long_part and save it to atg_brw_inventory
+f.Intrinsic.String.Replace(v.Local.sMFGPart,"'","''",v.Local.sMFGPart)
+F.Intrinsic.String.Concat("SELECT LONG_PART FROM LPART_MFG_XREF WHERE PART = '",V.Local.sMFGPart,"'",V.Local.sQuery)
+F.ODBC.Connection!conx.OpenRecordsetRO("rstLPartMfgXRef",V.Local.sQuery)
+F.Intrinsic.Control.If(V.ODBC.conx!rstLPartMfgXRef.EOF,<>,True)
+	v.Local.sDisplayMfgPart.Set(V.ODBC.conx!rstLPartMfgXRef.FieldVal!LONG_PART)
+f.Intrinsic.Control.Else
+	v.Local.sDisplayMfgPart.Set(v.Local.sMFGPart)
+f.Intrinsic.Control.EndIf
+
+'Query the cross reference tables for user default to get the user_defaul_long_part and save it to atg_brw_inventory
+f.Intrinsic.String.Replace(v.Local.sUserPart,"'","''",v.Local.sUserPart)
+F.Intrinsic.String.Concat("SELECT LONG_PART FROM LPART_USER_XREF WHERE PART = '",V.Local.sUserPart,"'",V.Local.sQuery)
+F.ODBC.Connection!conx.OpenRecordsetRO("rstLPartUserXRef",V.Local.sQuery)
+F.Intrinsic.Control.If(V.ODBC.conx!rstLPartUserXRef.EOF,<>,True)
+	v.Local.sDisplayUserPart.Set(V.ODBC.conx!rstLPartUserXRef.FieldVal!LONG_PART)
+f.Intrinsic.Control.Else
+	v.Local.sDisplayUserPart.Set(v.Local.sUserPart)
+f.Intrinsic.Control.EndIf
+
+'Replace ' with '' to avoid pervasive error			
+f.Intrinsic.String.Replace(v.Local.sVendor,"'","''",v.Local.sVendor)
+f.Intrinsic.String.Replace(v.Local.sMFGName,"'","''",v.Local.sMFGName)			
+f.Intrinsic.String.Replace(v.Local.sDisplayPart,"'","''",v.Local.sDisplayPart)
+f.Intrinsic.String.Replace(v.Local.sDisplayRev,"'","''",v.Local.sDisplayRev)
+
+f.Intrinsic.Control.If(v.Local.sCustPart,<>,v.Local.sDisplayCustPart)
+	f.Intrinsic.String.Replace(v.Local.sDisplayCustPart,"'","''",v.Local.sDisplayCustPart)
+f.Intrinsic.Control.EndIf
+
+f.Intrinsic.Control.If(v.Local.sMFGPart,<>,v.Local.sDisplayMfgPart)
+	f.Intrinsic.String.Replace(v.Local.sDisplayMfgPart,"'","''",v.Local.sDisplayMfgPart)
+f.Intrinsic.Control.EndIf
+
+f.Intrinsic.Control.If(v.Local.sUserPart,<>,v.Local.sDisplayUserPart)
+	f.Intrinsic.String.Replace(v.Local.sDisplayUserPart,"'","''",v.Local.sDisplayUserPart)
+f.Intrinsic.Control.EndIf
+
+f.Intrinsic.String.Concat(v.System.Temp,"\CurrentXRef.txt",v.Local.sCurrentXRefPath)
+f.Intrinsic.File.Exists(v.Local.sCurrentXRefPath, v.Local.bFileExists)
+
+f.Intrinsic.Control.If(v.Local.bFileExists,=,true)
+	'If file exists and part matches, it will update the existing informacion in ATG_BRW_INVENTORY because file contains the line to be updated
+	f.Intrinsic.File.File2String(v.Local.sCurrentXRefPath,v.Local.sCurrentXRef)
+	f.Intrinsic.String.Split(v.Local.sCurrentXRef,v.Ambient.NewLine,v.Local.sCurrentXRef)								
+	f.Intrinsic.String.Replace(v.Local.sCurrentXRef(0),"'","''",v.Local.sCurrentXRef(0))
+	f.Intrinsic.String.Replace(v.Local.sCurrentXRef(3),"'","''",v.Local.sCurrentXRef(3))
+	f.Intrinsic.String.Replace(v.Local.sCurrentXRef(4),"'","''",v.Local.sCurrentXRef(4))
+	f.Intrinsic.String.Replace(v.Local.sCurrentXRef(5),"'","''",v.Local.sCurrentXRef(5))
+	f.Intrinsic.String.Replace(v.Local.sCurrentXRef(6),"'","''",v.Local.sCurrentXRef(6))
+
+	F.Intrinsic.String.Concat("SELECT GSSPART FROM ATG_BRW_INVENTORY WHERE GSSPART = '",V.Local.sCurrentXRef(0),"' AND LOCATION = '",V.Local.sCurrentXRef(1),V.Local.sQuery)
+	f.Intrinsic.String.Concat(v.Local.sQuery,"' AND CUST_NO = '",V.Local.sCurrentXRef(2),"' AND DISPLAY_CUST_PART = '",V.Local.sCurrentXRef(3),"' AND VENDOR = '",V.Local.sCurrentXRef(4),v.Local.sQuery)
+	f.Intrinsic.String.Concat(v.Local.sQuery,"' AND DISPLAY_MFG_PART ='",V.Local.sCurrentXRef(5),"' AND DISPLAY_USER_PART ='",v.Local.sCurrentXRef(6),"'",V.Local.sQuery)		
+
+	F.ODBC.Connection!conx.OpenRecordsetRW("rstExistPart",V.Local.sQuery)
+	
+	F.Intrinsic.Control.If(V.ODBC.conx!rstExistPart.EOF,=,false)									
+		F.Intrinsic.String.Concat("UPDATE ATG_BRW_INVENTORY SET DISPLAY_PART = '",V.Local.sDisplayPart,"', DISPLAY_REV = '",V.Local.sDisplayRev,"', MFG_NAME = '",V.Local.sMFGName,v.Local.sQuery)
+		f.Intrinsic.String.Concat(v.Local.sQuery,"', MFG_PART = '",V.Local.sMFGPart,"', DISPLAY_MFG_PART ='",V.Local.sDisplayMfgPart,"', CUST_NO = '",v.Local.scustNo,"', CUSTOMER = '",V.Local.sCustomer,v.Local.sQuery)
+		f.Intrinsic.String.Concat(v.Local.sQuery,"', CUSTOMER_PART = '",V.Local.sCustPart,"', DISPLAY_CUST_PART = '",V.Local.sDisplayCustPart,"', USER_PART ='",v.Local.sUserPart,"', DISPLAY_USER_PART = '",v.Local.sDisplayUserPart,v.Local.sQuery)
+		f.Intrinsic.String.Concat(v.Local.sQuery,"', VENDOR = '",V.Local.sVendor,"' WHERE GSSPART = '",V.Local.sCurrentXRef(0),"' AND LOCATION = '",V.Local.sCurrentXRef(1),V.Local.sQuery)
+		f.Intrinsic.String.Concat(v.Local.sQuery,"' AND CUST_NO = '",V.Local.sCurrentXRef(2),"' AND DISPLAY_CUST_PART = '",V.Local.sCurrentXRef(3),"' AND VENDOR = '",V.Local.sCurrentXRef(4),v.Local.sQuery)
+		f.Intrinsic.String.Concat(v.Local.sQuery,"' AND DISPLAY_MFG_PART ='",V.Local.sCurrentXRef(5),"' AND DISPLAY_USER_PART ='",v.Local.sCurrentXRef(6),"'", V.Local.sQuery)		
+
+		F.ODBC.Connection!conx.execute(V.Local.sQuery)
+		
+		'Brandon Medina: Logic to set configured part defaults. Quote:13330
+		'Flag for serialization: V_INVENTORY_MSTR.FLAG_SERIALIZE = Y. Flag for warranty: V_INVENTORY_MSTR.FLAG_WARRANTY = Y 
+	    F.Intrinsic.String.Build("update INVENTORY_MSTR set FLAG_SERIALIZE = 'Y', FLAG_WARRANTY = 'Y' where PART = '{0}' and LOCATION = '{1}'", V.Passed.000092.PSQLFriendly, V.Passed.000082.PSQLFriendly, V.Local.sSQL)
+	    F.ODBC.Connection!conx.Execute(V.Local.sSQL)
+	    
+	    'Warranty Terms (WARRANTY_TYPE must match that in OE_WARRANTY_TRMS.KEY_TYPE [99] for lifetime warranty)
+	    V.Local.sSQL.Set("select KEY_TYPE from OE_WARRANTY_TRMS where DESCRIPTION = 'LIMITED LIFETIME WARRANTY' and TERM_MONTHS = '999'")
+	    F.ODBC.Connection!conx.ExecuteAndReturn(V.Local.sSQL, V.Local.sWarrantyType)
+	    F.Intrinsic.String.Build("update INVENTORY_MST2 set WARRANTY_TYPE = '{0}' where PART = '{1}' and LOCATION = '{2}'", V.Local.sWarrantyType.Trim, V.Passed.000092.PSQLFriendly, V.Passed.000082.PSQLFriendly, V.Local.sSQL)
+	    F.ODBC.Connection!conx.Execute(V.Local.sSQL)
+	    
+	    'Source code set to Man to Job INVENTORY_MST2.CODE_SOURCE = 'F' 
+	    F.Intrinsic.String.Build("update INVENTORY_MST2 set CODE_SOURCE = 'F' where PART = '{0}' and LOCATION = '{1}'", V.Passed.000092.PSQLFriendly, V.Passed.000082.PSQLFriendly, V.Local.sSQL)
+	    F.ODBC.Connection!conx.Execute(V.Local.sSQL)
+	    
+		'Delete the file with current line once it's been used
+		f.Intrinsic.Control.CallSub(deletetempfile)
+	f.Intrinsic.Control.Else	
+		'It will create a new record in ATG_BRW_INVENTORY with the Xref information	if the data in the file does not match the part to be edited					
+		f.Intrinsic.String.Concat(v.Local.sGSSPart,"*!*",v.Local.sLocation,"*!*",v.Local.sDisplayPart,"*!*",v.Local.sDisplayRev,"*!*",v.Local.scustNo,"*!*",v.Local.sCustomer,"*!*",v.Local.sCustPart,"*!*",v.Local.sParam)
+		f.Intrinsic.String.Concat(v.Local.sParam,v.Local.sDisplayCustPart,"*!*",v.Local.sVendor,"*!*",v.Local.sMFGPart,"*!*",v.Local.sDisplayMfgPart,"*!*",v.Local.sMFGName,"*!*",v.Local.sUserPart,"*!*",v.Local.sParam)
+		f.Intrinsic.String.Concat(v.Local.sParam,v.Local.sDisplayUserPart,"*!*",v.Local.sParam)
+
+		f.Intrinsic.Control.CallSub(insertnewxref,"sParam",v.Local.sParam)	
+		
+		'Brandon Medina: Logic to set configured part defaults. Quote:13330
+		'Flag for serialization: V_INVENTORY_MSTR.FLAG_SERIALIZE = Y. Flag for warranty: V_INVENTORY_MSTR.FLAG_WARRANTY = Y 
+	    F.Intrinsic.String.Build("update INVENTORY_MSTR set FLAG_SERIALIZE = 'Y', FLAG_WARRANTY = 'Y' where PART = '{0}' and LOCATION = '{1}'", V.Passed.000092.PSQLFriendly, V.Passed.000082.PSQLFriendly, V.Local.sSQL)
+	    F.ODBC.Connection!conx.Execute(V.Local.sSQL)
+	    
+	    'Warranty Terms (WARRANTY_TYPE must match that in OE_WARRANTY_TRMS.KEY_TYPE [99] for lifetime warranty)
+	    V.Local.sSQL.Set("select KEY_TYPE from OE_WARRANTY_TRMS where DESCRIPTION = 'LIMITED LIFETIME WARRANTY' and TERM_MONTHS = '999'")
+	    F.ODBC.Connection!conx.ExecuteAndReturn(V.Local.sSQL, V.Local.sWarrantyType)
+	    F.Intrinsic.String.Build("update INVENTORY_MST2 set WARRANTY_TYPE = '{0}' where PART = '{1}' and LOCATION = '{2}'", V.Local.sWarrantyType.Trim, V.Passed.000092.PSQLFriendly, V.Passed.000082.PSQLFriendly, V.Local.sSQL)
+	    F.ODBC.Connection!conx.Execute(V.Local.sSQL)
+	    
+	    'Source code set to Man to Job INVENTORY_MST2.CODE_SOURCE = 'F' 
+	    F.Intrinsic.String.Build("update INVENTORY_MST2 set CODE_SOURCE = 'F' where PART = '{0}' and LOCATION = '{1}'", V.Passed.000092.PSQLFriendly, V.Passed.000082.PSQLFriendly, V.Local.sSQL)
+	    F.ODBC.Connection!conx.Execute(V.Local.sSQL)
+	F.Intrinsic.Control.EndIf		
+f.Intrinsic.Control.Else
+	'It will create a new record in ATG_BRW_INVENTORY with the Xref information if there is not a file in temp	
+	f.Intrinsic.String.Concat(v.Local.sGSSPart,"*!*",v.Local.sLocation,"*!*",v.Local.sDisplayPart,"*!*",v.Local.sDisplayRev,"*!*",v.Local.scustNo,"*!*",v.Local.sCustomer,"*!*",v.Local.sCustPart,"*!*",v.Local.sParam)
+	f.Intrinsic.String.Concat(v.Local.sParam,v.Local.sDisplayCustPart,"*!*",v.Local.sVendor,"*!*",v.Local.sMFGPart,"*!*",v.Local.sDisplayMfgPart,"*!*",v.Local.sMFGName,"*!*",v.Local.sUserPart,"*!*",v.Local.sParam)
+	f.Intrinsic.String.Concat(v.Local.sParam,v.Local.sDisplayUserPart,"*!*",v.Local.sParam)
+
+	f.Intrinsic.Control.CallSub(insertnewxref,"sParam",v.Local.sParam)
+	
+	'Brandon Medina: Logic to set configured part defaults. Quote:13330
+	'Flag for serialization: V_INVENTORY_MSTR.FLAG_SERIALIZE = Y. Flag for warranty: V_INVENTORY_MSTR.FLAG_WARRANTY = Y 
+    F.Intrinsic.String.Build("update INVENTORY_MSTR set FLAG_SERIALIZE = 'Y', FLAG_WARRANTY = 'Y' where PART = '{0}' and LOCATION = '{1}'", V.Passed.000092.PSQLFriendly, V.Passed.000082.PSQLFriendly, V.Local.sSQL)
+    F.ODBC.Connection!conx.Execute(V.Local.sSQL)
+    
+    'Warranty Terms (WARRANTY_TYPE must match that in OE_WARRANTY_TRMS.KEY_TYPE [99] for lifetime warranty)
+    V.Local.sSQL.Set("select KEY_TYPE from OE_WARRANTY_TRMS where DESCRIPTION = 'LIMITED LIFETIME WARRANTY' and TERM_MONTHS = '999'")
+    F.ODBC.Connection!conx.ExecuteAndReturn(V.Local.sSQL, V.Local.sWarrantyType)
+    F.Intrinsic.String.Build("update INVENTORY_MST2 set WARRANTY_TYPE = '{0}' where PART = '{1}' and LOCATION = '{2}'", V.Local.sWarrantyType.Trim, V.Passed.000092.PSQLFriendly, V.Passed.000082.PSQLFriendly, V.Local.sSQL)
+    F.ODBC.Connection!conx.Execute(V.Local.sSQL)
+    
+    'Source code set to Man to Job INVENTORY_MST2.CODE_SOURCE = 'F' 
+    F.Intrinsic.String.Build("update INVENTORY_MST2 set CODE_SOURCE = 'F' where PART = '{0}' and LOCATION = '{1}'", V.Passed.000092.PSQLFriendly, V.Passed.000082.PSQLFriendly, V.Local.sSQL)
+    F.ODBC.Connection!conx.Execute(V.Local.sSQL)
+f.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Label("ADD_XREF_ERR")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	f.Intrinsic.Control.CallSub(deletetempfile)
+	Function.Intrinsic.String.Concat("Project: ADD_DEL_ATG_BRW_INV.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+F.Intrinsic.Control.EndIF
+program.Sub.AddEditXref.End
+
+program.Sub.InsertNewXRef.start
+v.Local.sQuery.Declare(String)
+v.Local.sValues.Declare(String)
+V.Local.iOnOrder.Declare(long)
+V.Local.iNet.Declare(long)
+v.Local.sDescription.Declare(String)
+V.Local.iQtyOnHand.Declare(long)
+V.Local.iQtyRequired.Declare(long)
+V.Local.iCost.Declare(long)
+v.Local.sInactive.Declare(String)
+v.Local.sParameters.Declare(String)
+
+f.Intrinsic.String.Split(v.Args.sParam,"*!*",v.Local.sParameters)
+
+F.Intrinsic.String.Concat("SELECT DESCRIPTION, QTY_ONHAND, QTY_REQUIRED, QTY_ONORDER_WO, QTY_ONORDER_PO, AMT_COST FROM INVENTORY_MSTR WHERE PART = '",V.Local.sParameters(0),"' AND LOCATION = '",V.Local.sParameters(1),"'",V.Local.sQuery)
+F.ODBC.Connection!conx.OpenRecordsetRO("rstINVMaster",V.Local.sQuery)
+F.Intrinsic.Control.If(V.ODBC.conx!rstINVMaster.EOF,<>,True)
+	F.Intrinsic.Math.Add(V.ODBC.conx!rstINVMaster.FieldVal!QTY_ONORDER_PO,V.ODBC.conx!rstINVMaster.FieldVal!QTY_ONORDER_WO,V.Local.iOnOrder)
+	F.Intrinsic.Math.Add(V.Local.iOnOrder,V.ODBC.conx!rstINVMaster.FieldVal!QTY_ONHAND,V.Local.iNet)		
+	F.Intrinsic.Math.Sub(V.Local.iNet,V.ODBC.conx!rstINVMaster.FieldVal!QTY_REQUIRED,V.Local.iNet)
+
+	V.Local.sDescription.Set(V.ODBC.conx!rstINVMaster.FieldVal!DESCRIPTION)
+	f.Intrinsic.String.Replace(v.Local.sDescription,"'","''",v.Local.sDescription)
+	V.Local.iQtyOnHand.Set(V.ODBC.conx!rstINVMaster.FieldVal!QTY_ONHAND)
+	V.Local.iQtyRequired.Set(V.ODBC.conx!rstINVMaster.FieldVal!QTY_REQUIRED)
+	v.Local.iCost.Set(V.ODBC.conx!rstINVMaster.FieldVal!AMT_COST)								
+F.Intrinsic.Control.Else
+	v.Local.sDescription.Set("")
+	V.Local.iQtyOnHand.Set(0.0000)
+	V.Local.iQtyRequired.Set(0.0000)
+	V.Local.iCost.Set(0.0000)				
+F.Intrinsic.Control.EndIf
+F.ODBC.conx!rstINVMaster.Close
+
+F.Intrinsic.String.Concat("SELECT FLAG_INACTIVE FROM INVENTORY_MSTR WHERE PART = '",V.Local.sParameters(0),"' AND LOCATION = '",V.Local.sParameters(1),"'",V.Local.sQuery)
+F.ODBC.Connection!conx.OpenRecordsetRO("rstINVActive",V.Local.sQuery)
+F.Intrinsic.Control.If(V.ODBC.conx!rstINVActive.EOF,<>,True)
+	V.Local.sInactive.Set(V.ODBC.conx!rstINVActive.FieldVal!FLAG_INACTIVE)
+F.Intrinsic.Control.Else
+	V.Local.sInactive.Set("N")
+F.Intrinsic.Control.EndIF
+F.ODBC.conx!rstINVActive.Close
+
+v.Local.sQuery.Set("")
+
+F.Intrinsic.String.Concat("'",V.Local.sParameters(2),"','",V.Local.sParameters(3),"','",V.Local.sParameters(0),"','",V.Local.sParameters(1),"','",V.Local.sDescription,"','", V.Local.iQtyOnHand,"','",v.Local.sValues)
+f.Intrinsic.String.Concat(v.Local.sValues,V.Local.iQtyRequired,"','",V.Local.iOnOrder,"','",V.Local.iNet,"','",V.Local.iCost,"','",V.Local.sParameters(4),"','",v.Local.sParameters(5),"','",v.Local.sValues)
+f.Intrinsic.String.Concat(v.Local.sValues,V.Local.sParameters(6),"','",v.Local.sParameters(7),"','",V.Local.sParameters(8),"','",V.Local.sParameters(9),"','",v.Local.sParameters(10),"','",v.Local.sValues)
+F.Intrinsic.String.Concat(v.Local.sValues,V.Local.sParameters(11),"','",v.Local.sParameters(12),"','",v.Local.sParameters(13),"','",V.Local.sInactive,"'",V.Local.sValues)	
+
+F.Intrinsic.String.Concat(v.Local.sQuery,"INSERT INTO ATG_BRW_INVENTORY(DISPLAY_PART,DISPLAY_REV,GSSPART,LOCATION,DESCRIPTION,QTY_ONHAND, QTY_REQUIRED, ON_ORDER, NET, COST, CUST_NO, ",v.Local.sQuery)
+f.Intrinsic.String.Concat(v.Local.sQuery,"CUSTOMER, CUSTOMER_PART, DISPLAY_CUST_PART, VENDOR, MFG_PART, DISPLAY_MFG_PART, MFG_NAME, USER_PART, DISPLAY_USER_PART, FLAG_INACTIVE) Values (",V.Local.sValues,")",V.Local.sQuery)	
+
+F.ODBC.Connection!conx.Execute(V.Local.sQuery)
+
+'Delete the one created without customer
+v.Local.sQuery.Set("")
+f.Intrinsic.String.Concat("DELETE FROM ATG_BRW_INVENTORY WHERE GSSPART ='",v.Local.sParameters(0),"' AND LOCATION ='",v.Local.sParameters(1),"' AND CUST_NO ='' AND VENDOR =''",v.Local.sQuery)
+F.ODBC.Connection!conx.Execute(V.Local.sQuery)
+program.Sub.InsertNewXref.End
+
+program.Sub.CreateTempFile.start
+v.Local.sPart.Declare(String)
+v.Local.sRev.Declare(String)
+v.Local.sLocation.Declare(String)
+v.Local.sCustomer.Declare(String)
+v.Local.sDisplayCustPart.Declare(String)
+v.Local.sVendor.Declare(String)
+v.Local.sDisplayMfgPart.Declare(String)
+v.Local.sDisplayUserPart.Declare(String)
+v.Local.sGSSPart.Declare(String)
+v.Local.sCurrentXRef.Declare(String)
+v.Local.sCurrentXRefPath.Declare(String)
+V.Local.sError.Declare(String)
+
+F.Intrinsic.Control.SetErrorHandler("CREATE_FILE_ERR")
+F.Intrinsic.Control.ClearErrors		
+
+v.Local.sPart.Set(v.Passed.000001)
+v.Local.sRev.Set(v.Passed.000002)
+
+f.Intrinsic.Control.CallSub(creategsspart,"Part",v.Local.sPart,"Rev",v.Local.sRev)
+v.Local.sGSSPart.Set(v.Args.sGSSPart)
+
+v.Local.sLocation.Set(v.Passed.000003)
+v.Local.sCustomer.Set(v.Passed.000005)
+v.Local.sDisplayCustPart.Set(v.Passed.000007)
+v.Local.sVendor.Set(v.Passed.000045)
+v.Local.sDisplayMfgPart.Set(v.Passed.000008)
+v.Local.sDisplayUserPart.Set(v.Passed.000069)		
+
+f.Intrinsic.String.Concat(v.Local.sGSSPart,v.Ambient.NewLine,v.Local.sLocation,v.Ambient.NewLine,v.Local.sCustomer,v.Ambient.NewLine,v.Local.sDisplayCustPart,v.Ambient.NewLine,v.Local.sCurrentXRef)
+f.Intrinsic.String.Concat(v.Local.sCurrentXRef,v.Local.sVendor,v.Ambient.NewLine,v.Local.sDisplayMfgPart,v.Ambient.NewLine,v.Local.sDisplayUserPart,v.Local.sCurrentXRef)
+
+f.Intrinsic.String.Concat(v.System.Temp,"\CurrentXRef.txt",v.Local.sCurrentXRefPath)
+f.Intrinsic.File.String2File(v.Local.sCurrentXRefPath,v.Local.sCurrentXRef)			
+
+F.Intrinsic.Control.Label("CREATE_FILE_ERR")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: ADD_DEL_ATG_BRW_INV.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+F.Intrinsic.Control.EndIF
+program.Sub.CreateTempFile.End
+
+program.Sub.DeleteTempFile.start
+v.Local.sCurrentXRefPath.Declare(String)
+v.Local.bFileExists.Declare(boolean)
+v.Local.sError.Declare(String)
+
+F.Intrinsic.Control.SetErrorHandler("DEL_FILE_ERR")
+
+f.Intrinsic.String.Concat(v.System.Temp,"\CurrentXRef.txt",v.Local.sCurrentXRefPath)
+f.Intrinsic.File.Exists(v.Local.sCurrentXRefPath,v.Local.bFileExists)
+f.Intrinsic.Control.If(v.Local.bFileExists,=,true)
+	f.Intrinsic.File.DeleteFile(v.Local.sCurrentXRefPath)
+f.Intrinsic.Control.EndIf		
+
+F.Intrinsic.Control.Label("DEL_FILE_ERR")
+	F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+		Function.Intrinsic.String.Concat("Project: ADD_DEL_ATG_BRW_INV.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+F.Intrinsic.Control.EndIF		
+program.Sub.DeleteTempFile.End
+
+program.Sub.CreateGSSPart.start
+v.Local.sPart.Declare(String)
+v.Local.sGSSPart.Declare(String)
+
+F.Intrinsic.Control.If(V.Args.Rev.Length,>,0)
+	F.Intrinsic.Control.If(V.Args.Part.Length,<,15)
+		F.Intrinsic.String.RPad(V.Args.Part," ",17,V.Local.sPart)
+		F.Intrinsic.String.Concat(V.Local.sPart,V.Args.Rev,V.Local.sGSSPart)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Concat(V.Args.Part,V.Args.Rev,V.Local.sGSSPart)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Concat(V.Args.Part,V.Args.Rev,V.Local.sGSSPart)
+F.Intrinsic.Control.EndIF
+
+f.Intrinsic.Variable.AddRV("sGSSPart",v.Local.sGSSPart)	
+program.Sub.CreateGSSPart.End
+
+Program.Sub.Comments.Start
+${$0$}$ADD_DEL_ATG_BRW_INV$}$TSP$}$4/15/2014$}$False
+${$5$}$2.0.0.0$}$2
+${$6$}$gmansur$}$20230516160212366$}$K/sEmFVXhafX7mOm1w0TdKIbTZlXvIA39LkPXxTeUZ3OWDcSBilIHXqX/+kJRrv+XzNkNNLa19U=
+Program.Sub.Comments.End
